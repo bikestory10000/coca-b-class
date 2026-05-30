@@ -1,0 +1,1100 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>민쌤영어 · Set 17 어휘 테스트</title>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9590090798290569" crossorigin="anonymous"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css"/>
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+/* ━━━ CSS 변수 시스템 ━━━ */
+:root {
+  --bg: #0B0F1A;
+  --surface:  #131929;
+  --surface2: #1a2236;
+  --surface3: #0e1322;
+  --accent: #7CA7EB;
+  --accent-dim: rgba(124,167,235,0.12);
+  --accent-border: rgba(124,167,235,0.25);
+  --gold: #E8C97A;
+  --gold-dim: rgba(232,201,122,0.12);
+  --gold-border: rgba(232,201,122,0.30);
+  --correct: #4ade80;
+  --correct-dim: rgba(74,222,128,0.08);
+  --correct-border: rgba(74,222,128,0.28);
+  --correct-glow: rgba(74,222,128,0.18);
+  --wrong: #f87171;
+  --wrong-dim: rgba(248,113,113,0.08);
+  --wrong-border: rgba(248,113,113,0.28);
+  --wrong-glow: rgba(248,113,113,0.18);
+  --text: #F0EEE8;
+  --text-muted: rgba(240,238,232,0.52);
+  --text-dim: rgba(240,238,232,0.18);
+  --radius: 16px;
+  --radius-sm: 10px;
+  --font-base: 'Pretendard', 'DM Sans', -apple-system, sans-serif;
+  --font-brand: 'DM Sans', 'Pretendard', sans-serif;
+  --font-serif: 'Playfair Display', Georgia, serif;
+}
+
+/* ━━━ 글로벌 기반 ━━━ */
+body {
+  background: var(--bg);
+  background-image:
+    radial-gradient(ellipse 80% 40% at 20% -10%, rgba(124,167,235,0.08) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 30% at 85% 15%, rgba(232,201,122,0.06) 0%, transparent 55%);
+  color: var(--text);
+  font-family: var(--font-base);
+  min-height: 100vh;
+  padding: 0 0 6rem;
+  -webkit-font-smoothing: antialiased;
+}
+
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.1); border-radius: 99px; }
+
+.page { max-width: 740px; margin: 0 auto; padding: 0 1.4rem; }
+
+/* ━━━ 헤더 ━━━ */
+.site-header {
+  width: 100%;
+  background: rgba(13,18,32,0.85);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border-bottom: 1px solid rgba(255,255,255,0.055);
+  padding: 1.1rem 1.8rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 2.2rem;
+  position: sticky;
+  top: 0;
+  z-index: 200;
+}
+.header-left { display: flex; align-items: center; gap: 14px; }
+
+.home-btn {
+  font-family: var(--font-base);
+  font-size: 11.5px;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-decoration: none;
+  padding: 6px 14px;
+  border-radius: 99px;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.08);
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+.home-btn:hover {
+  color: var(--accent);
+  background: var(--accent-dim);
+  border-color: var(--accent-border);
+}
+
+.brand-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-brand);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #fff;
+  background: linear-gradient(135deg, var(--surface2) 0%, #1e2d47 100%);
+  border: 1px solid var(--accent-border);
+  padding: 5px 14px;
+  border-radius: 99px;
+  box-shadow: 0 2px 10px rgba(124,167,235,0.12), inset 0 1px 0 rgba(255,255,255,0.07);
+}
+.brand-tag .dot { color: var(--accent); }
+
+.header-right { display: flex; flex-direction: column; align-items: flex-end; gap: 2px; }
+.page-title {
+  font-family: var(--font-serif);
+  font-size: 1.25rem;
+  font-weight: 700;
+  line-height: 1.2;
+}
+.page-title span { color: var(--accent); }
+.page-sub { font-size: 11px; color: var(--text-muted); }
+
+/* ━━━ 스탯 바 ━━━ */
+.stats-bar {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 2.2rem;
+  flex-wrap: wrap;
+}
+.stat-pill {
+  flex: 1;
+  min-width: 120px;
+  background: var(--surface2);
+  border: 1px solid rgba(255,255,255,0.07);
+  border-radius: var(--radius);
+  padding: 0.9rem 1rem;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  cursor: default;
+}
+.stat-pill::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.12), transparent);
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+.stat-pill:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.3), 0 0 0 1px rgba(124,167,235,0.12);
+}
+.stat-pill:hover::before { opacity: 1; }
+.stat-pill-num {
+  font-family: var(--font-serif);
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--gold);
+  display: block;
+  line-height: 1.2;
+}
+.stat-pill-label {
+  font-size: 10px;
+  color: var(--text-muted);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  font-weight: 600;
+  margin-top: 2px;
+  display: block;
+}
+.stat-pill-sub { font-size: 11px; color: var(--text-dim); margin-top: 3px; }
+
+/* ━━━ 섹션 헤더 ━━━ */
+.section-head {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 2.4rem 0 0.6rem;
+}
+.section-icon {
+  width: 34px;
+  height: 34px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  flex-shrink: 0;
+  background: var(--accent-dim);
+  border: 1px solid var(--accent-border);
+  box-shadow: 0 0 12px rgba(124,167,235,0.15);
+}
+.section-icon.gold-icon {
+  background: var(--gold-dim);
+  border-color: var(--gold-border);
+  box-shadow: 0 0 12px rgba(232,201,122,0.15);
+}
+.section-tag {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  background: linear-gradient(135deg, var(--accent) 0%, #5B86E5 100%);
+  color: #0B0F1A;
+  padding: 4px 14px;
+  border-radius: 99px;
+  white-space: nowrap;
+  box-shadow: 0 2px 8px rgba(124,167,235,0.25);
+}
+.section-tag.gold {
+  background: linear-gradient(135deg, var(--gold) 0%, #d4a843 100%);
+  box-shadow: 0 2px 8px rgba(232,201,122,0.25);
+}
+.section-line {
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, rgba(124,167,235,0.2), transparent);
+}
+.section-line.gold-line {
+  background: linear-gradient(90deg, rgba(232,201,122,0.2), transparent);
+}
+.section-desc {
+  font-size: 12.5px;
+  color: var(--text-muted);
+  margin-bottom: 1.4rem;
+  line-height: 1.6;
+  font-family: var(--font-base);
+}
+
+/* ━━━ 파트 헤더 ━━━ */
+.part-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 1.8rem 0 1rem;
+}
+.part-tag {
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  border: 1px solid var(--accent-border);
+  color: var(--accent);
+  padding: 3px 12px;
+  border-radius: 99px;
+  background: var(--accent-dim);
+}
+.part-line {
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, rgba(255,255,255,0.06), transparent);
+}
+.part-score {
+  font-size: 11.5px;
+  color: var(--text-dim);
+  font-weight: 600;
+  letter-spacing: 0.04em;
+}
+
+/* ━━━ 워드 뱅크 ━━━ */
+.word-bank {
+  background: var(--surface);
+  border: 1px solid rgba(255,255,255,0.07);
+  border-radius: var(--radius);
+  padding: 1rem 1.3rem;
+  margin-bottom: 1.3rem;
+  position: relative;
+  overflow: hidden;
+}
+.word-bank::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(124,167,235,0.15), transparent);
+}
+.wb-label-row {
+  font-size: 10px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  font-weight: 700;
+  margin-bottom: 0.75rem;
+}
+.wb-grid { display: flex; flex-wrap: wrap; gap: 7px; }
+.wb-item {
+  font-size: 13px;
+  color: var(--text);
+  padding: 4px 13px;
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 99px;
+  background: transparent;
+  transition: all 0.15s;
+  font-family: var(--font-brand);
+}
+.wb-item.used {
+  color: var(--text-dim);
+  border-color: rgba(255,255,255,0.04);
+  text-decoration: line-through;
+  opacity: 0.5;
+}
+.wb-key { font-weight: 700; color: var(--accent); margin-right: 4px; }
+
+/* ━━━ 유형 A 문항 카드 ━━━ */
+.qa-block { margin-bottom: 1.5rem; }
+.qa-num {
+  font-size: 11px;
+  color: var(--text-dim);
+  font-weight: 700;
+  margin-bottom: 0.45rem;
+  letter-spacing: 0.05em;
+}
+.qa-sent {
+  background: var(--surface);
+  border: 1px solid rgba(255,255,255,0.07);
+  border-radius: var(--radius);
+  padding: 1.1rem 1.4rem;
+  font-size: 15px;
+  line-height: 1.85;
+  color: rgba(240,238,232,0.92);
+  font-family: var(--font-brand);
+  box-shadow: 0 2px 12px rgba(0,0,0,0.18), inset 0 1px 0 rgba(255,255,255,0.04);
+  transition: border-color 0.2s;
+}
+.qa-sent:focus-within { border-color: rgba(124,167,235,0.22); }
+.qa-sent .blank-wrap { display: inline-block; position: relative; margin: 0 4px; }
+
+/* ━━━ 빈칸 버튼 & 드롭다운 ━━━ */
+.blank-btn {
+  display: inline-block;
+  min-width: 115px;
+  padding: 3px 12px;
+  border: 1.5px dashed rgba(124,167,235,0.35);
+  border-radius: 8px;
+  background: rgba(124,167,235,0.07);
+  color: var(--text-muted);
+  font-family: var(--font-brand);
+  font-size: 13.5px;
+  font-weight: 500;
+  cursor: pointer;
+  text-align: center;
+  transition: all 0.18s ease;
+  position: relative;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,0.04);
+  vertical-align: middle;
+}
+.blank-btn:hover {
+  border-color: var(--accent);
+  border-style: solid;
+  color: var(--accent);
+  background: var(--accent-dim);
+  box-shadow: 0 4px 14px rgba(124,167,235,0.18), inset 0 1px 0 rgba(255,255,255,0.06);
+  transform: translateY(-1px);
+}
+.blank-btn.selected {
+  border-style: solid;
+  border-color: var(--accent);
+  color: var(--accent);
+  font-weight: 600;
+  background: var(--accent-dim);
+  box-shadow: 0 4px 14px rgba(124,167,235,0.15);
+}
+.blank-btn.correct-ans {
+  border-style: solid;
+  border-color: var(--correct);
+  color: var(--correct);
+  background: var(--correct-dim);
+  box-shadow: 0 0 14px rgba(74,222,128,0.22);
+}
+.blank-btn.wrong-ans {
+  border-style: solid;
+  border-color: var(--wrong);
+  color: var(--wrong);
+  background: var(--wrong-dim);
+  box-shadow: 0 0 14px rgba(248,113,113,0.22);
+}
+
+/* 드롭다운 메뉴 공중 부유 효과 */
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  top: calc(100% + 6px);
+  left: 0;
+  z-index: 100;
+  background: rgba(18,26,46,0.96);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--accent-border);
+  border-radius: 12px;
+  overflow: hidden;
+  min-width: 150px;
+  box-shadow:
+    0 12px 32px rgba(0,0,0,0.5),
+    0 2px 8px rgba(0,0,0,0.3),
+    0 0 0 1px rgba(124,167,235,0.08),
+    inset 0 1px 0 rgba(255,255,255,0.07);
+}
+.dropdown-menu.open { display: block; animation: ddFadeIn 0.15s ease; }
+@keyframes ddFadeIn {
+  from { opacity: 0; transform: translateY(-4px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.dropdown-item {
+  display: block;
+  width: 100%;
+  padding: 9px 16px;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text);
+  background: transparent;
+  border: none;
+  text-align: left;
+  font-family: var(--font-brand);
+  cursor: pointer;
+  transition: background 0.12s, color 0.12s;
+}
+.dropdown-item:hover { background: var(--accent-dim); color: var(--accent); }
+.dropdown-item.selected { color: var(--accent); font-weight: 600; }
+
+/* ━━━ 유형 B 문항 카드 ━━━ */
+.qb-block { margin-bottom: 1.8rem; }
+.qb-sent {
+  background: var(--surface);
+  border: 1px solid rgba(255,255,255,0.07);
+  border-radius: var(--radius) var(--radius) 0 0;
+  padding: 1.1rem 1.4rem;
+  font-size: 15px;
+  line-height: 1.85;
+  border-bottom: none;
+  font-family: var(--font-brand);
+  color: rgba(240,238,232,0.92);
+  box-shadow: 0 2px 12px rgba(0,0,0,0.15), inset 0 1px 0 rgba(255,255,255,0.04);
+}
+.qb-sent .kw {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-color: var(--gold);
+  font-weight: 600;
+  color: #f5e09a;
+}
+.choices {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  border: 1px solid rgba(255,255,255,0.07);
+  border-top: 1px solid rgba(255,255,255,0.04);
+  border-radius: 0 0 var(--radius) var(--radius);
+  overflow: hidden;
+}
+.choice-btn {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  padding: 0.85rem 1.1rem;
+  font-size: 13.5px;
+  cursor: pointer;
+  border: none;
+  background: var(--surface2);
+  color: var(--text);
+  font-family: var(--font-base);
+  text-align: left;
+  transition: background 0.15s, color 0.15s, box-shadow 0.15s;
+  border-top: 1px solid rgba(255,255,255,0.04);
+  line-height: 1.4;
+}
+.choice-btn:nth-child(odd) { border-right: 1px solid rgba(255,255,255,0.04); }
+.choice-btn:hover:not(:disabled) {
+  background: var(--accent-dim);
+  color: rgba(240,238,232,0.95);
+}
+.choice-btn:disabled { cursor: default; }
+
+/* 정답/오답 네온 글로우 */
+.choice-btn.correct {
+  background: var(--correct-dim);
+  color: var(--correct);
+  box-shadow: inset 0 0 0 1px var(--correct-border), 0 0 16px var(--correct-glow);
+}
+.choice-btn.wrong {
+  background: var(--wrong-dim);
+  color: var(--wrong);
+  box-shadow: inset 0 0 0 1px var(--wrong-border), 0 0 16px var(--wrong-glow);
+}
+.choice-num {
+  font-weight: 700;
+  color: var(--accent);
+  font-size: 12.5px;
+  min-width: 18px;
+  flex-shrink: 0;
+}
+.choice-btn.correct .choice-num { color: var(--correct); }
+.choice-btn.wrong .choice-num { color: var(--wrong); }
+
+/* ━━━ 결과 패널 ━━━ */
+.result-panel {
+  display: none;
+  background: var(--surface);
+  border: 1px solid rgba(255,255,255,0.07);
+  border-radius: var(--radius);
+  padding: 1.6rem;
+  margin-top: 2rem;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.25);
+}
+.result-panel::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--gold), var(--accent), transparent);
+}
+.result-panel.show { display: block; animation: panelIn 0.3s ease; }
+@keyframes panelIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.result-title {
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--gold);
+  font-weight: 700;
+  margin-bottom: 1.2rem;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.result-title::before {
+  content: '■';
+  font-size: 6px;
+  opacity: 0.6;
+}
+
+/* 스코어 대시보드 */
+.result-score-row {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 1.4rem;
+  flex-wrap: wrap;
+}
+.rscore {
+  flex: 1;
+  min-width: 90px;
+  text-align: center;
+  background: var(--surface2);
+  border-radius: var(--radius-sm);
+  padding: 1rem 0.8rem;
+  border: 1px solid rgba(255,255,255,0.06);
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,0.04);
+}
+.rscore-num {
+  font-family: var(--font-serif);
+  font-size: 1.75rem;
+  font-weight: 700;
+  display: block;
+  line-height: 1.1;
+  margin-bottom: 4px;
+}
+.rscore-num.good { color: var(--correct); text-shadow: 0 0 20px rgba(74,222,128,0.35); }
+.rscore-num.bad  { color: var(--wrong);   text-shadow: 0 0 20px rgba(248,113,113,0.35); }
+.rscore-num.neutral { color: var(--accent); text-shadow: 0 0 20px rgba(124,167,235,0.3); }
+.rscore-label {
+  font-size: 10.5px;
+  color: var(--text-muted);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+/* 정답 목록 */
+.ans-list { display: flex; flex-direction: column; gap: 7px; }
+.ans-row {
+  display: grid;
+  grid-template-columns: 26px 1fr;
+  gap: 10px;
+  align-items: start;
+  padding: 10px 13px;
+  border-radius: 10px;
+  font-size: 13px;
+  transition: opacity 0.15s;
+}
+.ans-row.ok {
+  background: var(--correct-dim);
+  border: 1px solid var(--correct-border);
+  box-shadow: 0 0 10px rgba(74,222,128,0.06);
+}
+.ans-row.ng {
+  background: var(--wrong-dim);
+  border: 1px solid var(--wrong-border);
+  box-shadow: 0 0 10px rgba(248,113,113,0.06);
+}
+.ans-icon {
+  font-size: 14px;
+  line-height: 1.6;
+  text-align: center;
+}
+.ans-content .word {
+  font-weight: 700;
+  color: var(--text);
+  font-family: var(--font-brand);
+}
+.ans-content .meaning { color: var(--text-muted); font-size: 12px; }
+.ans-content .trans {
+  color: rgba(240,238,232,0.9);
+  font-size: 12px;
+  font-weight: 500;
+  margin-top: 5px;
+  line-height: 1.65;
+  font-family: var(--font-base);
+}
+.ans-content .user-ans { font-size: 12px; margin-top: 3px; font-family: var(--font-base); }
+.ans-content .user-ans.wrong-text { color: var(--wrong); }
+
+/* ━━━ 버튼 ━━━ */
+.btn-row { display: flex; gap: 10px; margin-top: 1.5rem; flex-wrap: wrap; }
+.btn {
+  padding: 11px 24px;
+  border-radius: 99px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: var(--font-base);
+  letter-spacing: 0.03em;
+  transition: opacity 0.2s, transform 0.15s, box-shadow 0.2s;
+  border: none;
+}
+.btn:hover { opacity: 0.88; transform: translateY(-1px); }
+.btn-primary {
+  background: linear-gradient(135deg, var(--accent) 0%, #5B86E5 100%);
+  color: #0B0F1A;
+  box-shadow: 0 4px 14px rgba(124,167,235,0.28);
+}
+.btn-gold {
+  background: linear-gradient(135deg, var(--gold) 0%, #c99c3a 100%);
+  color: #0B0F1A;
+  box-shadow: 0 4px 14px rgba(232,201,122,0.28);
+}
+.btn-ghost {
+  background: transparent;
+  color: var(--text-muted);
+  border: 1px solid rgba(255,255,255,0.12);
+}
+.btn-ghost:hover { background: rgba(255,255,255,0.04); color: var(--text); }
+
+.divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.07), transparent);
+  margin: 3rem 0;
+}
+
+@media (max-width: 500px) {
+  .site-header { padding: 0.9rem 1rem; gap: 10px; }
+  .header-right { display: none; }
+  .choices { grid-template-columns: 1fr; }
+  .choice-btn:nth-child(odd) { border-right: none; }
+  .result-score-row { gap: 8px; }
+  .rscore-num { font-size: 1.45rem; }
+}
+</style>
+</head>
+<body>
+
+<div class="site-header">
+  <div class="header-left">
+    <a href="index.html" class="home-btn">← 메인으로</a>
+    <span class="brand-tag">민쌤영어 <span class="dot">·</span> 2026 압축보카</span>
+  </div>
+  <div class="header-right">
+    <div class="page-title">Set <span>17</span> 어휘 테스트</div>
+    <div class="page-sub">유형 A (20문항) + 유형 B (42문항) · 총 62문항</div>
+  </div>
+</div>
+
+<div class="page">
+
+<!-- STATS -->
+<div class="stats-bar">
+  <div class="stat-pill">
+    <span class="stat-pill-num" id="statA">0/20</span>
+    <span class="stat-pill-label">유형 A</span>
+    <div class="stat-pill-sub">빈칸 채우기</div>
+  </div>
+  <div class="stat-pill">
+    <span class="stat-pill-num" id="statB">0/42</span>
+    <span class="stat-pill-label">유형 B</span>
+    <div class="stat-pill-sub">동의어 선택</div>
+  </div>
+  <div class="stat-pill">
+    <span class="stat-pill-num" id="statTotal">0/62</span>
+    <span class="stat-pill-label">전체 진행</span>
+    <div class="stat-pill-sub">문항 완료</div>
+  </div>
+</div>
+
+<!-- 유형 A -->
+<div class="section-head">
+  <div class="section-icon">📝</div>
+  <span class="section-tag">유형 A · 빈칸 채우기</span>
+  <div class="section-line"></div>
+</div>
+<p class="section-desc">각 파트의 보기에서 알맞은 단어를 골라 빈칸을 채우시오. (클릭하여 선택)</p>
+
+<!-- PART 1 (Q1~5) -->
+<div class="part-header">
+  <span class="part-tag">Part 1</span><div class="part-line"></div>
+  <span class="part-score" id="p1score">0/5</span>
+</div>
+<div class="word-bank" id="wb1"></div>
+<div id="part1-qs"></div>
+
+<!-- PART 2 (Q6~10) -->
+<div class="part-header">
+  <span class="part-tag">Part 2</span><div class="part-line"></div>
+  <span class="part-score" id="p2score">0/5</span>
+</div>
+<div class="word-bank" id="wb2"></div>
+<div id="part2-qs"></div>
+
+<!-- PART 3 (Q11~15) -->
+<div class="part-header">
+  <span class="part-tag">Part 3</span><div class="part-line"></div>
+  <span class="part-score" id="p3score">0/5</span>
+</div>
+<div class="word-bank" id="wb3"></div>
+<div id="part3-qs"></div>
+
+<!-- PART 4 (Q16~20) -->
+<div class="part-header">
+  <span class="part-tag">Part 4</span><div class="part-line"></div>
+  <span class="part-score" id="p4score">0/5</span>
+</div>
+<div class="word-bank" id="wb4"></div>
+<div id="part4-qs"></div>
+
+<div class="btn-row">
+  <button class="btn btn-primary" onclick="checkA()">유형 A 채점</button>
+  <button class="btn btn-ghost" onclick="resetA()">다시 풀기</button>
+</div>
+<div class="result-panel" id="resultA"></div>
+
+<div class="divider"></div>
+
+<!-- 유형 B -->
+<div class="section-head">
+  <div class="section-icon gold-icon">⚡</div>
+  <span class="section-tag gold">유형 B · 동의어 선택</span>
+  <div class="section-line gold-line"></div>
+</div>
+<p class="section-desc">밑줄 친 단어와 의미가 가장 가까운 것을 고르시오.</p>
+<div id="partB-qs"></div>
+
+<div class="btn-row">
+  <button class="btn btn-gold" onclick="checkB()">유형 B 채점</button>
+  <button class="btn btn-ghost" onclick="resetB()">다시 풀기</button>
+</div>
+<div class="result-panel" id="resultB"></div>
+
+</div><!-- /page -->
+
+<<script>
+// ── DATA ──
+const TYPE_A = [
+  {word:"implant",      part:1, sent:"Religious and cultural values are typically ___ in children during their earliest years, when they are most receptive to the beliefs and practices of the adults around them.", trans:"종교적·문화적 가치들은 주로 아이들이 주변 어른들의 믿음과 관행에 가장 수용적인 어린 시절에 심어진다.", meaning:"심다, 주입하다"},
+  {word:"injustice",    part:1, sent:"The slow pace of legal reform to address systemic ___ has frustrated many advocacy groups, who argue that incremental change is inadequate given the urgency of the problem.", trans:"체계적 불공평을 해결하기 위한 법적 개혁의 느린 속도는 문제의 긴박함을 고려할 때 점진적 변화가 불충분하다고 주장하는 많은 옹호 단체들을 좌절시켰다.", meaning:"불공평, 부당함"},
+  {word:"penetrate",    part:1, sent:"The new entrant managed to ___ a market that had long been dominated by two established players, largely by offering a pricing model that undercut both incumbents.", trans:"신규 진입자는 두 기존 업체보다 낮은 가격 모델을 제공함으로써 오랫동안 두 기존 업체에 의해 지배되어 온 시장에 침투하는 데 성공했다.", meaning:"침투하다, 관통하다"},
+  {word:"pioneer",      part:1, sent:"She is widely regarded as a ___ in the field of computational linguistics, having developed several of the foundational algorithms that underpin modern natural language processing.", trans:"그녀는 현대 자연어 처리의 기반이 되는 여러 기초 알고리즘을 개발하여 전산 언어학 분야의 선구자로 널리 여겨진다.", meaning:"선구자, 개척자"},
+  {word:"protocol",     part:1, sent:"The research team strictly adhered to the established ___ for handling biohazardous materials, recognizing that any deviation could endanger both themselves and others in the facility.", trans:"연구팀은 어떤 이탈도 시설 내 자신들과 다른 사람들을 위험에 빠뜨릴 수 있다는 것을 인식하며 생물 위험 물질 취급을 위한 확립된 절차를 엄격히 준수했다.", meaning:"절차, 의례"},
+  {word:"recipient",    part:2, sent:"The ___ of the grant is required to submit annual progress reports demonstrating that the funds are being used in accordance with the original research proposal.", trans:"보조금 수령인은 자금이 원래 연구 제안에 따라 사용되고 있다는 것을 증명하는 연간 진행 보고서를 제출하도록 요구된다.", meaning:"수령인, 받는 사람"},
+  {word:"resentment",   part:2, sent:"The policy change, which was introduced without adequate consultation, generated considerable ___ among staff who felt their expertise and experience had been deliberately ignored.", trans:"충분한 협의 없이 도입된 정책 변경은 자신들의 전문성과 경험이 의도적으로 무시되었다고 느끼는 직원들 사이에 상당한 분노를 불러일으켰다.", meaning:"분노, 원한"},
+  {word:"scrupulous",   part:2, sent:"The investigative journalist was ___ in verifying every claim before publication, understanding that a single factual error could undermine the credibility of the entire investigation.", trans:"그 탐사 언론인은 단 하나의 사실 오류가 전체 조사의 신뢰성을 약화시킬 수 있다는 것을 이해하며 발표 전에 모든 주장을 검증하는 데 꼼꼼했다.", meaning:"양심적인, 꼼꼼한"},
+  {word:"segregation",  part:2, sent:"The historical legacy of racial ___ continues to shape patterns of residential inequality and educational attainment in ways that persist long after the legal structures have been dismantled.", trans:"인종적 분리의 역사적 유산은 법적 구조가 해체된 후에도 오랫동안 지속되는 방식으로 주거 불평등과 교육 성취도 패턴을 계속 형성하고 있다.", meaning:"분리, 차별"},
+  {word:"solidarity",   part:2, sent:"The strike's success depended not only on the determination of the workers directly affected but on the ___ of colleagues across different departments who refused to cross the picket line.", trans:"파업의 성공은 직접 영향을 받은 노동자들의 결의뿐만 아니라 피켓 라인을 넘기를 거부한 다른 부서 동료들의 연대에도 달려 있었다.", meaning:"연대, 결속"},
+  {word:"vacuum",       part:3, sent:"The sudden collapse of the governing coalition created a political ___ that rival factions rushed to fill, triggering a period of intense instability.", trans:"집권 연립의 갑작스러운 붕괴는 경쟁 파벌들이 채우려 서두르는 정치적 공백을 만들어, 극심한 불안정의 시기를 촉발했다.", meaning:"공백, 진공"},
+  {word:"verify",       part:3, sent:"Social media platforms have faced growing pressure to ___ the authenticity of accounts and content before amplifying them to large audiences.", trans:"소셜 미디어 플랫폼은 대규모 청중에게 증폭시키기 전에 계정과 콘텐츠의 진위를 확인하라는 점점 더 많은 압박에 직면하고 있다.", meaning:"확인하다, 검증하다"},
+  {word:"workforce",    part:3, sent:"The automation of routine cognitive tasks threatens to displace a significant portion of the current ___, requiring substantial investment in retraining programs.", trans:"일상적인 인지 작업의 자동화는 현재 노동력의 상당 부분을 대체할 위협이 되어, 재교육 프로그램에 대한 상당한 투자를 필요로 한다.", meaning:"노동력, 직원"},
+  {word:"accumulation", part:3, sent:"The ___ of small inefficiencies throughout the supply chain, each seemingly trivial in isolation, had the cumulative effect of significantly increasing the cost of every unit produced.", trans:"각각은 고립되어 사소해 보이지만 공급망 전반에 걸친 작은 비효율의 축적은 생산된 모든 단위의 비용을 크게 증가시키는 누적 효과를 가졌다.", meaning:"축적, 누적"},
+  {word:"comparable",   part:3, sent:"The study found that outcomes for students taught using the new method were ___ to those achieved under the traditional curriculum, suggesting the innovation offered no significant advantage.", trans:"그 연구는 새로운 방법을 사용하여 가르친 학생들의 결과가 전통적인 교육과정에서 달성된 것과 유사하여, 혁신이 유의미한 이점을 제공하지 않는다는 것을 시사했다.", meaning:"비교할 만한, 유사한"},
+  {word:"contemplate",  part:4, sent:"Before making any irreversible decisions, the board was urged to ___ the full range of long-term consequences, including those that might not become apparent for several years.", trans:"어떤 돌이킬 수 없는 결정을 내리기 전에, 이사회는 몇 년 동안 명백해지지 않을 수 있는 것들을 포함하여 장기적 결과의 전체 범위를 숙고하도록 촉구받았다.", meaning:"숙고하다, 고려하다"},
+  {word:"devoid",       part:4, sent:"A policy statement ___ of any specific implementation mechanism is essentially meaningless, since good intentions without actionable plans produce no real-world change.", trans:"어떤 구체적인 시행 메커니즘도 없는 정책 성명은 본질적으로 의미가 없는데, 실행 가능한 계획이 없는 좋은 의도는 현실 세계의 변화를 만들어내지 못하기 때문이다.", meaning:"완전히 없는, 결여된"},
+  {word:"disability",   part:4, sent:"The legislation requires employers to make reasonable adjustments to accommodate workers with ___, recognizing that many barriers to participation are structural rather than inherent.", trans:"그 법률은 참여의 많은 장벽이 본질적이라기보다 구조적이라는 것을 인식하며 고용주들이 장애가 있는 근로자들을 수용하기 위한 합리적인 조정을 하도록 요구한다.", meaning:"장애"},
+  {word:"draw on",      part:4, sent:"The novelist ___ her own experience of displacement and cultural dislocation to create a narrative that many readers from immigrant backgrounds found deeply resonant.", trans:"그 소설가는 이민자 배경을 가진 많은 독자들이 깊이 공감하는 서사를 만들기 위해 자신의 이주와 문화적 단절 경험을 활용했다.", meaning:"이용하다, 활용하다"},
+  {word:"escalate",     part:4, sent:"Diplomatic efforts to prevent the border dispute from ___ into open conflict intensified after both sides moved additional troops to the contested region.", trans:"양측이 분쟁 지역에 추가 병력을 이동시킨 후 국경 분쟁이 공개적인 갈등으로 확대되는 것을 막으려는 외교적 노력이 강화되었다.", meaning:"확대되다, 고조되다"},
+];
+
+const PART_WORDS = {
+  1: ["implant","injustice","penetrate","pioneer","protocol"],
+  2: ["recipient","resentment","scrupulous","segregation","solidarity"],
+  3: ["vacuum","verify","workforce","accumulation","comparable"],
+  4: ["contemplate","devoid","disability","draw on","escalate"],
+};
+
+const TYPE_B = [
+  {word:"insomnia",     sent:"Chronic {insomnia} is not merely an inconvenience; it is associated with significantly increased risks of cardiovascular disease, impaired immune function, and cognitive decline.", trans:"만성 불면증은 단순한 불편함이 아니다. 그것은 심혈관 질환, 손상된 면역 기능, 인지 저하의 위험 상승과 상당히 연관되어 있다.", choices:["불면증","과수면증","피로증","스트레스"], correct:0},
+  {word:"intake",       sent:"Reducing dietary sodium {intake} is consistently recommended as one of the most effective and cost-efficient interventions for lowering blood pressure at a population level.", trans:"식이 나트륨 섭취를 줄이는 것은 인구 수준에서 혈압을 낮추기 위한 가장 효과적이고 비용 효율적인 개입 중 하나로 일관되게 권장된다.", choices:["섭취·흡입","배출","생산","소비"], correct:0},
+  {word:"lift",         sent:"The government announced that it would {lift} the export restrictions that had been in place for nearly two years, citing improvements in the domestic supply situation.", trans:"정부는 국내 공급 상황의 개선을 이유로 거의 2년간 시행 중이던 수출 제한을 해제할 것이라고 발표했다.", choices:["강화하다","해제하다·들어 올리다","부과하다","유지하다"], correct:1},
+  {word:"nutritional",  sent:"The {nutritional} content of processed foods is often deceptive, as products marketed as healthy may contain significant quantities of added sugar, sodium, and artificial additives.", trans:"가공식품의 영양 성분은 종종 기만적인데, 건강한 것으로 마케팅되는 제품들이 상당량의 첨가 설탕, 나트륨, 인공 첨가물을 포함할 수 있기 때문이다.", choices:["영양의·영양적인","화학적인","물리적인","경제적인"], correct:0},
+  {word:"partially",    sent:"The building was only {partially} completed when funding ran out, leaving it in an unfinished state that attracted considerable criticism from the surrounding community.", trans:"건물은 자금이 고갈되었을 때 부분적으로만 완성되어, 주변 공동체로부터 상당한 비판을 받는 미완성 상태로 남겨졌다.", choices:["완전히","부분적으로·일부만","영구적으로","일시적으로"], correct:1},
+  {word:"pause",        sent:"She {paused} briefly before answering, a habit she had developed to ensure that her responses were considered rather than reactive.", trans:"그녀는 대답하기 전에 잠깐 멈추었는데, 자신의 반응이 충동적이기보다 신중하다는 것을 확인하기 위해 개발한 습관이었다.", choices:["서두르다","잠깐 멈추었다","즉시 대답했다","무시했다"], correct:1},
+  {word:"pertinent",    sent:"She was praised for raising only the most {pertinent} questions during the meeting, rather than straying into topics that would have consumed time without advancing the agenda.", trans:"그녀는 의제를 진전시키지 않고 시간을 소비할 주제로 벗어나기보다, 회의 중에 가장 관련 있는 질문만을 제기한 것으로 칭찬받았다.", choices:["적절한·관련 있는","불필요한","논란이 많은","기술적인"], correct:0},
+  {word:"profession",   sent:"The medical {profession} has been slow to adopt shared decision-making models, partly because traditional training emphasized the physician's authority rather than the patient's autonomy.", trans:"의료 직종은 공유 의사결정 모델을 채택하는 데 느렸는데, 부분적으로는 전통적인 훈련이 환자의 자율성보다 의사의 권위를 강조했기 때문이다.", choices:["직업·전문직","학문","단체","시스템"], correct:0},
+  {word:"quantitative", sent:"The study combined {quantitative} analysis of sales data with qualitative interviews, allowing the researchers to understand both the what and the why of consumer behavior.", trans:"그 연구는 판매 데이터의 정량적 분석과 정성적 인터뷰를 결합하여, 연구자들이 소비자 행동의 무엇과 왜 모두를 이해할 수 있게 했다.", choices:["질적인","정량적인·양적인","통계적인","실험적인"], correct:1},
+  {word:"recycle",      sent:"The initiative encouraged residents to {recycle} electronic waste rather than disposing of it through conventional channels that could allow toxic materials to leach into soil and groundwater.", trans:"그 사업은 독성 물질이 토양과 지하수로 침출될 수 있는 기존 경로를 통해 처리하기보다 전자 폐기물을 재활용하도록 주민들을 장려했다.", choices:["재활용하다","폐기하다","무시하다","수집하다"], correct:0},
+  {word:"relax",        sent:"The government announced plans to {relax} planning regulations in certain urban areas, hoping that reduced bureaucratic barriers would encourage more residential development.", trans:"정부는 특정 도시 지역에서 계획 규정을 완화할 계획을 발표하며, 관료적 장벽 감소가 더 많은 주거 개발을 장려할 것이라고 기대했다.", choices:["강화하다","완화하다·이완하다","제거하다","유지하다"], correct:1},
+  {word:"retailer",     sent:"Large {retailers} have increasingly used their market power to negotiate favorable terms from suppliers, sometimes at the cost of the smaller businesses unable to absorb reduced margins.", trans:"대형 소매업자들은 점점 더 시장 지배력을 사용하여 공급업체로부터 유리한 조건을 협상하며, 때로는 줄어든 마진을 흡수할 수 없는 소규모 기업들의 비용으로 이루어졌다.", choices:["소매업자·소매상","도매업자","제조업자","유통업자"], correct:0},
+  {word:"shallow",      sent:"Critics argued that the report offered only a {shallow} analysis of the problem, identifying symptoms while failing to engage with the structural causes that had produced them.", trans:"비평가들은 그 보고서가 증상을 파악하면서 그것들을 만들어낸 구조적 원인에 참여하지 못하며 문제의 피상적인 분석만을 제공했다고 주장했다.", choices:["심층적인","피상적인·얕은","포괄적인","정확한"], correct:1},
+  {word:"storage",      sent:"The proliferation of cloud {storage} has fundamentally changed how businesses and individuals manage their data, reducing dependence on physical hardware while raising new questions about security.", trans:"클라우드 저장의 확산은 기업과 개인이 데이터를 관리하는 방식을 근본적으로 변화시켜, 물리적 하드웨어에 대한 의존도를 줄이면서 보안에 대한 새로운 질문을 제기했다.", choices:["저장·보관","전송","분석","처리"], correct:0},
+  {word:"temporal",     sent:"The distinction between {temporal} and spiritual authority was central to many medieval political conflicts, as rulers and religious leaders disputed the boundaries of their respective jurisdictions.", trans:"시간적 권위와 영적 권위 사이의 구분은 통치자와 종교 지도자들이 각자의 관할권의 경계를 다투면서 많은 중세 정치적 갈등의 핵심이었다.", choices:["시간적인·일시적인","영구적인","절대적인","공식적인"], correct:0},
+  {word:"trick",        sent:"The magician's most celebrated {trick} involved making a large object appear to vanish before a live audience, a feat that despite extensive analysis no one had conclusively explained.", trans:"그 마술사의 가장 유명한 묘기는 라이브 관중 앞에서 큰 물체를 사라지게 하는 것을 포함했는데, 광범위한 분석에도 불구하고 아무도 결정적으로 설명하지 못한 묘기였다.", choices:["실수","묘기·속임수","계획","공연"], correct:1},
+  {word:"violation",    sent:"The use of surveillance technology without proper legal authorization constitutes a serious {violation} of privacy rights that citizens in democratic societies are entitled to expect the state to protect.", trans:"적절한 법적 권한 없이 감시 기술을 사용하는 것은 민주 사회의 시민들이 국가가 보호하기를 기대할 권리가 있는 프라이버시 권리의 심각한 침해를 구성한다.", choices:["위반·침해","강화","준수","지지"], correct:0},
+  {word:"worsen",       sent:"Without intervention, the existing inequality in access to quality healthcare is likely to {worsen} as the population ages and demand for services continues to outpace supply.", trans:"개입 없이는 인구가 고령화되고 서비스에 대한 수요가 공급을 계속 초과하면서 양질의 의료 서비스에 대한 접근의 기존 불평등이 악화될 가능성이 높다.", choices:["개선되다","악화되다·나빠지다","유지되다","안정되다"], correct:1},
+  {word:"apathetic",    sent:"Young voters have often been characterized as {apathetic}, but research suggests that many are deeply engaged with political issues — simply through different channels than older generations.", trans:"젊은 유권자들은 종종 무관심한 것으로 특징지어지지만, 연구는 많은 사람들이 단순히 이전 세대와 다른 경로를 통해 정치적 문제에 깊이 참여하고 있다는 것을 시사한다.", choices:["열정적인","무관심한·냉담한","분노한","적극적인"], correct:1},
+  {word:"bizarre",      sent:"What initially appeared {bizarre} to outside observers — the use of competitive ritual insult as a form of social bonding — was revealed by anthropologists to serve important functions within the community.", trans:"외부 관찰자들에게 처음에는 기이하게 보였던 것 — 사회적 결속의 형태로 경쟁적 의식적 모욕의 사용 — 이 인류학자들에 의해 공동체 내에서 중요한 기능을 수행하는 것으로 밝혀졌다.", choices:["평범한","기이한·이상한","효율적인","전통적인"], correct:1},
+  {word:"bolster",      sent:"The new evidence served to {bolster} the prosecution's case considerably, filling several of the evidentiary gaps that the defense had previously identified as weaknesses.", trans:"새로운 증거는 검찰의 사건을 상당히 강화시켜, 변호인 측이 이전에 약점으로 파악했던 여러 증거 공백을 채웠다.", choices:["약화시키다","강화하다·뒷받침하다","무시하다","반박하다"], correct:1},
+  {word:"camouflage",   sent:"The policy announcement was widely seen as a political {camouflage} designed to divert public attention from the underlying economic difficulties the administration had failed to address.", trans:"그 정책 발표는 행정부가 해결하지 못한 근본적인 경제적 어려움에서 대중의 관심을 돌리기 위해 설계된 정치적 은폐 수단으로 널리 여겨졌다.", choices:["해결책","은폐 수단·위장","지원","전략"], correct:1},
+  {word:"comprehension",sent:"The report was written at a level of technical {comprehension} that excluded most ordinary citizens, undermining the democratic principle that public policies should be accessible to those they affect.", trans:"그 보고서는 대부분의 일반 시민들을 배제하는 기술적 이해 수준으로 작성되어, 공공 정책이 그것의 영향을 받는 사람들에게 접근 가능해야 한다는 민주적 원칙을 약화시켰다.", choices:["이해·이해력","기술","제안","분석"], correct:0},
+  {word:"connotation",  sent:"The word 'home' carries {connotations} of warmth, safety, and belonging that make it considerably more evocative than the neutral architectural term 'dwelling'.", trans:"'집'이라는 단어는 따뜻함, 안전, 귀속감의 함축적 의미를 담고 있어 중립적인 건축 용어인 '주거'보다 훨씬 더 감성적이다.", choices:["함축된 의미·내포","문자적 의미","발음","어원"], correct:0},
+];
+
+// ── STATE ──
+const stateA = {}; // qIdx -> selectedWord
+const stateB = {}; // qIdx -> selectedIdx
+let aChecked = false, bChecked = false;
+
+// ── SHUFFLED PART WORDS (랜덤, 페이지 로드 시 1회 고정) ──
+const SHUFFLED_PART_WORDS = {};
+function shuffle(arr) {
+  const a = [...arr];
+  for (let i = a.length-1; i>0; i--) {
+    const j = Math.floor(Math.random()*(i+1));
+    [a[i],a[j]] = [a[j],a[i]];
+  }
+  return a;
+}
+[1,2,3,4].forEach(p => { SHUFFLED_PART_WORDS[p] = shuffle(PART_WORDS[p]); });
+const LABELS = ['A','B','C','D','E'];
+
+// ── BUILD TYPE A ──
+function buildTypeA() {
+  [1,2,3,4].forEach(part => {
+    // 워드뱅크 동적 생성 (셔플 순서)
+    const wb = document.getElementById(`wb${part}`);
+    const used = Object.entries(stateA)
+      .filter(([k]) => TYPE_A[parseInt(k)].part === part)
+      .map(([,v]) => v);
+    wb.innerHTML = `<div class="wb-label-row">보기</div>
+      <div class="wb-grid">
+        ${SHUFFLED_PART_WORDS[part].map((w,li) =>
+          `<span class="wb-item${used.includes(w)?' used':''}" id="wb${part}-${w}">
+            <span class="wb-key">${LABELS[li]}.</span>${w}
+          </span>`).join('')}
+      </div>`;
+
+    // 문제 생성
+    const container = document.getElementById(`part${part}-qs`);
+    container.innerHTML = '';
+    const qs = TYPE_A.filter(q => q.part === part);
+    qs.forEach(q => {
+      const idx = TYPE_A.indexOf(q);
+      const num = idx + 1;
+      const parts = q.sent.split('___');
+      const div = document.createElement('div');
+      div.className = 'qa-block';
+      div.innerHTML = `<div class="qa-num">${num}.</div>
+        <div class="qa-sent">
+          ${parts[0]}<span class="blank-wrap">
+            <button class="blank-btn" id="blank-${idx}" onclick="toggleDropdown(${idx}, ${part}, event)">
+              ${stateA[idx] || '▼ 선택'}
+            </button>
+            <div class="dropdown-menu" id="dd-${idx}">
+              ${SHUFFLED_PART_WORDS[part].map((w,li) =>
+                `<button class="dropdown-item ${stateA[idx]===w?'selected':''}"
+                  onclick="selectWord(${idx},${part},'${w}',event)">${LABELS[li]}. ${w}</button>`
+              ).join('')}
+            </div>
+          </span>${parts[1]}
+        </div>`;
+      container.appendChild(div);
+    });
+  });
+  updateStatsBar();
+}
+
+function toggleDropdown(idx, part, e) {
+  e.stopPropagation();
+  if (aChecked) return;
+  document.querySelectorAll('.dropdown-menu').forEach(m => { if (m.id !== `dd-${idx}`) m.classList.remove('open'); });
+  document.getElementById(`dd-${idx}`).classList.toggle('open');
+}
+
+function selectWord(idx, part, word, e) {
+  e.stopPropagation();
+  stateA[idx] = word;
+  document.querySelectorAll('.dropdown-menu').forEach(m => m.classList.remove('open'));
+  updateWbUsed(part);
+}
+
+document.addEventListener('click', () => {
+  document.querySelectorAll('.dropdown-menu').forEach(m => m.classList.remove('open'));
+});
+
+function updateWbUsed(part) {
+  const answered = Object.keys(stateA).filter(k => TYPE_A[parseInt(k)].part === part).length;
+  document.getElementById(`p${part}score`).textContent = `${answered}/5`;
+  buildTypeA();
+}
+
+// ── CHECK TYPE A ──
+function checkA() {
+  let correct = 0;
+  aChecked = true;
+  TYPE_A.forEach((q, idx) => {
+    const btn = document.getElementById(`blank-${idx}`);
+    if (!btn) return;
+    const selected = stateA[idx];
+    if (!selected) {
+      btn.classList.add('wrong-ans');
+      btn.textContent = `✗ (${q.word})`;
+    } else if (selected === q.word) {
+      btn.classList.add('correct-ans');
+      correct++;
+    } else {
+      btn.classList.add('wrong-ans');
+      btn.textContent = `${selected} ✗`;
+    }
+    document.querySelectorAll(`#dd-${idx} .dropdown-item`).forEach(item => item.disabled = true);
+  });
+  document.querySelectorAll('.blank-btn').forEach(b => b.style.pointerEvents='none');
+
+  // result panel
+  const panel = document.getElementById('resultA');
+  panel.classList.add('show');
+  panel.innerHTML = `
+    <div class="result-title">유형 A 채점 결과</div>
+    <div class="result-score-row">
+      <div class="rscore"><span class="rscore-num ${correct>=15?'good':correct>=10?'neutral':'bad'}">${correct}/20</span><span class="rscore-label">정답</span></div>
+      <div class="rscore"><span class="rscore-num bad">${20-correct}/20</span><span class="rscore-label">오답</span></div>
+      <div class="rscore"><span class="rscore-num neutral">${Math.round(correct/20*100)}%</span><span class="rscore-label">정답률</span></div>
+    </div>
+    <div class="ans-list">${TYPE_A.map((q,i)=>{
+      const sel = stateA[i];
+      const ok = sel === q.word;
+      return `<div class="ans-row ${ok?'ok':'ng'}">
+        <span class="ans-icon">${ok?'✓':'✗'}</span>
+        <div class="ans-content">
+          <span class="word">${q.word}</span> <span class="meaning" style="color:var(--text-muted);font-size:12px">— ${q.meaning}</span>
+          ${!ok?`<div class="user-ans wrong-text">내 답: ${sel||'(미입력)'} → 정답: ${q.word}</div>`:''}
+          <div class="trans">${q.trans}</div>
+        </div>
+      </div>`;
+    }).join('')}</div>`;
+
+  updateStatsBar();
+}
+
+function resetA() {
+  aChecked = false;
+  Object.keys(stateA).forEach(k => delete stateA[k]);
+  buildTypeA();
+  [1,2,3,4].forEach(p => {
+    PART_WORDS[p].forEach(w => {
+      const el = document.getElementById(`wb${p}-${w}`);
+      if (el) el.classList.remove('used');
+    });
+    document.getElementById(`p${p}score`).textContent = '0/5';
+  });
+  document.getElementById('resultA').classList.remove('show');
+  document.getElementById('resultA').innerHTML = '';
+}
+
+// ── BUILD TYPE B ──
+function buildTypeB() {
+  const container = document.getElementById('partB-qs');
+  container.innerHTML = '';
+  SHUFFLED_TYPE_B.forEach((q, idx) => {
+    const num = 21 + idx;
+    // {word} 또는 {word의 변형형} 처리: 중괄호 안 텍스트를 밑줄 span으로 교체
+    const sent = q.sent.replace(/\{([^}]+)\}/g, '<span class="kw">$1</span>');
+    const div = document.createElement('div');
+    div.className = 'qb-block';
+    const answered = stateB[idx] !== undefined;
+    div.innerHTML = `
+      <div class="qa-num">${num}.</div>
+      <div class="qb-sent">${sent}</div>
+      <div class="choices" id="choicesB-${idx}">
+        ${q.choices.map((c,ci)=>`
+          <button class="choice-btn ${answered?(ci===stateB[idx]?(ci===q.correct?'correct':'wrong'):(ci===q.correct&&stateB[idx]!==undefined?'correct':'')):''}
+          " onclick="answerB(${idx},${ci})" ${answered?'disabled':''}>
+            <span class="choice-num">①②③④"[ci]"</span>${c}
+          </button>`
+          .replace('"[ci]"', ['','','',''][ci])
+          .replace('①②③④', ['①','②','③','④'][ci])
+        ).join('')}
+      </div>`;
+    container.appendChild(div);
+  });
+  updateStatsBar();
+}
+
+function answerB(idx, chosen) {
+  if (stateB[idx] !== undefined) return;
+  stateB[idx] = chosen;
+  const container = document.getElementById(`choicesB-${idx}`);
+  container.querySelectorAll('.choice-btn').forEach((btn, ci) => {
+    btn.disabled = true;
+    if (ci === chosen && ci === SHUFFLED_TYPE_B[idx].correct) btn.classList.add('correct');
+    else if (ci === chosen) btn.classList.add('wrong');
+    else if (ci === SHUFFLED_TYPE_B[idx].correct) btn.classList.add('correct');
+  });
+  updateStatsBar();
+}
+
+// ── CHECK TYPE B ──
+function checkB() {
+  let correct = 0;
+  SHUFFLED_TYPE_B.forEach((q, idx) => {
+    const container = document.getElementById(`choicesB-${idx}`);
+    if (!container) return;
+    container.querySelectorAll('.choice-btn').forEach((btn, ci) => {
+      btn.disabled = true;
+      if (ci === q.correct) btn.classList.add('correct');
+      else if (ci === stateB[idx] && ci !== q.correct) btn.classList.add('wrong');
+    });
+    if (stateB[idx] === q.correct) correct++;
+  });
+  bChecked = true;
+
+  const panel = document.getElementById('resultB');
+  panel.classList.add('show');
+  panel.innerHTML = `
+    <div class="result-title">유형 B 채점 결과</div>
+    <div class="result-score-row">
+      <div class="rscore"><span class="rscore-num ${correct>=33?'good':correct>=25?'neutral':'bad'}">${correct}/30</span><span class="rscore-label">정답</span></div>
+      <div class="rscore"><span class="rscore-num bad">${30-correct}/30</span><span class="rscore-label">오답</span></div>
+      <div class="rscore"><span class="rscore-num neutral">${Math.round(correct/42*100)}%</span><span class="rscore-label">정답률</span></div>
+    </div>
+    <div class="ans-list">${SHUFFLED_TYPE_B.map((q,i)=>{
+      const sel = stateB[i];
+      const ok = sel === q.correct;
+      return `<div class="ans-row ${ok?'ok':'ng'}">
+        <span class="ans-icon">${ok?'✓':'✗'}</span>
+        <div class="ans-content">
+          <span class="word">${q.word}</span> <span class="meaning" style="color:var(--accent);font-size:12px">→ ${q.choices[q.correct]}</span>
+          ${!ok?`<div class="user-ans wrong-text">내 답: ${sel!==undefined?q.choices[sel]:'(미선택)'}</div>`:''}
+          <div class="trans">${q.trans}</div>
+        </div>
+      </div>`;
+    }).join('')}</div>`;
+
+  updateStatsBar();
+}
+
+function resetB() {
+  bChecked = false;
+  Object.keys(stateB).forEach(k => delete stateB[k]);
+  buildTypeB();
+  document.getElementById('resultB').classList.remove('show');
+  document.getElementById('resultB').innerHTML = '';
+}
+
+// ── STATS BAR ──
+function updateStatsBar() {
+  const aAnswered = Object.keys(stateA).length;
+  const bAnswered = Object.keys(stateB).length;
+  document.getElementById('statA').textContent = `${aAnswered}/20`;
+  document.getElementById('statB').textContent = `${bAnswered}/42`;
+  document.getElementById('statTotal').textContent = `${aAnswered+bAnswered}/62`;
+}
+
+
+// ── SHUFFLE TYPE_B CHOICES (페이지 로드 시 1회 고정) ──
+const SHUFFLED_TYPE_B = TYPE_B.map(q => {
+  const indices = [0, 1, 2, 3];
+  // Fisher-Yates 셔플
+  for (let i = indices.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [indices[i], indices[j]] = [indices[j], indices[i]];
+  }
+  const shuffledChoices = indices.map(i => q.choices[i]);
+  const newCorrect = indices.indexOf(q.correct);
+  return { ...q, choices: shuffledChoices, correct: newCorrect };
+});
+
+// ── INIT ──
+buildTypeA();
+buildTypeB();
+</script>
+</body>
+</html>

@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>민쌤영어 Vocab · Set 27</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,400&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+
+<style>
+  /* 범용 디자인 시스템 및 CSS 변수 정밀화 */
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  
+  :root {
+    --bg: #0B0F1A; 
+    --surface: #131929; 
+    --accent: #7CA7EB;
+    --accent-dim: rgba(124, 167, 235, 0.12); 
+    --accent-border: rgba(124, 167, 235, 0.25);
+    --text: #F0EEE8; 
+    --text-muted: rgba(240, 238, 232, 0.5); 
+    --text-dim: rgba(240, 238, 232, 0.25);
+    
+    /* 백면 세팅 */
+    --back-bg: #F8F7F4; 
+    --back-text: #111111; 
+    --back-muted: #4A4A4A; 
+    --back-rule: rgba(0, 0, 0, 0.06); 
+    --back-ex-bg: rgba(11, 15, 26, 0.04);
+    
+    /* 카드 및 컴포넌트 구조 수치 */
+    --radius: 24px; 
+    --card-w: 400px; 
+    --card-h: 540px;
+    
+    /* 프리미엄 폰트 스택 */
+    --font-ko: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+    --font-en: 'DM Sans', sans-serif;
+    --font-serif: 'Playfair Display', Georgia, serif;
+  }
+
+  body { 
+    background: var(--bg); 
+    color: var(--text); 
+    font-family: var(--font-en); 
+    min-height: 100vh; 
+    display: flex; 
+    flex-direction: column; 
+    align-items: center;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* 글로벌 웹킷 스크롤바 커스텀 */
+  ::-webkit-scrollbar { width: 6px; height: 6px; }
+  ::-webkit-scrollbar-track { background: transparent; }
+  ::-webkit-scrollbar-thumb { background: rgba(255, 255, 255, 0.1); border-radius: 99px; }
+  ::-webkit-scrollbar-thumb:hover { background: rgba(255, 255, 255, 0.2); }
+
+  /* 헤더 및 홈 링크 고도화 */
+  header { 
+    width: 100%; 
+    max-width: 900px; 
+    padding: 2.5rem 2rem 1.2rem; 
+    display: flex; 
+    align-items: center; 
+    justify-content: space-between; 
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05); 
+    margin-bottom: 2rem; 
+  }
+  .header-left { display: flex; align-items: center; gap: 16px; }
+  .home-btn {
+    font-family: var(--font-ko);
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--text-muted);
+    text-decoration: none;
+    padding: 6px 14px;
+    border-radius: 99px;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    transition: all 0.2s ease;
+  }
+  .home-btn:hover {
+    color: var(--accent);
+    background: var(--accent-dim);
+    border-color: var(--accent-border);
+  }
+  .brand { font-size: 14px; letter-spacing: 0.14em; color: #ffffff; font-weight: 700; text-transform: uppercase; }
+  .brand span { color: var(--accent); }
+  .set-label { font-size: 13px; color: var(--text-muted); font-weight: 500; letter-spacing: 0.03em; }
+
+  /* 프로그레스 바 */
+  .progress-wrap { width: 100%; max-width: 400px; margin-bottom: 1.8rem; padding: 0 1rem; display: flex; flex-direction: column; align-items: center; gap: 10px; }
+  .progress-bar-bg { width: 100%; height: 4px; background: rgba(255, 255, 255, 0.06); border-radius: 99px; overflow: hidden; }
+  .progress-bar-fill { height: 100%; background: linear-gradient(90deg, #5B86E5, var(--accent)); border-radius: 99px; transition: width 0.45s cubic-bezier(0.4, 0, 0.2, 1); }
+  .progress-text { font-size: 12px; color: var(--text-muted); letter-spacing: 0.1em; font-weight: 600; }
+
+  /* 스테이지 및 3D 입체 플립 카드 시스템 */
+  .stage { width: var(--card-w); height: var(--card-h); perspective: 2000px; cursor: pointer; outline: none; }
+  .card { 
+    width: 100%; 
+    height: 100%; 
+    position: relative; 
+    transform-style: preserve-3d; 
+    transition: transform 0.7s cubic-bezier(0.23, 1, 0.32, 1); 
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.35), 0 5px 15px rgba(0, 0, 0, 0.2);
+    border-radius: var(--radius);
+  }
+  
+  /* 뒤집힐 때 입체감 전환 효과 */
+  .card.flipped { 
+    transform: rotateY(180deg); 
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15), 0 5px 15px rgba(0, 0, 0, 0.08);
+  }
+  
+  .face { position: absolute; inset: 0; border-radius: var(--radius); backface-visibility: hidden; -webkit-backface-visibility: hidden; overflow: hidden; }
+  
+  /* 카드 앞면 (Dark 프리미엄) */
+  .front { background: var(--surface); border: 1px solid rgba(255, 255, 255, 0.06); display: flex; flex-direction: column; }
+  .front-topbar { display: flex; align-items: center; justify-content: space-between; padding: 26px 28px 0; }
+  .front-label { font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-dim); font-weight: 600; }
+  .pos-pill { font-size: 11px; color: var(--accent); background: var(--accent-dim); border: 1px solid var(--accent-border); padding: 4px 14px; border-radius: 99px; font-weight: 600; letter-spacing: 0.05em; font-style: italic; }
+  .front-body { flex: 1; display: flex; flex-direction: column; justify-content: center; padding: 0 34px; }
+  
+  /* 영문 코퍼스 타이포그래피 */
+  .sentence { font-size: 18px; line-height: 1.8; color: rgba(240, 238, 232, 0.9); font-weight: 400; letter-spacing: -0.01em; }
+  .sentence .hw { font-family: var(--font-serif); font-size: 24px; font-weight: 700; color: var(--accent); display: inline; margin-right: 2px; text-underline-offset: 4px; }
+  .front-footer { padding: 0 34px 24px; font-size: 12px; color: var(--text-muted); text-align: center; letter-spacing: 0.05em; font-family: var(--font-ko); font-weight: 500; opacity: 0.8; }
+  .deco-bar { height: 4px; background: linear-gradient(90deg, var(--accent) 0%, #5B86E5 50%, transparent 100%); }
+
+  /* 카드 뒷면 (Light 아카데믹 텍스트북 스타일) */
+  .back { background: var(--back-bg); transform: rotateY(180deg); display: flex; flex-direction: column; border: 1px solid rgba(0, 0, 0, 0.08); }
+  .back-header { background: #0F1424; padding: 26px 28px 22px; border-radius: calc(var(--radius) - 1px) calc(var(--radius) - 1px) 0 0; }
+  .back-word { font-family: var(--font-serif); font-size: 36px; font-weight: 700; color: #ffffff; line-height: 1.1; letter-spacing: -0.02em; }
+  .back-pos { font-size: 12px; color: var(--accent); letter-spacing: 0.1em; font-weight: 600; text-transform: uppercase; margin-top: 4px; }
+  
+  /* 내부 스크롤바 방어 코드 및 커스텀 트랙 */
+  .back-body { flex: 1; padding: 22px 26px; display: flex; flex-direction: column; gap: 14px; overflow-y: auto; scroll-behavior: smooth; }
+  .back-body::-webkit-scrollbar { width: 5px; }
+  .back-body::-webkit-scrollbar-thumb { background: rgba(0, 0, 0, 0.12); border-radius: 99px; }
+  .back-body::-webkit-scrollbar-thumb:hover { background: rgba(0, 0, 0, 0.25); }
+  
+  /* 아카데믹 한국어 폰트 매핑 및 가독성 최적화 */
+  .meaning-block { display: flex; flex-direction: column; gap: 4px; font-family: var(--font-ko); }
+  .meaning-num { font-size: 10px; color: #185FA5; font-weight: 800; letter-spacing: 0.08em; }
+  .meaning-text { font-size: 15.5px; color: var(--back-text) !important; font-weight: 700; line-height: 1.65; word-break: keep-all; }
+  .meaning-sub { font-size: 13.5px; color: var(--back-muted); font-weight: 500; line-height: 1.6; display: block; padding-left: 6px; margin-top: 2px; border-left: 2px solid rgba(0, 0, 0, 0.08); }
+  
+  .rule { height: 1px; background: var(--back-rule); margin: 4px 0; }
+  .ex-block { background: var(--back-ex-bg); border-left: 4px solid #185FA5; border-radius: 0 12px 12px 0; padding: 14px 16px; display: flex; flex-direction: column; gap: 8px; }
+  .ex-eng { font-size: 13.5px; color: #222222; line-height: 1.65; font-weight: 400; letter-spacing: -0.01em; }
+  .ex-eng strong { color: #185FA5; font-weight: 700; font-family: var(--font-serif); font-size: 15px; }
+  .ex-kor { font-size: 13.5px; color: #000000; font-weight: 600; line-height: 1.65; font-family: var(--font-ko); word-break: keep-all; }
+  .back-deco { height: 4px; background: linear-gradient(90deg, transparent 0%, rgba(24, 95, 165, 0.2) 50%, #185FA5 100%); }
+
+  /* 컨트롤 컨트롤러 네비게이션 */
+  .nav { display: flex; align-items: center; gap: 16px; margin-top: 2.2rem; }
+  .nav-btn { background: rgba(255, 255, 255, 0.04); border: 1px solid rgba(255, 255, 255, 0.08); color: var(--text); font-family: var(--font-ko); font-size: 13.5px; font-weight: 600; padding: 11px 26px; border-radius: 99px; cursor: pointer; transition: all 0.2s ease; letter-spacing: -0.02em; }
+  .nav-btn:hover:not(:disabled) { background: rgba(124, 167, 235, 0.08); border-color: var(--accent-border); color: var(--accent); }
+  .nav-btn:disabled { opacity: 0.15; cursor: not-allowed; }
+  .flip-btn { background: linear-gradient(135deg, var(--accent), #5B86E5); border: none; color: #0B0F1A; font-family: var(--font-ko); font-size: 14px; font-weight: 700; padding: 11px 36px; border-radius: 99px; cursor: pointer; transition: all 0.25s ease; box-shadow: 0 4px 15px rgba(124, 167, 235, 0.25); letter-spacing: -0.02em; }
+  .flip-btn:hover { transform: translateY(-1px); box-shadow: 0 6px 20px rgba(124, 167, 235, 0.4); opacity: 0.95; }
+
+  /* 하단 단어 그리드 및 스마트 뷰포트 제한 스크롤 컴포넌트 */
+  .wordlist { width: 100%; max-width: 750px; margin-top: 3.5rem; padding: 0 1.5rem 4rem; }
+  .wordlist-title { font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 14px; font-weight: 600; font-family: var(--font-ko); }
+  
+  /* 세로 제한 스크롤 뷰 구현 */
+  .wordlist-grid { 
+    display: flex; 
+    flex-wrap: wrap; 
+    gap: 8px; 
+    max-height: 180px; 
+    overflow-y: auto; 
+    padding: 6px 4px;
+    border: 1px solid rgba(255, 255, 255, 0.03);
+    border-radius: 14px;
+    background: rgba(255, 255, 255, 0.01);
+    scroll-behavior: smooth;
+  }
+  .wordlist-grid::-webkit-scrollbar { width: 4px; }
+  .wordlist-grid::-webkit-scrollbar-thumb { background: rgba(255, 255, 255, 0.08); border-radius: 99px; }
+
+  .word-chip { 
+    font-size: 12.5px; 
+    padding: 6px 14px; 
+    border-radius: 99px; 
+    border: 1px solid rgba(255, 255, 255, 0.08); 
+    color: rgba(255, 255, 255, 0.7); 
+    cursor: pointer; 
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1); 
+    background: transparent; 
+    font-family: var(--font-en);
+    font-weight: 500;
+  }
+  .word-chip:hover { border-color: var(--accent-border); color: #ffffff; background: rgba(255, 255, 255, 0.02); }
+  .word-chip.active { background: var(--accent-dim); border-color: var(--accent); color: var(--accent); font-weight: 600; box-shadow: inset 0 0 8px rgba(124, 167, 235, 0.1); }
+
+  @media (max-width: 480px) { 
+    :root { --card-w: calc(100vw - 2rem); --card-h: 520px; } 
+    header { padding: 1.5rem 1rem 1rem; margin-bottom: 1.2rem; } 
+    .home-btn { padding: 5px 10px; font-size: 11px; }
+    .brand { font-size: 12px; }
+    .nav { gap: 10px; }
+    .nav-btn { padding: 10px 18px; font-size: 12px; }
+    .flip-btn { padding: 10px 28px; font-size: 13px; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-left">
+    <a href="index.html" class="home-btn">← 메인으로</a>
+    <span class="brand">민쌤영어 <span>·</span> English Lab</span>
+  </div>
+  <span class="set-label">Vocabulary Set 27</span>
+</header>
+
+<div class="progress-wrap">
+  <div class="progress-bar-bg"><div class="progress-bar-fill" id="progressFill"></div></div>
+  <span class="progress-text" id="progressText">1 / 58</span>
+</div>
+
+<div class="stage" id="stage" tabindex="0" role="button" aria-label="카드 뒤집기">
+  <div class="card" id="card">
+    <div class="face front">
+      <div class="front-topbar">
+        <span class="front-label">민쌤영어 · vocab</span>
+        <span class="pos-pill" id="fPos">n.</span>
+      </div>
+      <div class="front-body">
+        <p class="sentence" id="fSentence"></p>
+      </div>
+      <div class="front-footer">탭하거나 스페이스바로 뜻 확인 →</div>
+      <div class="deco-bar"></div>
+    </div>
+    <div class="face back">
+      <div class="back-header">
+        <div class="back-word" id="bWord"></div>
+        <div class="back-pos" id="bPos"></div>
+      </div>
+      <div class="back-body" id="bBody"></div>
+      <div class="back-deco"></div>
+    </div>
+  </div>
+</div>
+
+<div class="nav">
+  <button class="nav-btn" id="btnPrev" onclick="go(-1)">← 이전 단어</button>
+  <button class="flip-btn" onclick="flip()">정답 확인</button>
+  <button class="nav-btn" id="btnNext" onclick="go(1)">다음 단어 →</button>
+</div>
+
+<div class="wordlist">
+  <div class="wordlist-title">Set 27 단어 목록</div>
+  <div class="wordlist-grid" id="wordGrid"></div>
+</div>
+
+<script>
+// 구조 일관성 유지를 위한 데이터 객체
+const DATA = [
+{"word": "unravel", "pos": "v.", "meanings": [{"num": "①", "text": "(엉클어진 실·매듭을) 풀다 / (미스터리·진실을) 해결하다, 밝혀내다 (unravel the mystery 미스터리를 풀다)"}, {"num": "②", "text": "(계획·관계가) 흐트러지다, 무너지다"}], "sentence": "Scientists have been working for years to {unravel} the mystery of why certain people are more resistant to common illnesses than others who live in similar conditions.", "translation": "과학자들은 왜 특정 사람들이 비슷한 조건에서 사는 다른 사람들보다 일반적인 질병에 더 강한지의 미스터리를 밝혀내기 위해 수년간 연구해왔다."}, 
+{"word": "affective", "pos": "a.", "meanings": [{"num": "①", "text": "(감정·정서에 관한) 정서적인, 감정적인 (affective disorder 정동 장애)"}, {"num": "②", "text": "affective response 정서적 반응"}], "sentence": "Research shows that {affective} factors such as confidence and motivation can have just as much influence on a student's performance as their actual academic ability.", "translation": "연구에 따르면 자신감과 동기와 같은 정서적 요인이 학생의 실제 학업 능력만큼 성취에 큰 영향을 미칠 수 있다."}, 
+{"word": "allegation", "pos": "n.", "meanings": [{"num": "①", "text": "(아직 증명되지 않은) 혐의, 주장 (allegation of corruption 부패 혐의)"}, {"num": "②", "text": "make an allegation 혐의를 제기하다"}], "sentence": "The manager strongly denied the {allegations} that he had treated some employees unfairly, and said he was willing to cooperate fully with any investigation.", "translation": "그 관리자는 일부 직원들을 불공평하게 대했다는 혐의를 강하게 부인하며, 어떤 조사에도 완전히 협조할 준비가 되어 있다고 말했다."}, 
+{"word": "apologize", "pos": "v.", "meanings": [{"num": "①", "text": "(잘못에 대해) 사과하다 (apologize for ~에 대해 사과하다)"}, {"num": "②", "text": "apology n. 사과"}], "sentence": "After realizing he had spoken too harshly, he {apologized} to his friend sincerely and promised to be more careful with his words in the future.", "translation": "자신이 너무 심하게 말했다는 것을 깨달은 후, 그는 친구에게 진심으로 사과하며 앞으로 말을 더 조심하겠다고 약속했다."}, 
+{"word": "aptitude", "pos": "n.", "meanings": [{"num": "①", "text": "(특정 분야의) 소질, 적성, 능력 (aptitude for music 음악적 소질)"}, {"num": "②", "text": "aptitude test 적성 검사"}], "sentence": "She discovered a natural {aptitude} for mathematics early in her school life, consistently solving problems faster and more accurately than her classmates.", "translation": "그녀는 학교 생활 초기에 수학에 대한 타고난 소질을 발견하여, 반 친구들보다 지속적으로 더 빠르고 정확하게 문제를 풀었다."}, 
+{"word": "assurance", "pos": "n.", "meanings": [{"num": "①", "text": "(확신을 주는) 확신, 보증, 장담 (give assurance 장담하다)"}, {"num": "②", "text": "(자기 자신에 대한) 자신감 / (영국) 보험 (self-assurance 자신감)"}], "sentence": "The doctor gave the patient every {assurance} that the operation was safe and that the recovery process would not take very long.", "translation": "의사는 수술이 안전하고 회복 과정이 그리 오래 걸리지 않을 것이라고 환자에게 충분한 보증을 해주었다."}, 
+{"word": "bleed", "pos": "v.", "meanings": [{"num": "①", "text": "피를 흘리다, 출혈하다 / (색·잉크가) 번지다 (bleed to death 출혈로 사망하다)"}, {"num": "②", "text": "(돈을) 착취하다 / (비유) 손실이 생기다 (bleed money 돈을 갉아먹다)"}], "sentence": "He cut his hand on the broken glass and it began to {bleed} quite badly, so his teacher told him to apply pressure and sent him to the school nurse immediately.", "translation": "그는 깨진 유리에 손을 베었고 꽤 심하게 피를 흘리기 시작했고, 그래서 선생님은 압박을 가하라고 말하고 즉시 양호실로 보냈다."}, 
+{"word": "blossom", "pos": "n. / v.", "meanings": [{"num": "①", "text": "(n.) (특히 나무의) 꽃, 화관 / (v.) 꽃이 피다"}, {"num": "②", "text": "(v.) (재능·관계가) 만개하다, 번성하다 (blossom into ~로 성장하다) ※ ③의 비유적 의미 빈출"}], "sentence": "Her confidence really began to {blossom} after she joined the school drama club, where she found that she loved performing in front of an audience.", "translation": "그녀의 자신감은 학교 연극 동아리에 가입한 후 진정으로 만개하기 시작했는데, 그곳에서 그녀는 관객 앞에서 공연하는 것을 좋아한다는 것을 발견했다."}, 
+{"word": "brutality", "pos": "n.", "meanings": [{"num": "①", "text": "(행동의) 잔인성, 야만성 / 잔혹 행위 (police brutality 경찰의 잔혹 행위)"}, {"num": "②", "text": "act of brutality 잔혹 행위"}], "sentence": "The documentary showed the {brutality} of the conditions that factory-farmed animals are often kept in, which shocked many viewers into changing their eating habits.", "translation": "그 다큐멘터리는 공장식 농장에서 키워지는 동물들이 종종 처해 있는 상태의 잔인성을 보여주었는데, 이는 많은 시청자들을 충격에 빠뜨려 식습관을 바꾸게 만들었다."}, 
+{"word": "calamity", "pos": "n.", "meanings": [{"num": "①", "text": "(심각한) 재앙, 재난, 큰 불행 (natural calamity 자연재해)"}, {"num": "②", "text": "economic calamity 경제적 재앙"}], "sentence": "The sudden flooding of the town was a {calamity} for local residents, many of whom lost their homes, belongings, and livelihoods almost overnight.", "translation": "마을의 갑작스러운 홍수는 지역 주민들에게 재앙이었으며, 그들 중 많은 사람들이 거의 하룻밤 사이에 집, 소지품, 그리고 생계를 잃었다."}, 
+{"word": "clarify", "pos": "v.", "meanings": [{"num": "①", "text": "(의미·상황을) 명확하게 하다, 분명히 말하다 (clarify a misunderstanding 오해를 명확히 하다)"}, {"num": "②", "text": "(액체를) 정화하다"}], "sentence": "The teacher asked the student to {clarify} what she meant by her answer, as it was unclear whether she was agreeing or disagreeing with the statement in the question.", "translation": "선생님은 그녀가 동의하는지 반대하는지 불분명했기 때문에 학생에게 자신의 답변이 무엇을 의미하는지 명확히 해달라고 요청했다."}, 
+{"word": "clash", "pos": "n. / v.", "meanings": [{"num": "①", "text": "(n.) (물리적) 충돌, 격돌 / (의견·이해의) 불일치, 갈등 / (색깔·무늬의) 어울리지 않음"}, {"num": "②", "text": "(v.) 충돌하다, 맞서다 / (색깔이) 어울리지 않다 (clash of interests 이해 충돌)"}], "sentence": "There was a {clash} of opinions between the two group members about which approach would be most effective, and they had to ask their teacher to help them decide.", "translation": "두 그룹 구성원 사이에 어떤 접근 방식이 가장 효과적일지에 대한 의견 충돌이 있었고, 그들은 결정을 도와달라고 선생님에게 요청해야 했다."}, 
+{"word": "clumsy", "pos": "a.", "meanings": [{"num": "①", "text": "(동작이) 서투른, 어색한 / (표현이) 세련되지 않은, 어색한 (clumsy attempt 서투른 시도)"}, {"num": "②", "text": "clumsy apology 어색한 사과"}], "sentence": "His {clumsy} attempt to apologize only made things worse, as he kept saying the wrong thing and seemed unable to express how he truly felt.", "translation": "그의 어색한 사과 시도는 상황을 더 악화시킬 뿐이었는데, 계속 잘못된 말을 하며 자신이 진정으로 어떻게 느끼는지 표현하지 못하는 것 같았기 때문이다."}, 
+{"word": "cohesion", "pos": "n.", "meanings": [{"num": "①", "text": "(집단의) 화합, 결속 ↔ fragmentation (social cohesion 사회적 결속)"}, {"num": "②", "text": "(물질의) 응집력 (team cohesion 팀 화합)"}], "sentence": "The new coach focused on building {cohesion} within the team rather than working on individual skills, believing that players who trusted each other would perform better under pressure.", "translation": "새 코치는 개인 기술 향상보다 팀 내 결속 구축에 집중했는데, 서로를 신뢰하는 선수들이 압박 하에서 더 잘 수행할 것이라고 믿었기 때문이다."}, 
+{"word": "comply", "pos": "v.", "meanings": [{"num": "①", "text": "(법·명령·요청을) 따르다, 준수하다 ↔ defy (comply with regulations 규정을 준수하다)"}, {"num": "②", "text": "※ obey보다 법·규정에 대한 공식적 준수 강조 (compliance n. 준수 / compliant a. 순응하는)"}], "sentence": "All students are expected to {comply} with the school's uniform policy, and those who repeatedly fail to do so may face disciplinary action.", "translation": "모든 학생들은 학교의 교복 규정을 준수할 것으로 기대되며, 반복적으로 그렇게 하지 않는 학생들은 징계 조치를 받을 수 있다."}, 
+{"word": "considerably", "pos": "ad.", "meanings": [{"num": "①", "text": "(정도가) 상당히, 많이, 크게 (considerably better 상당히 더 나은)"}], "sentence": "Her grades improved {considerably} after she started attending the after-school study sessions, which provided her with the extra support she had been missing.", "translation": "그녀의 성적은 방과 후 공부 모임에 참석하기 시작한 후 상당히 향상되었는데, 이는 그녀가 부족했던 추가적인 지원을 제공해주었다."}, 
+{"word": "coordination", "pos": "n.", "meanings": [{"num": "①", "text": "(활동의) 조정, 합동 (coordination of efforts 노력의 조정)"}, {"num": "②", "text": "(신체의) 동작 조화, 협응 / (언어) 등위 접속 ※ ①②의 의미 구별 필수 (coordinate v. 조정하다)"}], "sentence": "The school play required excellent {coordination} between the drama, music, and art departments to make sure that the costumes, sets, and performances all came together successfully.", "translation": "학교 연극은 의상, 무대, 그리고 공연이 모두 성공적으로 함께 이루어지도록 연극, 음악, 미술 부서 사이의 훌륭한 조정을 필요로 했다."}, 
+{"word": "debris", "pos": "n.", "meanings": [{"num": "①", "text": "(폭발·사고의) 잔해, 파편 (debris field 잔해 밭)"}, {"num": "②", "text": "(청소되지 않은) 쓰레기, 부스러기 (clear debris 잔해를 치우다)"}], "sentence": "After the storm passed, volunteers spent several hours clearing {debris} from the streets and checking that no one had been hurt by the fallen trees and broken signs.", "translation": "폭풍이 지나간 후, 자원봉사자들은 거리에서 잔해를 치우고 쓰러진 나무와 부서진 표지판으로 다친 사람이 없는지 확인하는 데 몇 시간을 보냈다."}, 
+{"word": "degradation", "pos": "n.", "meanings": [{"num": "①", "text": "(환경·질의) 악화, 저하 / (사람에 대한) 비하, 굴욕 (environmental degradation 환경 악화)"}, {"num": "②", "text": "(화학) 분해 ※ ①②③ 의미 구별 필수 (degrade v. 저하시키다)"}], "sentence": "The {degradation} of the local environment caused by years of industrial activity has made it difficult for wildlife to survive in the area.", "translation": "수년간의 산업 활동으로 인한 지역 환경의 악화는 야생 동물이 그 지역에서 생존하기 어렵게 만들었다."}, 
+{"word": "denial", "pos": "n.", "meanings": [{"num": "①", "text": "(사실의) 부인, 부정 / (요청의) 거부 (denial of allegations 혐의 부인)"}, {"num": "②", "text": "(심리) 부정 (in denial 부정하는 상태인)"}], "sentence": "His {denial} of the accusation was so convincing that most people who heard it immediately believed he was telling the truth.", "translation": "그의 혐의 부인은 너무 설득력이 있어 그것을 들은 대부분의 사람들이 즉시 그가 사실을 말하고 있다고 믿었다."}, 
+{"word": "depletion", "pos": "n.", "meanings": [{"num": "①", "text": "(자원·에너지의) 고갈, 소모 (ozone depletion 오존층 고갈)"}, {"num": "②", "text": "resource depletion 자원 고갈"}], "sentence": "The {depletion} of natural resources such as clean water and forests is one of the most serious environmental challenges facing the world today.", "translation": "깨끗한 물과 숲과 같은 천연 자원의 고갈은 오늘날 세계가 직면한 가장 심각한 환경 도전 중 하나이다."}, 
+{"word": "deviate", "pos": "v.", "meanings": [{"num": "①", "text": "(정해진 경로·기준에서) 벗어나다, 빗나가다 (deviate from the norm 규범에서 벗어나다)"}, {"num": "②", "text": "deviation n. 이탈; 편차 / deviant a. 일탈적인"}], "sentence": "The student was warned that if she continued to {deviate} from the topic in her essays, her grades would suffer regardless of how well-written the rest of her work was.", "translation": "그 학생은 에세이에서 주제에서 계속 벗어난다면, 나머지 작업이 아무리 잘 쓰여졌더라도 성적이 낮아질 것이라고 경고받았다."}, 
+{"word": "dig", "pos": "v. / n.", "meanings": [{"num": "①", "text": "(v.) (땅을) 파다, 굴착하다 / (정보를) 캐내다, 찾다 (dig up evidence 증거를 캐내다)"}, {"num": "②", "text": "(v.) (비격식) 이해하다, 좋아하다 / (n.) 발굴 / (비격식) 빈정거리는 말 (take a dig at ~을 빈정거리다) ※ ②의 의미가 편입에서 자주 출제"}], "sentence": "The journalist spent months trying to {dig up} enough evidence to support the story before the newspaper agreed to publish it.", "translation": "그 언론인은 신문사가 그것을 게재하기로 동의하기 전에 이야기를 뒷받침할 충분한 증거를 캐내려고 몇 달을 보냈다."}, 
+{"word": "discredit", "pos": "v. / n.", "meanings": [{"num": "①", "text": "(v.) (사람·주장을) 불신하게 만들다 / (평판을) 떨어뜨리다 (discredit a theory 이론을 신뢰할 수 없게 하다)"}, {"num": "②", "text": "(n.) 불명예, 불신"}], "sentence": "The new research {discredited} the earlier theory that had been widely accepted for decades, forcing scientists to reconsider many of their assumptions.", "translation": "새로운 연구는 수십 년간 널리 받아들여졌던 이전 이론을 불신하게 만들어, 과학자들이 그 과정이 어떻게 작동하는지에 대한 많은 가정들을 재고하도록 강요했다."}, 
+{"word": "eloquent", "pos": "a.", "meanings": [{"num": "①", "text": "(말·표현이) 유창한, 설득력 있는 (eloquent speaker 유창한 연설자)"}, {"num": "②", "text": "(몸짓이) 웅변적인, 표현력 있는 (eloquent silence 웅변적인 침묵) ※ fluent보다 설득력·감동을 주는 표현 강조"}], "sentence": "She gave an {eloquent} speech about the importance of protecting the environment that moved many of the students in the audience to tears.", "translation": "그녀는 환경 보호의 중요성에 대한 유창한 연설을 하여 청중의 많은 학생들을 감동시켜 눈물을 흘리게 했다."}, 
+{"word": "epic", "pos": "n. / a.", "meanings": [{"num": "①", "text": "(n.) (문학) 서사시 / 장대한 이야기·영화 (epic poem 서사시)"}, {"num": "②", "text": "(a.) 서사시의 / (규모가) 장대한, 영웅적인 (epic journey 장대한 여정)"}], "sentence": "The school camping trip turned into something of an {epic} adventure when the group got lost in the forest and had to find their way back using only a map and compass.", "translation": "학교 캠핑 여행은 그룹이 숲에서 길을 잃고 지도와 나침반만으로 돌아오는 길을 찾아야 했을 때 일종의 장대한 모험이 되었다."}, 
+{"word": "exonerate", "pos": "v.", "meanings": [{"num": "①", "text": "(혐의·비난에서) 무죄임을 밝혀주다, 혐의를 벗겨주다 (exonerate from all charges 모든 혐의를 벗겨주다)"}], "sentence": "New video evidence {exonerated} the student who had been blamed for breaking the window, proving that someone else had done it.", "translation": "새로운 영상 증거가 창문을 깨트린 것으로 비난받았던 학생의 무죄를 밝혀주어, 다른 누군가가 그것을 했음을 증명했다."}, 
+{"word": "expenditure", "pos": "n.", "meanings": [{"num": "①", "text": "(돈·시간의) 지출, 소비 (public expenditure 공공 지출)"}, {"num": "②", "text": "(정부·기업의) 비용, 지출액 (capital expenditure 자본 지출)"}], "sentence": "The school reduced its {expenditure} on printed textbooks by moving to digital materials, using the money saved to buy new science equipment instead.", "translation": "학교는 디지털 자료로 전환하여 인쇄 교과서에 대한 지출을 줄이고, 절약된 돈을 대신 새로운 과학 장비 구입에 사용했다."}, 
+{"word": "familiar with", "pos": "phr.", "meanings": [{"num": "①", "text": "~에 익숙한, ~을 잘 아는 (be familiar with the topic 주제에 익숙하다)"}, {"num": "②", "text": "※ familiar to(~에게 친숙한)와 구별 필수"}], "sentence": "Students who are already {familiar with} the basic grammar rules will find the advanced course much easier to follow than those who are starting from scratch.", "translation": "기본 문법 규칙에 이미 익숙한 학생들은 처음부터 시작하는 학생들보다 고급 과정을 훨씬 쉽게 따라갈 수 있을 것이다."}, 
+{"word": "ferment", "pos": "v. / n.", "meanings": [{"num": "①", "text": "(v.) (음식·음료가) 발효되다, 발효시키다 / (사회가) 동요하다, 격동하다"}, {"num": "②", "text": "(n.) 발효 / (사회적) 동요, 불안, 격동 (in a state of ferment 동요 상태) ※ ②④의 비유적 의미가 편입에서 자주 출제"}], "sentence": "The grapes were left to {ferment} naturally for several weeks before being turned into wine, a process that the winemaker said was essential for developing the right flavor.", "translation": "포도는 와인으로 만들어지기 전에 몇 주 동안 자연적으로 발효되도록 두었는데, 와인 제조자는 이것이 올바른 맛을 발전시키는 데 필수적이라고 말했다."}, 
+{"word": "flap", "pos": "v. / n.", "meanings": [{"num": "①", "text": "(v.) (날개를) 퍼덕거리다, 펄럭이다 / (비격식) 안달하다, 허둥대다 (in a flap 안달하여)"}, {"num": "②", "text": "(n.) 펄럭임 / (봉투 등의) 덮개 / (비격식) 소동 ※ ②⑤의 비격식 의미가 편입 단골"}], "sentence": "There is no need to {flap} about the exam — if you have studied consistently throughout the year, you should be well prepared for whatever questions come up.", "translation": "시험에 대해 안달할 필요가 없다. 일 년 내내 꾸준히 공부했다면 어떤 문제가 나오더라도 충분히 준비되어 있어야 한다."}, 
+{"word": "fleeting", "pos": "a.", "meanings": [{"num": "①", "text": "(순간적으로) 순식간의, 잠깐 동안의 (fleeting moment 순식간의 순간)"}, {"num": "②", "text": "fleeting glimpse 잠깐 보임"}], "sentence": "She caught only a {fleeting} glimpse of the rare bird before it disappeared into the trees, and she was not sure whether she had really seen it or imagined it.", "translation": "그녀는 희귀한 새가 나무 속으로 사라지기 전에 잠깐 보았을 뿐이었고, 자신이 정말 그것을 보았는지 아니면 상상한 것인지 확신하지 못했다."}, 
+{"word": "germ", "pos": "n.", "meanings": [{"num": "①", "text": "(질병을 유발하는) 세균, 병균 / (사상·감정의) 싹, 기원 (germ of an idea 아이디어의 싹)"}, {"num": "②", "text": "(생물) 배아 (germ theory 세균 이론) ※ ①②의 의미 구별 필수 (germinate v. 발아하다)"}], "sentence": "The {germ} of the idea for the project came to her during a conversation with a friend, and she spent the next few weeks developing it into something more concrete.", "translation": "그 프로젝트 아이디어의 싹은 친구와의 대화 중에 그녀에게 떠올랐고, 그녀는 그 후 몇 주를 그것을 더 구체적인 것으로 발전시키는 데 보냈다."}, 
+{"word": "get through", "pos": "phr.", "meanings": [{"num": "①", "text": "(시험·관문을) 통과하다, 합격하다 / (힘든 시간을) 헤쳐나가다, 버티다 (get through the exam 시험을 통과하다)"}, {"num": "②", "text": "(전화·연락이) 연결되다 / (일을) 끝내다 / (생각이) 이해되다 ※ 다의어 빈출"}], "sentence": "Having the support of good friends made it much easier for him to {get through} the difficult period after his family moved to a new city.", "translation": "좋은 친구들의 지원이 가족이 새 도시로 이사한 후 어려운 기간을 헤쳐나가는 것을 훨씬 쉽게 만들어 주었다."}, 
+{"word": "hazardous", "pos": "a.", "meanings": [{"num": "①", "text": "(물질·환경이) 위험한, 유해한 (hazardous waste 유해 폐기물)"}, {"num": "②", "text": "(행동이) 위험을 수반하는 (hazardous conditions 위험한 조건)"}], "sentence": "The science teacher warned students never to mix certain chemicals together, as doing so could create {hazardous} fumes that would be dangerous to breathe in.", "translation": "과학 선생님은 특정 화학물질을 함께 혼합하면 들이마시기 위험한 유해한 연기를 만들 수 있기 때문에 절대로 그렇게 하지 말라고 학생들에게 경고했다."}, 
+{"word": "hygiene", "pos": "n.", "meanings": [{"num": "①", "text": "(건강 유지를 위한) 위생, 청결 (personal hygiene 개인 위생 / oral hygiene 구강 위생)"}, {"num": "②", "text": "위생학 ※ sanitation(공중 위생 시설)보다 개인·일상적 청결 강조"}], "sentence": "The school canteen staff are required to follow strict {hygiene} rules, including washing their hands frequently and keeping all food preparation surfaces clean at all times.", "translation": "학교 식당 직원들은 손을 자주 씻고 음식 준비 표면을 항상 청결하게 유지하는 것을 포함하여 엄격한 위생 규칙을 따르도록 요구된다."}, 
+{"word": "indulgent", "pos": "a.", "meanings": [{"num": "①", "text": "(타인의 욕구·결점에) 너그러운, 관대한 / (하고 싶은 대로) 다 하게 놔두는 (indulgent parent 아이를 오냐오냐 키우는 부모)"}, {"num": "②", "text": "(자기 자신에게) 방종한"}], "sentence": "Some teachers felt that being too {indulgent} toward students who missed deadlines without good reasons was actually unfair to those who had worked hard to submit on time.", "translation": "일부 교사들은 정당한 이유 없이 마감일을 놓친 학생들에게 너무 너그럽게 대하는 것이 제시간에 과제를 제출하기 위해 열심히 노력한 학생들에게 실제로 불공평하다고 느꼈다."}, 
+{"word": "ingenuity", "pos": "n.", "meanings": [{"num": "①", "text": "(문제를 창의적으로 해결하는) 독창성, 창의력, 재간 (show ingenuity 독창성을 발휘하다)"}], "sentence": "The winning team impressed the judges with their {ingenuity}, solving the engineering challenge in a way that nobody else had thought of and using materials that cost almost nothing.", "translation": "우승 팀은 아무도 생각하지 못한 방식으로 공학적 도전을 해결하고 거의 비용이 들지 않는 재료를 사용하여 심사위원들에게 자신들의 독창성으로 깊은 인상을 주었다."}, 
+{"word": "inquisitive", "pos": "a.", "meanings": [{"num": "①", "text": "(지적) 호기심이 많은, 탐구적인 / (지나치게) 캐묻는, 참견하기 좋아하는"}], "sentence": "{Inquisitive} students who ask lots of questions during lessons often develop stronger critical thinking skills than those who simply accept what they are told.", "translation": "수업 중에 많은 질문을 하는 호기심이 많은 학생들은 종종 단순히 들은 것을 받아들이는 학생들보다 더 강한 비판적 사고 능력을 발전시킨다."}, 
+{"word": "ironically", "pos": "ad.", "meanings": [{"num": "①", "text": "(상황이) 아이러니하게도, 역설적으로 (ironically, he failed 아이러니하게도 그는 실패했다)"}, {"num": "②", "text": "(말투가) 비꼬아서, 반어적으로"}], "sentence": "{Ironically}, the student who had been most confident about the exam before it started was the one who performed worst on the day, while those who had been nervous did much better than expected.", "translation": "아이러니하게도, 시험 전에 가장 자신만만했던 학생이 당일 가장 나쁜 성적을 거뒀고, 긴장했던 학생들은 예상보다 훨씬 잘 해냈다."}, 
+{"word": "irresistible", "pos": "a.", "meanings": [{"num": "①", "text": "(충동·매력이) 저항할 수 없는, 억누를 수 없는 (irresistible urge 억누를 수 없는 충동) ↔ resistible"}, {"num": "②", "text": "(사람·물건이) 너무나 매력적인"}], "sentence": "The smell coming from the school cafeteria was {irresistible}, and she found herself walking toward it even though she had planned to eat the lunch she had brought from home.", "translation": "학교 카페테리아에서 나오는 냄새는 억누를 수 없어, 집에서 가져온 점심을 먹을 계획이었음에도 불구하고 자신이 그쪽으로 걸어가고 있다는 것을 발견했다."}, 
+{"word": "irritate", "pos": "v.", "meanings": [{"num": "①", "text": "(사람을) 짜증나게 하다, 성가시게 하다 / (피부·눈을) 자극하다, 따갑게 하다"}, {"num": "②", "text": "irritate the skin 피부를 자극하다 (irritation n. 짜증; 자극)"}], "sentence": "The constant tapping noise from the desk behind her began to {irritate} her more and more as the exam went on, making it harder to concentrate on her answers.", "translation": "뒤 책상에서 나는 끊임없는 두드리는 소리가 시험이 진행될수록 그녀를 점점 더 짜증나게 하기 시작하여, 답에 집중하기 더 어렵게 만들었다."}, 
+{"word": "laden", "pos": "a.", "meanings": [{"num": "①", "text": "(무거운 짐을) 잔뜩 실은 / (~으로) 가득한, 가득 찬 (laden with guilt 죄책감으로 가득한)"}, {"num": "②", "text": "heavily laden ship 짐을 실은 배"}], "sentence": "She arrived at the school fair {laden} with homemade cookies that she had spent the entire previous evening baking with her mother.", "translation": "그녀는 어머니와 함께 전날 저녁 내내 굽는 데 보낸 집에서 만든 쿠키로 가득 안고 학교 장터에 도착했다."}, 
+{"word": "liken", "pos": "v.", "meanings": [{"num": "①", "text": "(A를 B에) 비유하다, 비기다 (liken A to B A를 B에 비유하다)"}, {"num": "②", "text": "life is likened to a journey 삶은 여행에 비유된다"}], "sentence": "The coach often {likened} a successful sports team to a well-oiled machine, explaining that every member needed to play their part perfectly for the whole thing to work.", "translation": "코치는 종종 성공적인 스포츠 팀을 잘 기름칠된 기계에 비유하며, 전체가 작동하려면 모든 구성원이 자신의 역할을 완벽하게 수행해야 한다고 설명했다."}, 
+{"word": "lurk", "pos": "v.", "meanings": [{"num": "①", "text": "(위험한 목적으로) 숨어 기다리다, 잠복하다 / (위험·문제가) 도사리다 (lurk in the shadows 그늘에 숨어 기다리다)"}, {"num": "②", "text": "(온라인에서) 글을 쓰지 않고 지켜보다 (눈팅) (danger lurks 위험이 도사리다)"}], "sentence": "Cyber safety experts warn that online dangers often {lurk} in places that seem perfectly safe, such as popular gaming platforms where young people feel comfortable and relaxed.", "translation": "사이버 안전 전문가들은 온라인 위험이 종종 젊은 사람들이 편안하고 여유로움을 느끼는 인기 있는 게임 플랫폼과 같이 완전히 안전해 보이는 장소에 도사리고 있다고 경고한다."}, 
+{"word": "memorize", "pos": "v.", "meanings": [{"num": "①", "text": "(반복·노력으로) 암기하다, 기억하다 (memorize vocabulary 어휘를 암기하다)"}], "sentence": "Rather than trying to {memorize} every single word in the vocabulary list, she focused on learning the most frequently used ones first and built up from there.", "translation": "어휘 목록의 모든 단어를 암기하려는 것보다, 그녀는 가장 자주 사용되는 단어들을 먼저 배우고 거기서부터 쌓아 올리는 데 집중했다."}
+];
+
+let current = 0;
+
+function renderSentence(t) {
+  return t.replace(/\{([^}]+)\}/g, '<span class="hw">$1</span>');
+}
+
+function renderCard(idx) {
+  const d = DATA[idx];
+  document.getElementById('fPos').textContent = d.pos;
+  document.getElementById('fSentence').innerHTML = renderSentence(d.sentence);
+  document.getElementById('bWord').textContent = d.word;
+  document.getElementById('bPos').textContent = d.pos;
+
+  const exEng = d.sentence.replace(/\{([^}]+)\}/g, '<strong>$1</strong>');
+  let bodyHtml = '';
+  d.meanings.forEach(m => {
+    const slashParts = m.text.split('/').map(t => t.trim());
+    
+    bodyHtml += `<div class="meaning-block">`;
+    bodyHtml += `  <span class="meaning-num">${m.num}</span>`;
+    
+    slashParts.forEach(part => {
+      if (part.includes('(')) {
+        const openIdx = part.indexOf('(');
+        const mainMeaning = part.substring(0, openIdx).trim();
+        const subExample = part.substring(openIdx).trim();
+        
+        if (mainMeaning) {
+          bodyHtml += `  <span class="meaning-text">${mainMeaning}</span>`;
+        }
+        if (subExample) {
+          bodyHtml += `  <span class="meaning-sub">${subExample}</span>`;
+        }
+      } else {
+        bodyHtml += `  <span class="meaning-text">${part}</span>`;
+      }
+    });
+    
+    bodyHtml += `</div>`;
+  });
+  
+  bodyHtml += '<div class="rule"></div>';
+  bodyHtml += `<div class="ex-block"><p class="ex-eng">${exEng}</p><p class="ex-kor">${d.translation}</p></div>`;
+  
+  const bBody = document.getElementById('bBody');
+  bBody.innerHTML = bodyHtml;
+  bBody.scrollTop = 0; // 단어 변경 시 카드 스크롤 위치 초기화 방어 코드
+
+  // 진행 상태바 반영
+  document.getElementById('progressFill').style.width = ((idx + 1) / DATA.length * 100).toFixed(1) + '%';
+  document.getElementById('progressText').textContent = `${idx + 1} / ${DATA.length}`;
+  document.getElementById('btnPrev').disabled = idx === 0;
+  document.getElementById('btnNext').disabled = idx === DATA.length - 1;
+  
+  // 단어 칩 동기화 및 스크롤 추적
+  document.querySelectorAll('.word-chip').forEach((el, i) => {
+    const isActive = i === idx;
+    el.classList.toggle('active', isActive);
+    
+    // UX 핵심: 현재 인덱스에 매칭되는 단어 칩으로 컨테이너 스크롤 포커싱 자동 이동
+    if (isActive) {
+      el.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'nearest' });
+    }
+  });
+  
+  document.getElementById('card').classList.remove('flipped');
+}
+
+function flip() { document.getElementById('card').classList.toggle('flipped'); }
+function go(dir) {
+  const next = current + dir;
+  if (next < 0 || next >= DATA.length) return;
+  current = next; renderCard(current);
+}
+
+// 단어 목록 그리드 초기 생성
+const grid = document.getElementById('wordGrid');
+DATA.forEach((d, i) => {
+  const btn = document.createElement('button');
+  btn.className = 'word-chip' + (i === 0 ? ' active' : '');
+  btn.textContent = d.word;
+  btn.onclick = () => { current = i; renderCard(i); };
+  grid.appendChild(btn);
+});
+
+document.getElementById('stage').addEventListener('click', flip);
+document.addEventListener('keydown', e => {
+  if (e.key === 'ArrowRight') go(1);
+  if (e.key === 'ArrowLeft') go(-1);
+  if (e.key === ' ' || e.key === 'Enter') { e.preventDefault(); flip(); }
+});
+
+// 초기화 가동
+renderCard(0);
+</script>
+</body>
+</html>

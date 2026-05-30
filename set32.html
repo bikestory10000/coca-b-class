@@ -1,0 +1,749 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>민쌤영어 Vocab · Set 32</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,400&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+
+<style>
+  /* 범용 디자인 시스템 및 CSS 변수 정밀화 */
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  
+  :root {
+    --bg: #0B0F1A; 
+    --surface: #131929; 
+    --accent: #7CA7EB;
+    --accent-dim: rgba(124, 167, 235, 0.12); 
+    --accent-border: rgba(124, 167, 235, 0.25);
+    --text: #F0EEE8; 
+    --text-muted: rgba(240, 238, 232, 0.5); 
+    --text-dim: rgba(240, 238, 232, 0.25);
+    
+    /* 백면 세팅 */
+    --back-bg: #F8F7F4; 
+    --back-text: #111111; 
+    --back-muted: #4A4A4A; 
+    --back-rule: rgba(0, 0, 0, 0.06); 
+    --back-ex-bg: rgba(11, 15, 26, 0.04);
+    
+    /* 카드 및 컴포넌트 구조 수치 */
+    --radius: 24px; 
+    --card-w: 400px; 
+    --card-h: 540px;
+    
+    /* 프리미엄 폰트 스택 */
+    --font-ko: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+    --font-en: 'DM Sans', sans-serif;
+    --font-serif: 'Playfair Display', Georgia, serif;
+  }
+
+  body { 
+    background: var(--bg); 
+    color: var(--text); 
+    font-family: var(--font-en); 
+    min-height: 100vh; 
+    display: flex; 
+    flex-direction: column; 
+    align-items: center;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* 글로벌 웹킷 스크롤바 커스텀 */
+  ::-webkit-scrollbar { width: 6px; height: 6px; }
+  ::-webkit-scrollbar-track { background: transparent; }
+  ::-webkit-scrollbar-thumb { background: rgba(255, 255, 255, 0.1); border-radius: 99px; }
+  ::-webkit-scrollbar-thumb:hover { background: rgba(255, 255, 255, 0.2); }
+
+  /* 헤더 및 홈 링크 고도화 */
+  header { 
+    width: 100%; 
+    max-width: 900px; 
+    padding: 2.5rem 2rem 1.2rem; 
+    display: flex; 
+    align-items: center; 
+    justify-content: space-between; 
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05); 
+    margin-bottom: 2rem; 
+  }
+  .header-left { display: flex; align-items: center; gap: 16px; }
+  .home-btn {
+    font-family: var(--font-ko);
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--text-muted);
+    text-decoration: none;
+    padding: 6px 14px;
+    border-radius: 99px;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    transition: all 0.2s ease;
+  }
+  .home-btn:hover {
+    color: var(--accent);
+    background: var(--accent-dim);
+    border-color: var(--accent-border);
+  }
+  .brand { font-size: 14px; letter-spacing: 0.14em; color: #ffffff; font-weight: 700; text-transform: uppercase; }
+  .brand span { color: var(--accent); }
+  .set-label { font-size: 13px; color: var(--text-muted); font-weight: 500; letter-spacing: 0.03em; }
+
+  /* 프로그레스 바 */
+  .progress-wrap { width: 100%; max-width: 400px; margin-bottom: 1.8rem; padding: 0 1rem; display: flex; flex-direction: column; align-items: center; gap: 10px; }
+  .progress-bar-bg { width: 100%; height: 4px; background: rgba(255, 255, 255, 0.06); border-radius: 99px; overflow: hidden; }
+  .progress-bar-fill { height: 100%; background: linear-gradient(90deg, #5B86E5, var(--accent)); border-radius: 99px; transition: width 0.45s cubic-bezier(0.4, 0, 0.2, 1); }
+  .progress-text { font-size: 12px; color: var(--text-muted); letter-spacing: 0.1em; font-weight: 600; }
+
+  /* 스테이지 및 3D 입체 플립 카드 시스템 */
+  .stage { width: var(--card-w); height: var(--card-h); perspective: 2000px; cursor: pointer; outline: none; }
+  .card { 
+    width: 100%; 
+    height: 100%; 
+    position: relative; 
+    transform-style: preserve-3d; 
+    transition: transform 0.7s cubic-bezier(0.23, 1, 0.32, 1); 
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.35), 0 5px 15px rgba(0, 0, 0, 0.2);
+    border-radius: var(--radius);
+  }
+  
+  /* 뒤집힐 때 입체감 전환 효과 */
+  .card.flipped { 
+    transform: rotateY(180deg); 
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15), 0 5px 15px rgba(0, 0, 0, 0.08);
+  }
+  
+  .face { position: absolute; inset: 0; border-radius: var(--radius); backface-visibility: hidden; -webkit-backface-visibility: hidden; overflow: hidden; }
+  
+  /* 카드 앞면 (Dark 프리미엄) */
+  .front { background: var(--surface); border: 1px solid rgba(255, 255, 255, 0.06); display: flex; flex-direction: column; }
+  .front-topbar { display: flex; align-items: center; justify-content: space-between; padding: 26px 28px 0; }
+  .front-label { font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-dim); font-weight: 600; }
+  .pos-pill { font-size: 11px; color: var(--accent); background: var(--accent-dim); border: 1px solid var(--accent-border); padding: 4px 14px; border-radius: 99px; font-weight: 600; letter-spacing: 0.05em; font-style: italic; }
+  .front-body { flex: 1; display: flex; flex-direction: column; justify-content: center; padding: 0 34px; }
+  
+  /* 영문 코퍼스 타이포그래피 */
+  .sentence { font-size: 18px; line-height: 1.8; color: rgba(240, 238, 232, 0.9); font-weight: 400; letter-spacing: -0.01em; }
+  .sentence .hw { font-family: var(--font-serif); font-size: 24px; font-weight: 700; color: var(--accent); display: inline; margin-right: 2px; text-underline-offset: 4px; }
+  .front-footer { padding: 0 34px 24px; font-size: 12px; color: var(--text-muted); text-align: center; letter-spacing: 0.05em; font-family: var(--font-ko); font-weight: 500; opacity: 0.8; }
+  .deco-bar { height: 4px; background: linear-gradient(90deg, var(--accent) 0%, #5B86E5 50%, transparent 100%); }
+
+  /* 카드 뒷면 (Light 아카데믹 텍스트북 스타일) */
+  .back { background: var(--back-bg); transform: rotateY(180deg); display: flex; flex-direction: column; border: 1px solid rgba(0, 0, 0, 0.08); }
+  .back-header { background: #0F1424; padding: 26px 28px 22px; border-radius: calc(var(--radius) - 1px) calc(var(--radius) - 1px) 0 0; }
+  .back-word { font-family: var(--font-serif); font-size: 36px; font-weight: 700; color: #ffffff; line-height: 1.1; letter-spacing: -0.02em; }
+  .back-pos { font-size: 12px; color: var(--accent); letter-spacing: 0.1em; font-weight: 600; text-transform: uppercase; margin-top: 4px; }
+  
+  /* 내부 스크롤바 방어 코드 및 커스텀 트랙 */
+  .back-body { flex: 1; padding: 22px 26px; display: flex; flex-direction: column; gap: 14px; overflow-y: auto; scroll-behavior: smooth; }
+  .back-body::-webkit-scrollbar { width: 5px; }
+  .back-body::-webkit-scrollbar-thumb { background: rgba(0, 0, 0, 0.12); border-radius: 99px; }
+  .back-body::-webkit-scrollbar-thumb:hover { background: rgba(0, 0, 0, 0.25); }
+  
+  /* 아카데믹 한국어 폰트 매핑 및 가독성 최적화 */
+  .meaning-block { display: flex; flex-direction: column; gap: 4px; font-family: var(--font-ko); }
+  .meaning-num { font-size: 10px; color: #185FA5; font-weight: 800; letter-spacing: 0.08em; }
+  .meaning-text { font-size: 15.5px; color: var(--back-text) !important; font-weight: 700; line-height: 1.65; word-break: keep-all; }
+  .meaning-sub { font-size: 13.5px; color: var(--back-muted); font-weight: 500; line-height: 1.6; display: block; padding-left: 6px; margin-top: 2px; border-left: 2px solid rgba(0, 0, 0, 0.08); }
+  
+  .rule { height: 1px; background: var(--back-rule); margin: 4px 0; }
+  .ex-block { background: var(--back-ex-bg); border-left: 4px solid #185FA5; border-radius: 0 12px 12px 0; padding: 14px 16px; display: flex; flex-direction: column; gap: 8px; }
+  .ex-eng { font-size: 13.5px; color: #222222; line-height: 1.65; font-weight: 400; letter-spacing: -0.01em; }
+  .ex-eng strong { color: #185FA5; font-weight: 700; font-family: var(--font-serif); font-size: 15px; }
+  .ex-kor { font-size: 13.5px; color: #000000; font-weight: 600; line-height: 1.65; font-family: var(--font-ko); word-break: keep-all; }
+  .back-deco { height: 4px; background: linear-gradient(90deg, transparent 0%, rgba(24, 95, 165, 0.2) 50%, #185FA5 100%); }
+
+  /* 컨트롤 컨트롤러 네비게이션 */
+  .nav { display: flex; align-items: center; gap: 16px; margin-top: 2.2rem; }
+  .nav-btn { background: rgba(255, 255, 255, 0.04); border: 1px solid rgba(255, 255, 255, 0.08); color: var(--text); font-family: var(--font-ko); font-size: 13.5px; font-weight: 600; padding: 11px 26px; border-radius: 99px; cursor: pointer; transition: all 0.2s ease; letter-spacing: -0.02em; }
+  .nav-btn:hover:not(:disabled) { background: rgba(124, 167, 235, 0.08); border-color: var(--accent-border); color: var(--accent); }
+  .nav-btn:disabled { opacity: 0.15; cursor: not-allowed; }
+  .flip-btn { background: linear-gradient(135deg, var(--accent), #5B86E5); border: none; color: #0B0F1A; font-family: var(--font-ko); font-size: 14px; font-weight: 700; padding: 11px 36px; border-radius: 99px; cursor: pointer; transition: all 0.25s ease; box-shadow: 0 4px 15px rgba(124, 167, 235, 0.25); letter-spacing: -0.02em; }
+  .flip-btn:hover { transform: translateY(-1px); box-shadow: 0 6px 20px rgba(124, 167, 235, 0.4); opacity: 0.95; }
+
+  /* 하단 단어 그리드 및 스마트 뷰포트 제한 스크롤 컴포넌트 */
+  .wordlist { width: 100%; max-width: 750px; margin-top: 3.5rem; padding: 0 1.5rem 4rem; }
+  .wordlist-title { font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 14px; font-weight: 600; font-family: var(--font-ko); }
+  
+  /* 세로 제한 스크롤 뷰 구현 */
+  .wordlist-grid { 
+    display: flex; 
+    flex-wrap: wrap; 
+    gap: 8px; 
+    max-height: 180px; 
+    overflow-y: auto; 
+    padding: 6px 4px;
+    border: 1px solid rgba(255, 255, 255, 0.03);
+    border-radius: 14px;
+    background: rgba(255, 255, 255, 0.01);
+    scroll-behavior: smooth;
+  }
+  .wordlist-grid::-webkit-scrollbar { width: 4px; }
+  .wordlist-grid::-webkit-scrollbar-thumb { background: rgba(255, 255, 255, 0.08); border-radius: 99px; }
+
+  .word-chip { 
+    font-size: 12.5px; 
+    padding: 6px 14px; 
+    border-radius: 99px; 
+    border: 1px solid rgba(255, 255, 255, 0.08); 
+    color: rgba(255, 255, 255, 0.7); 
+    cursor: pointer; 
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1); 
+    background: transparent; 
+    font-family: var(--font-en);
+    font-weight: 500;
+  }
+  .word-chip:hover { border-color: var(--accent-border); color: #ffffff; background: rgba(255, 255, 255, 0.02); }
+  .word-chip.active { background: var(--accent-dim); border-color: var(--accent); color: var(--accent); font-weight: 600; box-shadow: inset 0 0 8px rgba(124, 167, 235, 0.1); }
+
+  @media (max-width: 480px) { 
+    :root { --card-w: calc(100vw - 2rem); --card-h: 520px; } 
+    header { padding: 1.5rem 1rem 1rem; margin-bottom: 1.2rem; } 
+    .home-btn { padding: 5px 10px; font-size: 11px; }
+    .brand { font-size: 12px; }
+    .nav { gap: 10px; }
+    .nav-btn { padding: 10px 18px; font-size: 12px; }
+    .flip-btn { padding: 10px 28px; font-size: 13px; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-left">
+    <a href="index.html" class="home-btn">← 메인으로</a>
+    <span class="brand">민쌤영어 <span>·</span> English Lab</span>
+  </div>
+  <span class="set-label">Vocabulary Set 32</span>
+</header>
+
+<div class="progress-wrap">
+  <div class="progress-bar-bg"><div class="progress-bar-fill" id="progressFill"></div></div>
+  <span class="progress-text" id="progressText">1 / 58</span>
+</div>
+
+<div class="stage" id="stage" tabindex="0" role="button" aria-label="카드 뒤집기">
+  <div class="card" id="card">
+    <div class="face front">
+      <div class="front-topbar">
+        <span class="front-label">민쌤영어 · vocab</span>
+        <span class="pos-pill" id="fPos">n.</span>
+      </div>
+      <div class="front-body">
+        <p class="sentence" id="fSentence"></p>
+      </div>
+      <div class="front-footer">탭하거나 스페이스바로 뜻 확인 →</div>
+      <div class="deco-bar"></div>
+    </div>
+    <div class="face back">
+      <div class="back-header">
+        <div class="back-word" id="bWord"></div>
+        <div class="back-pos" id="bPos"></div>
+      </div>
+      <div class="back-body" id="bBody"></div>
+      <div class="back-deco"></div>
+    </div>
+  </div>
+</div>
+
+<div class="nav">
+  <button class="nav-btn" id="btnPrev" onclick="go(-1)">← 이전 단어</button>
+  <button class="flip-btn" onclick="flip()">정답 확인</button>
+  <button class="nav-btn" id="btnNext" onclick="go(1)">다음 단어 →</button>
+</div>
+
+<div class="wordlist">
+  <div class="wordlist-title">Set 32 단어 목록</div>
+  <div class="wordlist-grid" id="wordGrid"></div>
+</div>
+
+<script>
+// 구조 일관성 유지를 위한 데이터 객체
+const DATA = [
+  {
+    word: "residency", pos: "n.",
+    meanings: [
+      { num:"①", text:"(특정 장소의) 거주, 거주 기간 / (의사의) 레지던트 과정" },
+      { num:"②", text:"(예술가의) 상주 프로그램 / (permanent residency 영구 거주권) (medical residency 레지던트 과정)" }
+    ],
+    sentence: "After graduating from medical school, she began her {residency} at a large city hospital, where she worked incredibly long hours treating patients under the supervision of experienced doctors.<br><br>The famous author was invited to take up a six-month {residency} at the school, during which she gave workshops, met with student writers, and worked on her own new novel.<br><br>Having lived in the country for over ten years, she finally met all the requirements to apply for permanent {residency}, which would allow her to stay and work there without any time restrictions.",
+    translation: "의과대학을 졸업한 후, 그녀는 대형 시립 병원에서 레지던트 과정을 시작했는데, 그곳에서 경험 많은 의사들의 감독 하에 환자를 치료하며 믿을 수 없을 만큼 긴 시간을 일했다.<br><br>그 유명한 작가는 학교에서 6개월간의 상주 프로그램에 참여하도록 초대받았는데, 그 기간 동안 워크숍을 진행하고, 학생 작가들을 만나고, 자신의 새 소설을 집필했다.<br><br>10년 이상 그 나라에서 살아온 후, 그녀는 마침내 시간 제한 없이 그곳에서 머물며 일할 수 있는 영구 거주권을 신청하기 위한 모든 요건을 충족했다."
+  },
+  {
+    word: "resign", pos: "v.",
+    meanings: [
+      { num:"①", text:"(직위에서) 사임하다, 물러나다" },
+      { num:"②", text:"(운명·상황에) 체념하고 따르다" },
+      { num:"③", text:"(resign from office 직에서 사임하다) (be resigned to ~에 체념하다)" }
+    ],
+    sentence: "The student council president decided to {resign} from her position after realizing that her other commitments were taking up too much of her time to do the role properly.<br><br>After failing the audition three times, he finally {resigned} himself to the fact that performing was not going to be part of his future and focused his energy elsewhere.",
+    translation: "학생회장은 다른 책임들이 역할을 제대로 수행하기에 너무 많은 시간을 차지하고 있다는 것을 깨달은 후 자신의 직위에서 사임하기로 결정했다.<br><br>오디션에 세 번 실패한 후, 그는 마침내 공연이 자신의 미래의 일부가 되지 않을 것이라는 사실에 체념하고 다른 곳에 에너지를 집중했다."
+  },
+  {
+    word: "resonance", pos: "n.",
+    meanings: [
+      { num:"①", text:"(물리) 공명, 울림" },
+      { num:"②", text:"(감정·경험의) 공감대, 반향" },
+      { num:"③", text:"(언어) 풍부한 의미, 함의" },
+      { num:"④", text:"(emotional resonance 감정적 공감대)" },
+      { num:"⑤", text:"※ ②의 '공감/반향' 의미가 편입 지문 빈출" }
+    ],
+    sentence: "The story of the main character, who struggled to fit in while staying true to herself, had a deep {resonance} with many teenagers in the audience who felt they were going through exactly the same experience.",
+    translation: "자신에게 충실하면서 어울리려고 애쓰는 주인공의 이야기는 정확히 같은 경험을 하고 있다고 느끼는 청중의 많은 십대들에게 깊은 공감대를 형성했다."
+  },
+  {
+    word: "scholarship", pos: "n.",
+    meanings: [
+      { num:"①", text:"(학생에게 주는) 장학금" },
+      { num:"②", text:"(높은 수준의) 학문, 학식 / (학문적) 연구 성과" },
+      { num:"③", text:"(receive a scholarship 장학금을 받다)" },
+      { num:"④", text:"※ ②의 의미(높은 수준의 학식)가 편입에서 자주 출제" }
+    ],
+    sentence: "She worked incredibly hard throughout her school years and was thrilled to be awarded a full {scholarship} to the university of her choice, which meant she would not have to worry about tuition fees.",
+    translation: "그녀는 학창 시절 내내 믿을 수 없을 만큼 열심히 공부했고 자신이 선택한 대학의 전액 장학금을 받게 되어 기뻤는데, 이는 그녀가 등록금에 대해 걱정할 필요가 없다는 것을 의미했다."
+  },
+  {
+    word: "seductive", pos: "a.",
+    meanings: [
+      { num:"①", text:"(성적으로) 유혹적인, 매혹적인" },
+      { num:"②", text:"(아이디어·제안이) 솔깃한, 매력적인" },
+      { num:"③", text:"(seductive offer 솔깃한 제안) (seductive argument 매혹적인 논거)" },
+      { num:"④", text:"※ attractive보다 저항하기 어려운 유혹 강조" }
+    ],
+    sentence: "The idea of taking a year off before university seemed {seductive} at first, but she eventually decided against it after realizing she might lose the momentum she had built up through years of studying.",
+    translation: "대학 전에 1년을 쉬는 아이디어는 처음에 솔깃하게 보였지만, 그녀는 수년간의 공부를 통해 쌓은 탄력을 잃을 수 있다는 것을 깨달은 후 결국 그것을 포기하기로 했다."
+  },
+  {
+    word: "semantic", pos: "a.",
+    meanings: [
+      { num:"①", text:"(언어의) 의미의, 의미론적인" },
+      { num:"②", text:"(semantic difference 의미론적 차이) (semantic analysis 의미 분석)" },
+      { num:"③", text:"※ syntactic(구문의) 과 함께 언어학 핵심 용어" }
+    ],
+    sentence: "The argument between the two students turned out to be largely {semantic}, as they were actually saying the same thing but using different words to describe it.",
+    translation: "두 학생 사이의 논쟁은 그들이 실제로 같은 말을 하고 있지만 그것을 설명하기 위해 다른 단어를 사용하고 있었기 때문에 대부분 의미론적인 것으로 밝혀졌다."
+  },
+  {
+    word: "slap", pos: "v. / n.",
+    meanings: [
+      { num:"①", text:"(v.) (손바닥으로) 찰싹 때리다 / (물건을 세게) 탁 놓다 / (제재를) 갑자기 부과하다" },
+      { num:"②", text:"(n.) 찰싹 때림 / 모욕" },
+      { num:"③", text:"(slap a fine on 벌금을 부과하다) (slap in the face 모욕)" }
+    ],
+    sentence: "Being told she was not talented enough to join the advanced class felt like a real {slap} in the face, especially since she had worked harder than anyone else to prepare for the audition.",
+    translation: "고급반에 들어갈 만큼 재능이 없다는 말은 진정한 모욕처럼 느껴졌는데, 특히 그녀가 오디션 준비를 위해 누구보다 열심히 했기 때문이었다."
+  },
+  {
+    word: "sluggish", pos: "a.",
+    meanings: [
+      { num:"①", text:"(움직임·반응이) 둔한, 느린" },
+      { num:"②", text:"(경제·시장이) 활력 없는, 부진한" },
+      { num:"③", text:"(sluggish economy 부진한 경제) (feel sluggish 기운이 없다)" }
+    ],
+    sentence: "He always felt {sluggish} on Monday mornings after staying up too late over the weekend, and it usually took him until lunchtime to feel fully awake and focused.",
+    translation: "그는 주말 동안 너무 늦게까지 깨어 있은 후 월요일 아침에 항상 기운이 없었으며, 보통 점심 시간이 될 때까지 완전히 깨어 있고 집중하는 데 시간이 걸렸다."
+  },
+  {
+    word: "so as to", pos: "phr.",
+    meanings: [
+      { num:"①", text:"~하기 위해서, ~하도록 (= in order to)" },
+      { num:"②", text:"(so as to avoid confusion 혼란을 피하기 위해)" },
+      { num:"③", text:"※ so as not to(~하지 않도록) 부정 형태도 숙지; 편입 구문 빈출" }
+    ],
+    sentence: "She reviewed her notes carefully the night before the presentation {so as to} feel more confident and avoid forgetting any of the key points she wanted to make.<br><br>He spoke quietly {so as not to} disturb the other students who were still working on their exams when he finished early and needed to ask the teacher a question.",
+    translation: "그녀는 더 자신감을 느끼고 전달하고 싶은 핵심 포인트를 잊지 않기 위해서 발표 전날 밤 노트를 꼼꼼히 검토했다.<br><br>그는 일찍 끝나서 선생님에게 질문을 해야 했을 때 여전히 시험을 보고 있는 다른 학생들을 방해하지 않도록 조용히 말했다."
+  },
+  {
+    word: "soothe", pos: "v.",
+    meanings: [
+      { num:"①", text:"(마음·감정을) 달래다, 진정시키다" },
+      { num:"②", text:"(통증·피부를) 완화시키다" },
+      { num:"③", text:"(soothe a crying baby 우는 아기를 달래다)" }
+    ],
+    sentence: "The teacher's calm and patient voice helped to {soothe} the anxious student before the exam, reminding her that she had prepared well and was more than ready.",
+    translation: "선생님의 차분하고 인내심 있는 목소리는 시험 전에 불안해하는 학생을 달래는 데 도움이 되었으며, 그녀가 충분히 준비했고 더 이상 준비가 되어 있다는 것을 상기시켜 주었다."
+  },
+  {
+    word: "specimen", pos: "n.",
+    meanings: [
+      { num:"①", text:"(연구·검사용) 표본, 시료" },
+      { num:"②", text:"(종류의) 견본, 전형" },
+      { num:"③", text:"(blood specimen 혈액 시료) (specimen of handwriting 필체 견본)" },
+      { num:"④", text:"※ sample보다 과학적·공식적 표본 강조" }
+    ],
+    sentence: "During the biology field trip, students were asked to collect {specimens} of leaves and insects from the local park, which they would later examine under microscopes back in the lab.",
+    translation: "생물 현장 학습 중에 학생들은 지역 공원에서 잎과 곤충 표본을 수집하도록 요청받았는데, 이것들은 나중에 실험실로 돌아와 현미경으로 검사할 것이었다."
+  },
+  {
+    word: "spurious", pos: "a.",
+    meanings: [
+      { num:"①", text:"(주장·논거가) 겉으로만 그럴싸한, 비논리적인" },
+      { num:"②", text:"(문서·작품이) 거짓된, 위조된" },
+      { num:"③", text:"(spurious argument 겉만 그럴싸한 논거)" }
+    ],
+    sentence: "The teacher pointed out that the student's argument was {spurious}, as it sounded convincing on the surface but fell apart completely when examined more carefully.",
+    translation: "선생님은 그 학생의 논거가 겉으로만 그럴싸하다고 지적했는데, 표면상으로는 설득력 있게 들렸지만 더 주의 깊게 검토했을 때 완전히 무너졌기 때문이다."
+  },
+  {
+    word: "stratification", pos: "n.",
+    meanings: [
+      { num:"①", text:"(사회의) 계층화, 층위 구분" },
+      { num:"②", text:"(지질) 성층, 층리 / (통계) 층별 추출" },
+      { num:"③", text:"(social stratification 사회 계층화)" }
+    ],
+    sentence: "The sociology lesson explored how social {stratification} affects the opportunities available to people from different backgrounds and why some groups consistently do better than others.",
+    translation: "그 사회학 수업은 사회 계층화가 다양한 배경을 가진 사람들에게 이용 가능한 기회에 어떻게 영향을 미치는지, 그리고 왜 일부 그룹이 지속적으로 다른 그룹보다 더 잘하는지를 탐구했다."
+  },
+  {
+    word: "streak", pos: "n.",
+    meanings: [
+      { num:"①", text:"(가늘고 기다란) 줄무늬, 선" },
+      { num:"②", text:"(성격의) 면, 기질" },
+      { num:"③", text:"(성공·실패의) 연속, 연속 기록" },
+      { num:"④", text:"(winning streak 연승 행진) (streak of bad luck 연속된 불운)" },
+      { num:"⑤", text:"※ ②③의 의미가 편입에서 자주 출제" }
+    ],
+    sentence: "The basketball team was on a winning {streak} of seven games, and the whole school was buzzing with excitement about the possibility of them winning the regional championship.<br><br>Despite her generally calm personality, she had a {streak} of stubbornness that came out whenever someone tried to pressure her into doing something she did not believe in.",
+    translation: "농구팀은 7경기 연승 행진 중이었고, 전교생이 그들이 지역 챔피언십을 우승할 가능성에 대한 흥분으로 들떠 있었다.<br><br>전반적으로 차분한 성격에도 불구하고, 그녀는 누군가가 자신이 믿지 않는 것을 하도록 압박할 때마다 드러나는 고집스러운 기질의 면이 있었다."
+  },
+  {
+    word: "stroll", pos: "v. / n.",
+    meanings: [
+      { num:"①", text:"(v.) (느긋하게) 한가롭게 거닐다, 산책하다" },
+      { num:"②", text:"(n.) 산책, 거닐기" },
+      { num:"③", text:"(stroll through the park 공원을 산책하다)" },
+      { num:"④", text:"※ walk보다 목적 없이 여유롭게 걷는 뉘앙스 강조" }
+    ],
+    sentence: "After finishing their exams, the group of friends decided to {stroll} along the river path and enjoy the warm afternoon sunshine before heading home.",
+    translation: "시험을 마친 후, 그 친구들 무리는 집으로 가기 전에 강변 길을 따라 한가롭게 거닐며 따뜻한 오후 햇살을 즐기기로 했다."
+  },
+  {
+    word: "subversive", pos: "a. / n.",
+    meanings: [
+      { num:"①", text:"(a.) (기존 체제·권위를) 전복하려는, 체제 전복적인" },
+      { num:"②", text:"(n.) 체제 전복 분자" },
+      { num:"③", text:"(subversive ideas 전복적인 사상)" }
+    ],
+    sentence: "The school debate on whether {subversive} ideas in literature should be taught in schools turned out to be one of the most lively and passionate discussions the class had ever had.",
+    translation: "문학에서의 체제 전복적인 사상이 학교에서 가르쳐져야 하는지에 대한 학교 토론은 학급이 한 번도 해본 적 없는 가장 활발하고 열정적인 토론 중 하나가 되었다."
+  },
+  {
+    word: "supervisor", pos: "n.",
+    meanings: [
+      { num:"①", text:"(직장의) 감독관, 관리자" },
+      { num:"②", text:"(대학원의) 지도교수 / (작업) 감독" },
+      { num:"③", text:"(under the supervision of ~의 감독 하에)" }
+    ],
+    sentence: "The student met with her research {supervisor} once a week to discuss her progress, get feedback on her writing, and plan what she needed to do before their next meeting.",
+    translation: "그 학생은 진도를 논의하고, 글쓰기에 대한 피드백을 받고, 다음 만남 전에 무엇을 해야 하는지 계획하기 위해 연구 지도교수와 일주일에 한 번 만났다."
+  },
+  {
+    word: "swamp", pos: "n. / v.",
+    meanings: [
+      { num:"①", text:"(n.) 늪, 습지" },
+      { num:"②", text:"(v.) (일·요청이) 쇄도하다, 압도하다 / (물에) 잠기게 하다" },
+      { num:"③", text:"(be swamped with work 일에 압도되다)" }
+    ],
+    sentence: "During exam season, the student helpline was {swamped} with calls from stressed students looking for advice on how to manage their workload and stay calm under pressure.",
+    translation: "시험 기간 동안, 학생 도움 전화는 업무량을 관리하고 압박 하에서 차분함을 유지하는 방법에 대한 조언을 구하는 스트레스받은 학생들의 전화로 압도되었다."
+  },
+  {
+    word: "swarm", pos: "n. / v.",
+    meanings: [
+      { num:"①", text:"(n.) (벌·개미 등의) 떼 / (사람의) 군중, 대무리" },
+      { num:"②", text:"(v.) 떼를 지어 이동하다 / (장소가) 가득하다" },
+      { num:"③", text:"(swarm of bees 벌 떼) (swarm with tourists 관광객으로 북적이다)" }
+    ],
+    sentence: "A {swarm} of bees suddenly appeared in the school garden, causing everyone who had been eating lunch outside to quickly gather their things and move indoors.<br><br>On the last day of school before the summer holidays, the corridors were {swarming} with excited students who could not wait to start their break.",
+    translation: "벌 떼가 갑자기 학교 정원에 나타나 밖에서 점심을 먹고 있던 모든 사람이 물건을 빠르게 챙겨 실내로 이동하게 만들었다.<br><br>여름 방학 전 마지막 등교일에, 복도는 방학을 시작하고 싶어서 안달이 난 흥분한 학생들로 가득했다."
+  },
+  {
+    word: "synonymous", pos: "a.",
+    meanings: [
+      { num:"①", text:"(단어가) 동의어의, 같은 뜻의" },
+      { num:"②", text:"(개념이) 밀접하게 관련된, ~와 동일시되는" },
+      { num:"③", text:"(synonymous with success 성공과 동일시되는)" },
+      { num:"④", text:"※ ②의 비유적 의미가 편입에서 자주 출제" }
+    ],
+    sentence: "For many students, the name of that particular teacher had become virtually {synonymous} with strict discipline, as she was known throughout the school for never letting even the smallest rule be broken.",
+    translation: "많은 학생들에게 그 특정 선생님의 이름은 사실상 엄격한 규율과 동일시되었는데, 그녀는 가장 사소한 규칙도 어기는 것을 절대 허용하지 않는 것으로 학교 전체에 알려져 있었기 때문이다."
+  },
+  {
+    word: "systematic", pos: "a.",
+    meanings: [
+      { num:"①", text:"(체계·순서에 따른) 체계적인, 조직적인" },
+      { num:"②", text:"(systematic approach 체계적 접근)" },
+      { num:"③", text:"(systematically ad. 체계적으로; systematize v. 체계화하다)" }
+    ],
+    sentence: "She took a very {systematic} approach to revising for her exams, working through each subject topic by topic and making sure she fully understood each one before moving on to the next.",
+    translation: "그녀는 시험 복습에 매우 체계적인 접근 방식을 취하여, 각 과목을 주제별로 검토하고 다음으로 넘어가기 전에 각 주제를 완전히 이해했는지 확인했다."
+  },
+  {
+    word: "tariff", pos: "n.",
+    meanings: [
+      { num:"①", text:"(수입품에 대한) 관세" },
+      { num:"②", text:"(호텔·서비스의) 요금표" },
+      { num:"③", text:"(impose a tariff 관세를 부과하다) (tariff barrier 관세 장벽)" }
+    ],
+    sentence: "The economics teacher explained how governments use {tariffs} to protect their own industries by making imported goods more expensive and therefore less attractive to consumers.",
+    translation: "경제 선생님은 정부가 수입품을 더 비싸고 따라서 소비자들에게 덜 매력적으로 만들어 자국 산업을 보호하기 위해 어떻게 관세를 사용하는지 설명했다."
+  },
+  {
+    word: "tenacious", pos: "a.",
+    meanings: [
+      { num:"①", text:"(목표에 대해) 집요한, 끈질긴" },
+      { num:"②", text:"(기억력이) 오래 지속되는 / (물질이) 잘 달라붙는" },
+      { num:"③", text:"(tenacious in pursuit 추구에 집요한)" }
+    ],
+    sentence: "Despite failing the entrance exam twice, she remained {tenacious} in her determination to get into the program, spending an extra year preparing before trying again and finally succeeding.",
+    translation: "입학 시험에 두 번 실패했음에도 불구하고, 그녀는 그 프로그램에 들어가겠다는 결심에 끈질기게 남아, 다시 시도하여 마침내 성공하기 전에 준비하는 데 1년을 더 보냈다."
+  },
+  {
+    word: "tenet", pos: "n.",
+    meanings: [
+      { num:"①", text:"(종교·사상의) 교리, 주의, 신조" },
+      { num:"②", text:"(central tenet 핵심 교리) (tenet of democracy 민주주의 신조)" }
+    ],
+    sentence: "One of the central {tenets} of the school's philosophy was that every student deserved to be treated as an individual with unique strengths, rather than being compared to others.",
+    translation: "학교 철학의 핵심 신조 중 하나는 모든 학생이 다른 사람들과 비교되기보다 독특한 강점을 가진 개인으로 대우받을 자격이 있다는 것이었다."
+  },
+  {
+    word: "thirst", pos: "n. / v.",
+    meanings: [
+      { num:"①", text:"(n.) 갈증, 목마름 / (~에 대한) 갈망, 욕구" },
+      { num:"②", text:"(v.) 목마르다 / 갈망하다" },
+      { num:"③", text:"(thirst for knowledge 지식에 대한 갈망)" }
+    ],
+    sentence: "Her {thirst} for knowledge was obvious to all her teachers, as she was always the first to finish the required reading and then look for extra books on the same topic.",
+    translation: "지식에 대한 그녀의 갈망은 모든 선생님들에게 분명했는데, 그녀는 항상 필수 독서를 가장 먼저 끝내고 같은 주제의 추가 책을 찾았기 때문이다."
+  },
+  {
+    word: "timber", pos: "n.",
+    meanings: [
+      { num:"①", text:"(건축용) 목재, 재목 / (삼림) 수목 / (사람의 자질·됨됨이)" },
+      { num:"②", text:"(timber frame 목재 골조) (good timber for leadership 지도자 자질)" },
+      { num:"③", text:"※ wood보다 건축·산업용 목재 강조" }
+    ],
+    sentence: "The project involved building a small shelter using {timber} from the school's workshop, which gave students practical experience of planning, measuring, and constructing with real materials.",
+    translation: "그 프로젝트는 학교 작업실의 목재를 사용하여 작은 대피소를 만드는 것을 포함했는데, 이는 학생들에게 실제 재료로 계획하고, 측정하고, 건설하는 실용적인 경험을 주었다."
+  },
+  {
+    word: "token", pos: "n. / a.",
+    meanings: [
+      { num:"①", text:"(n.) (감사·애정의) 표시, 상징 / 증표, 기념물" },
+      { num:"②", text:"(a.) (실질 없이) 형식적인, 명목상의" },
+      { num:"③", text:"(token gesture 형식적 제스처) (token effort 명목상의 노력)" },
+      { num:"④", text:"※ ③의 의미(형식적인)가 편입에서 자주 출제" },
+      { num:"⑤", text:"※ AI는 문장을 조각으로 수치화하는데, 이때 쪼개진 텍스트 조각을 Token이라 부름" }
+    ],
+    sentence: "The applause at the end of the presentation was more than just a {token} gesture — the audience was genuinely moved by the depth of research the students had put into their work.",
+    translation: "발표가 끝날 때의 박수는 단순한 형식적인 제스처 이상이었다 — 청중은 학생들이 작업에 쏟은 연구의 깊이에 진정으로 감동받았다."
+  },
+  {
+    word: "tonic", pos: "n. / a.",
+    meanings: [
+      { num:"①", text:"(n.) (기운을 돋우는) 강장제, 보강제 / 기운을 돋우는 것" },
+      { num:"②", text:"(a.) 활력을 주는" },
+      { num:"③", text:"(emotional tonic 감정적 활력소) (tonic effect 강장 효과)" },
+      { num:"④", text:"※ ②의 비유적 의미가 편입에서 자주 출제" }
+    ],
+    sentence: "After weeks of stressful exam preparation, the weekend camping trip with friends was exactly the {tonic} she needed to recharge her energy and feel ready to face the rest of the school year.",
+    translation: "몇 주간의 스트레스로 가득한 시험 준비 후, 친구들과의 주말 캠핑 여행은 에너지를 충전하고 나머지 학년을 맞이할 준비가 된 느낌이 드는 데 그녀에게 꼭 필요한 활력소였다."
+  },
+  {
+    word: "trajectory", pos: "n.",
+    meanings: [
+      { num:"①", text:"(포탄·로켓의) 탄도, 궤적" },
+      { num:"②", text:"(사람·조직의) 발전 경로, 궤적" },
+      { num:"③", text:"(career trajectory 경력 궤적)" }
+    ],
+    sentence: "Looking back at his school years, he could see clearly how the encouragement of one particular teacher had completely changed the {trajectory} of his life by helping him discover a passion for science.",
+    translation: "학창 시절을 돌이켜보며, 그는 한 특정 선생님의 격려가 과학에 대한 열정을 발견하도록 도와줌으로써 자신의 삶의 궤적을 완전히 바꾸었다는 것을 명확히 볼 수 있었다."
+  },
+  {
+    word: "transparency", pos: "n.",
+    meanings: [
+      { num:"①", text:"(물질의) 투명성" },
+      { num:"②", text:"(조직·정보의) 투명성, 공개성" },
+      { num:"③", text:"(government transparency 정부 투명성)" },
+      { num:"④", text:"※ ②의 의미가 편입 사회·정치 지문에서 빈출" }
+    ],
+    sentence: "The students appreciated the teacher's {transparency} about how she marked their work, as she always explained exactly why points had been taken off and what they could do to improve next time.",
+    translation: "학생들은 점수가 왜 감점되었는지, 그리고 다음 번에 개선하기 위해 무엇을 할 수 있는지를 항상 정확히 설명해주는 선생님의 채점 방식에 대한 투명성에 감사했다."
+  },
+  {
+    word: "trek", pos: "n. / v.",
+    meanings: [
+      { num:"①", text:"(n.) (길고 힘든) 여행, 트레킹 / (비격식) 멀고 힘든 이동" },
+      { num:"②", text:"(v.) (힘들게 오래) 걷다, 여행하다" },
+      { num:"③", text:"(trek through the mountains 산을 힘들게 걷다)" }
+    ],
+    sentence: "The school's annual {trek} through the national park took two full days, requiring students to carry everything they needed on their backs and camp overnight in the mountains.<br><br>Every morning she {trekked} across town to reach her new school, a journey that took nearly an hour each way but which she said was worth it for the quality of the education.",
+    translation: "학교의 연례 국립공원 트레킹은 꼬박 이틀이 걸렸으며, 학생들이 필요한 모든 것을 등에 지고 산에서 야영하는 것을 요구했다.<br><br>매일 아침 그녀는 새 학교에 가기 위해 시내를 가로질러 힘들게 걸었는데, 편도로 거의 한 시간이 걸리는 이동이었지만 그녀는 교육의 질 때문에 그만한 가치가 있다고 말했다."
+  },
+  {
+    word: "upright", pos: "a. / ad.",
+    meanings: [
+      { num:"①", text:"(a.) (자세가) 똑바른, 수직의 / (사람이) 강직한, 올바른" },
+      { num:"②", text:"(ad.) 똑바로, 수직으로" },
+      { num:"③", text:"(stand upright 똑바로 서다) (upright citizen 올바른 시민)" },
+      { num:"④", text:"※ ②의 도덕적 의미가 편입에서 자주 출제" }
+    ],
+    sentence: "The physiotherapist told her to sit {upright} at her desk rather than slouching forward, explaining that poor posture was the main cause of the back pain she had been experiencing.<br><br>He was known throughout the school as an {upright} and honest person who always told the truth even when it was difficult and never went along with things he felt were wrong.",
+    translation: "물리치료사는 그녀에게 앞으로 구부정하게 앉는 대신 책상에서 똑바로 앉으라고 말하며, 나쁜 자세가 그녀가 경험하고 있는 요통의 주된 원인이라고 설명했다.<br><br>그는 어려울 때도 항상 진실을 말하고 잘못되었다고 느끼는 것에 절대 동조하지 않는 강직하고 정직한 사람으로 학교 전체에 알려져 있었다."
+  },
+  {
+    word: "usher", pos: "n. / v.",
+    meanings: [
+      { num:"①", text:"(n.) (극장·교회의) 안내원" },
+      { num:"②", text:"(v.) 안내하다, 인도하다 / (새 시대·변화를) 알리다, 시작되게 하다" },
+      { num:"③", text:"(usher in a new era 새로운 시대를 열다)" },
+      { num:"④", text:"※ ③의 'usher in' 표현이 편입 단골 출제" }
+    ],
+    sentence: "The invention of the smartphone {ushered} in a completely new era of communication, changing the way people interact with each other and access information in ways that nobody had fully anticipated.<br><br>A friendly volunteer {ushered} the nervous first-year students into the school hall for their opening assembly, making sure everyone found a seat before the ceremony began.",
+    translation: "스마트폰의 발명은 완전히 새로운 커뮤니케이션 시대를 열어, 아무도 완전히 예상하지 못했던 방식으로 사람들이 서로 상호작용하고 정보에 접근하는 방식을 변화시켰다.<br><br>친절한 자원봉사자가 긴장한 1학년 학생들을 개학식을 위한 학교 강당으로 안내하여, 행사가 시작되기 전에 모든 사람이 자리를 찾을 수 있도록 했다."
+  },
+  {
+    word: "veiled", pos: "a.",
+    meanings: [
+      { num:"①", text:"(얼굴이) 베일에 싸인" },
+      { num:"②", text:"(의미가) 숨겨진, 은근한 / (비판이) 완곡한" },
+      { num:"③", text:"(veiled threat 은근한 위협) (veiled criticism 완곡한 비판)" }
+    ],
+    sentence: "Her comment about how some students seemed more focused on their phones than their studies was a {veiled} criticism directed at the back row, though she never mentioned anyone by name.",
+    translation: "일부 학생들이 공부보다 휴대폰에 더 집중하는 것 같다는 그녀의 말은 이름을 언급하지 않았지만 뒷줄을 향한 완곡한 비판이었다."
+  },
+  {
+    word: "vibration", pos: "n.",
+    meanings: [
+      { num:"①", text:"(물리적) 진동, 떨림" },
+      { num:"②", text:"(비격식) 분위기, 느낌, 기운" },
+      { num:"③", text:"(vibration of the string 줄의 진동) (good vibes 좋은 기운)" },
+      { num:"④", text:"※ ②의 비격식 의미('vibes')도 현대 지문에서 출제" }
+    ],
+    sentence: "The {vibrations} from the bass speakers at the school concert were so powerful that students sitting in the front rows could feel them through their seats.<br><br>As soon as she walked into the new classroom for the first time, she could immediately sense the positive vibes — the students seemed genuinely happy to be there and eager to learn.",
+    translation: "학교 콘서트의 베이스 스피커에서 나오는 진동이 너무 강해서 앞줄에 앉은 학생들이 자리를 통해 그것을 느낄 수 있었다.<br><br>그녀가 처음으로 새 교실에 들어섰을 때, 즉시 긍정적인 분위기를 감지할 수 있었는데 — 학생들이 그곳에 있는 것을 진정으로 기뻐하고 배우기를 열망하는 것 같았다."
+  },
+  {
+    word: "vicarious", pos: "a.",
+    meanings: [
+      { num:"①", text:"(직접 경험하지 않고) 대리로 하는, 간접적인" },
+      { num:"②", text:"(다른 사람을 통한) 대리 만족의" },
+      { num:"③", text:"(vicarious pleasure 대리 만족) (vicarious experience 간접 경험)" },
+      { num:"④", text:"※ 심리학·미디어 지문 핵심 어휘" }
+    ],
+    sentence: "Many parents experience a kind of {vicarious} pride through their children's achievements, feeling as though the successes their sons and daughters earn somehow belong to them as well.<br><br>For students who cannot afford to travel, reading books set in foreign countries offers a {vicarious} experience of other cultures and ways of life that can be almost as enriching as visiting in person.",
+    translation: "많은 부모들은 자녀의 성취를 통해 일종의 대리 자부심을 경험하며, 아들과 딸이 얻은 성공이 어떤 면에서 자신들의 것이기도 한 것처럼 느낀다.<br><br>여행할 여유가 없는 학생들에게, 외국을 배경으로 한 책을 읽는 것은 직접 방문하는 것만큼 풍요로울 수 있는 다른 문화와 삶의 방식에 대한 간접 경험을 제공한다."
+  },
+  {
+    word: "would-be", pos: "a.",
+    meanings: [
+      { num:"①", text:"(장차) ~이 되려고 하는, 지망하는" },
+      { num:"②", text:"(실제로는 아니지만) ~인 척하는" },
+      { num:"③", text:"(would-be actor 배우 지망생)" },
+      { num:"④", text:"※ 실현 여부가 불확실하거나 다소 비꼬는 뉘앙스 포함" }
+    ],
+    sentence: "The drama teacher ran a special workshop for {would-be} actors in the school, helping them develop the confidence and skills they would need if they wanted to pursue performing arts professionally.",
+    translation: "연극 선생님은 학교의 배우 지망생들을 위한 특별 워크숍을 운영하며, 그들이 공연 예술을 전문적으로 추구하고 싶다면 필요한 자신감과 기술을 개발하는 데 도움을 주었다."
+  }
+];
+
+let current = 0;
+
+function renderSentence(t) {
+  return t.replace(/\{([^}]+)\}/g, '<span class="hw">$1</span>');
+}
+
+function renderCard(idx) {
+  const d = DATA[idx];
+  document.getElementById('fPos').textContent = d.pos;
+  document.getElementById('fSentence').innerHTML = renderSentence(d.sentence);
+  document.getElementById('bWord').textContent = d.word;
+  document.getElementById('bPos').textContent = d.pos;
+
+  const exEng = d.sentence.replace(/\{([^}]+)\}/g, '<strong>$1</strong>');
+  let bodyHtml = '';
+  d.meanings.forEach(m => {
+    const slashParts = m.text.split('/').map(t => t.trim());
+    
+    bodyHtml += `<div class="meaning-block">`;
+    bodyHtml += `  <span class="meaning-num">${m.num}</span>`;
+    
+    slashParts.forEach(part => {
+      if (part.includes('(')) {
+        const openIdx = part.indexOf('(');
+        const mainMeaning = part.substring(0, openIdx).trim();
+        const subExample = part.substring(openIdx).trim();
+        
+        if (mainMeaning) {
+          bodyHtml += `  <span class="meaning-text">${mainMeaning}</span>`;
+        }
+        if (subExample) {
+          bodyHtml += `  <span class="meaning-sub">${subExample}</span>`;
+        }
+      } else {
+        bodyHtml += `  <span class="meaning-text">${part}</span>`;
+      }
+    });
+    
+    bodyHtml += `</div>`;
+  });
+  
+  bodyHtml += '<div class="rule"></div>';
+  bodyHtml += `<div class="ex-block"><p class="ex-eng">${exEng}</p><p class="ex-kor">${d.translation}</p></div>`;
+  
+  const bBody = document.getElementById('bBody');
+  bBody.innerHTML = bodyHtml;
+  bBody.scrollTop = 0; // 단어 변경 시 카드 스크롤 위치 초기화 방어 코드
+
+  // 진행 상태바 반영
+  document.getElementById('progressFill').style.width = ((idx + 1) / DATA.length * 100).toFixed(1) + '%';
+  document.getElementById('progressText').textContent = `${idx + 1} / ${DATA.length}`;
+  document.getElementById('btnPrev').disabled = idx === 0;
+  document.getElementById('btnNext').disabled = idx === DATA.length - 1;
+  
+  // 단어 칩 동기화 및 스크롤 추적
+  document.querySelectorAll('.word-chip').forEach((el, i) => {
+    const isActive = i === idx;
+    el.classList.toggle('active', isActive);
+    
+    // UX 핵심: 현재 인덱스에 매칭되는 단어 칩으로 컨테이너 스크롤 포커싱 자동 이동
+    if (isActive) {
+      el.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'nearest' });
+    }
+  });
+  
+  document.getElementById('card').classList.remove('flipped');
+}
+
+function flip() { document.getElementById('card').classList.toggle('flipped'); }
+function go(dir) {
+  const next = current + dir;
+  if (next < 0 || next >= DATA.length) return;
+  current = next; renderCard(current);
+}
+
+// 단어 목록 그리드 초기 생성
+const grid = document.getElementById('wordGrid');
+DATA.forEach((d, i) => {
+  const btn = document.createElement('button');
+  btn.className = 'word-chip' + (i === 0 ? ' active' : '');
+  btn.textContent = d.word;
+  btn.onclick = () => { current = i; renderCard(i); };
+  grid.appendChild(btn);
+});
+
+document.getElementById('stage').addEventListener('click', flip);
+document.addEventListener('keydown', e => {
+  if (e.key === 'ArrowRight') go(1);
+  if (e.key === 'ArrowLeft') go(-1);
+  if (e.key === ' ' || e.key === 'Enter') { e.preventDefault(); flip(); }
+});
+
+// 초기화 가동
+renderCard(0);
+</script>
+</body>
+</html>

@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>민쌤영어 · 2026 압축보카</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+@font-face {
+  font-family: 'GangwonEduPower';
+  src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2201-2@1.0/GangwonEduPower.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* ── RESET & ROOT ── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg:             #0B0F1A;
+  --surface:        #131929;
+  --surface2:       #1C2438;
+  --accent:         #7CA7EB;
+  --accent-dim:     rgba(124,167,235,0.12);
+  --accent-border:  rgba(124,167,235,0.28);
+  --accent-glow:    rgba(124,167,235,0.35);
+  --gold:           #E8C97A;
+  --gold-dim:       rgba(232,201,122,0.12);
+  --gold-border:    rgba(232,201,122,0.28);
+  --gold-glow:      rgba(232,201,122,0.35);
+  --green:          #6ECC9A;
+  --green-dim:      rgba(110,204,154,0.12);
+  --green-border:   rgba(110,204,154,0.28);
+  --green-glow:     rgba(110,204,154,0.35);
+  --text:           #F0EEE8;
+  --text-muted:     rgba(240,238,232,0.52);
+  --text-dim:       rgba(240,238,232,0.12);
+  --font-base:      'Malgun Gothic', '맑은 고딕', 'Apple SD Gothic Neo', sans-serif;
+  --font-brand:     'GangwonEduPower', 'Malgun Gothic', sans-serif;
+  --radius:         13px;
+  --transition:     0.22s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ── BASE ── */
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-base);
+  font-weight: 700;
+  min-height: 100vh;
+  /* 상단 글로우 배경 */
+  background-image:
+    radial-gradient(ellipse 80% 40% at 50% -10%, rgba(124,167,235,0.13) 0%, transparent 70%),
+    radial-gradient(ellipse 50% 30% at 80% 10%, rgba(232,201,122,0.07) 0%, transparent 60%);
+}
+
+/* ── HEADER ── */
+header {
+  width: 100%;
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 3.6rem 1.5rem 2.4rem;
+  text-align: center;
+  position: relative;
+}
+
+/* 브랜드 태그 */
+.brand-tag {
+  display: inline-block;
+  font-family: var(--font-brand);
+  font-size: 12px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--accent);
+  background: var(--accent-dim);
+  border: 1px solid var(--accent-border);
+  padding: 6px 18px;
+  border-radius: 99px;
+  margin-bottom: 1.4rem;
+  box-shadow: 0 0 16px rgba(124,167,235,0.12);
+}
+
+/* 메인 타이틀 */
+h1 {
+  font-family: var(--font-brand);
+  font-size: clamp(2.2rem, 6vw, 3.4rem);
+  font-weight: normal;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  margin-bottom: 0.9rem;
+}
+h1 .hl      { color: var(--accent); }
+h1 .hl-gold { color: var(--gold); }
+
+/* 서브타이틀 */
+.subtitle {
+  font-family: var(--font-base);
+  font-size: 13.5px;
+  font-weight: 500;
+  color: var(--text-muted);
+  max-width: 420px;
+  margin: 0 auto 2rem;
+  line-height: 1.85;
+  letter-spacing: 0.01em;
+}
+
+/* ── STATS 대시보드 카드 ── */
+.stats-row {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin: 0 0 2.6rem;
+  flex-wrap: wrap;
+}
+
+.stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-width: 100px;
+  padding: 14px 20px 12px;
+  background: var(--surface2);
+  border: 1px solid var(--text-dim);
+  border-radius: var(--radius);
+  cursor: default;
+  transition: var(--transition);
+  position: relative;
+  overflow: hidden;
+}
+.stat::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at 50% 0%, rgba(124,167,235,0.08) 0%, transparent 70%);
+  opacity: 0;
+  transition: var(--transition);
+}
+.stat:hover { border-color: var(--accent-border); transform: translateY(-3px); box-shadow: 0 8px 24px rgba(124,167,235,0.12); }
+.stat:hover::before { opacity: 1; }
+
+.stat-num {
+  font-family: var(--font-brand);
+  font-size: 1.9rem;
+  font-weight: normal;
+  color: var(--gold);
+  line-height: 1;
+  margin-bottom: 5px;
+  display: block;
+}
+.stat-label {
+  font-family: var(--font-base);
+  font-size: 10.5px;
+  font-weight: 700;
+  color: var(--text-muted);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  display: block;
+}
+
+/* 구분선 */
+.divider-line {
+  width: 52px;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--accent-border), transparent);
+  margin: 0 auto 3.2rem;
+  border-radius: 2px;
+}
+
+/* ── SECTION ── */
+.section-wrap {
+  max-width: 980px;
+  margin: 0 auto 3.6rem;
+  padding: 0 1.5rem;
+}
+
+.section-head {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 0.75rem;
+}
+
+/* 아이콘 박스 */
+.section-icon {
+  width: 38px;
+  height: 38px;
+  border-radius: 11px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  flex-shrink: 0;
+  line-height: 1;
+}
+.icon-card {
+  background: var(--green-dim);
+  border: 1px solid var(--green-border);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.06), 0 4px 12px rgba(110,204,154,0.1);
+}
+.icon-test {
+  background: var(--accent-dim);
+  border: 1px solid var(--accent-border);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.06), 0 4px 12px rgba(124,167,235,0.1);
+}
+.icon-rand {
+  background: var(--gold-dim);
+  border: 1px solid var(--gold-border);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.06), 0 4px 12px rgba(232,201,122,0.1);
+}
+
+.section-title {
+  font-family: var(--font-brand);
+  font-size: 1.3rem;
+  font-weight: normal;
+  letter-spacing: 0.02em;
+  flex: 1;
+}
+
+.section-badge {
+  font-family: var(--font-base);
+  font-size: 10.5px;
+  font-weight: 700;
+  padding: 3px 11px;
+  border-radius: 99px;
+  letter-spacing: 0.08em;
+}
+.badge-card { color: var(--green); background: var(--green-dim); border: 1px solid var(--green-border); }
+.badge-test { color: var(--accent); background: var(--accent-dim); border: 1px solid var(--accent-border); }
+.badge-rand { color: var(--gold);  background: var(--gold-dim);   border: 1px solid var(--gold-border);  }
+
+.section-desc {
+  font-family: var(--font-base);
+  font-size: 12.5px;
+  font-weight: 500;
+  color: var(--text-muted);
+  margin-bottom: 1.1rem;
+  line-height: 1.7;
+  padding-left: 52px;
+}
+
+/* ── BUTTON GRID ── */
+.btn-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(74px, 1fr));
+  gap: 8px;
+}
+
+.card-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 46px;
+  border-radius: 10px;
+  font-family: var(--font-base);
+  font-size: 12.5px;
+  font-weight: 700;
+  text-decoration: none;
+  transition: var(--transition);
+  letter-spacing: 0.03em;
+  position: relative;
+}
+
+/* 그린 버튼 */
+.btn-grid.grid-card .card-btn {
+  background: var(--green-dim);
+  border: 1px solid var(--green-border);
+  color: var(--green);
+}
+.btn-grid.grid-card .card-btn:hover {
+  background: rgba(110,204,154,0.2);
+  border-color: rgba(110,204,154,0.55);
+  color: #8EDDB0;
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px var(--green-glow);
+}
+
+/* 블루 버튼 */
+.btn-grid.grid-test .card-btn {
+  background: var(--accent-dim);
+  border: 1px solid var(--accent-border);
+  color: var(--accent);
+}
+.btn-grid.grid-test .card-btn:hover {
+  background: rgba(124,167,235,0.2);
+  border-color: rgba(124,167,235,0.55);
+  color: #A3C2F0;
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px var(--accent-glow);
+}
+
+/* 골드 버튼 */
+.btn-grid.grid-rand .card-btn {
+  background: var(--gold-dim);
+  border: 1px solid var(--gold-border);
+  color: var(--gold);
+}
+.btn-grid.grid-rand .card-btn:hover {
+  background: rgba(232,201,122,0.2);
+  border-color: rgba(232,201,122,0.55);
+  color: #F0D898;
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px var(--gold-glow);
+}
+
+/* 비활성(준비중) 버튼 */
+.card-btn.disabled {
+  opacity: 0.28;
+  cursor: not-allowed;
+  pointer-events: none;
+  border-style: dashed;
+  font-size: 10px;
+  letter-spacing: 0;
+}
+.card-btn.disabled::after {
+  content: '🔒';
+  font-size: 9px;
+  display: block;
+  line-height: 1;
+}
+.card-btn.disabled span { display: block; line-height: 1.2; }
+
+/* ── SECTION DIVIDER ── */
+.section-divider {
+  max-width: 980px;
+  margin: 0 auto 3.6rem;
+  border: none;
+  height: 1px;
+  background: linear-gradient(90deg, transparent 0%, var(--text-dim) 20%, var(--text-dim) 80%, transparent 100%);
+}
+
+/* ── FOOTER ── */
+footer {
+  text-align: center;
+  padding: 2.4rem 1.5rem 3.6rem;
+  font-family: var(--font-base);
+  font-size: 11.5px;
+  font-weight: 500;
+  color: var(--text-muted);
+  line-height: 1.9;
+  border-top: 1px solid var(--text-dim);
+  max-width: 980px;
+  margin: 0 auto;
+}
+footer strong {
+  font-family: var(--font-brand);
+  font-weight: normal;
+  font-size: 13px;
+  color: var(--text);
+  letter-spacing: 0.05em;
+}
+</style>
+</head>
+<body>
+
+<!-- ══ HEADER ══ -->
+<header>
+  <p class="brand-tag">민쌤영어 · 2026 압축보카</p>
+  <h1><span class="hl">압축보카</span> <span class="hl-gold">B 클래스</span></h1>
+  <p class="subtitle">카드 암기 → 세트 테스트 → 랜덤 테스트<br>단계별 완전 학습 시스템</p>
+
+  <div class="stats-row" role="list" aria-label="학습 통계">
+    <div class="stat" role="listitem">
+      <span class="stat-num">1,805</span>
+      <span class="stat-label">총 단어</span>
+    </div>
+    <div class="stat" role="listitem">
+      <span class="stat-num">30</span>
+      <span class="stat-label">학습 세트</span>
+    </div>
+    <div class="stat" role="listitem">
+      <span class="stat-num">3,600</span>
+      <span class="stat-label">총 문항</span>
+    </div>
+    <div class="stat" role="listitem">
+      <span class="stat-num">60</span>
+      <span class="stat-label">테스트</span>
+    </div>
+  </div>
+  <div class="divider-line" aria-hidden="true"></div>
+</header>
+
+<main>
+
+<!-- ① 암기 섹션 -->
+<section class="section-wrap" aria-labelledby="sec-card">
+  <div class="section-head">
+    <div class="section-icon icon-card" aria-hidden="true">📖</div>
+    <h2 class="section-title" id="sec-card"> 암기 섹션 </h2>
+    <span class="section-badge badge-card">30 Sets</span>
+  </div>
+  <p class="section-desc">앞면(영어 단어 + 예문) → 뒷면(뜻 + 해석) 플립 카드로 핵심 어휘를 집중 암기합니다.</p>
+  <nav class="btn-grid grid-card" aria-label="암기 섹션 세트 목록">
+    <a href="set01.html" class="card-btn">Set 01</a>
+    <a href="set02.html" class="card-btn">Set 02</a>
+    <a href="set03.html" class="card-btn">Set 03</a>
+    <a href="set04.html" class="card-btn">Set 04</a>
+    <a href="set05.html" class="card-btn">Set 05</a>
+    <a href="set06.html" class="card-btn">Set 06</a>
+    <a href="set07.html" class="card-btn">Set 07</a>
+    <a href="set08.html" class="card-btn">Set 08</a>
+    <a href="set09.html" class="card-btn">Set 09</a>
+    <a href="set10.html" class="card-btn">Set 10</a>
+    <a href="set11.html" class="card-btn">Set 11</a>
+    <a href="set12.html" class="card-btn">Set 12</a>
+    <a href="set13.html" class="card-btn">Set 13</a>
+    <a href="set14.html" class="card-btn">Set 14</a>
+    <a href="set15.html" class="card-btn">Set 15</a>
+    <a href="set16.html" class="card-btn">Set 16</a>
+    <a href="set17.html" class="card-btn">Set 17</a>
+    <a href="set18.html" class="card-btn">Set 18</a>
+    <a href="set19.html" class="card-btn">Set 19</a>
+    <a href="set20.html" class="card-btn">Set 20</a>
+    <a href="set21.html" class="card-btn">Set 21</a>
+    <a href="set22.html" class="card-btn">Set 22</a>
+    <a href="set23.html" class="card-btn">Set 23</a>
+    <span class="card-btn disabled" aria-disabled="true" title="준비중"><span>Set 24</span></span>
+    <a href="set25.html" class="card-btn">Set 25</a>
+    <a href="set26.html" class="card-btn">Set 26</a>
+    <a href="set27.html" class="card-btn">Set 27</a>
+    <span class="card-btn disabled" aria-disabled="true" title="준비중"><span>Set 28</span></span>
+    <a href="set29.html" class="card-btn">Set 29</a>
+    <a href="set30.html" class="card-btn">Set 30</a>
+    <a href="set31.html" class="card-btn">Set 31</a>
+    <a href="set32.html" class="card-btn">Set 32</a>
+  </nav>
+</section>
+
+<hr class="section-divider" aria-hidden="true">
+
+<!-- ② Set Test -->
+<section class="section-wrap" aria-labelledby="sec-test">
+  <div class="section-head">
+    <div class="section-icon icon-test" aria-hidden="true">📝</div>
+    <h2 class="section-title" id="sec-test">Set Test</h2>
+    <span class="section-badge badge-test">30 Sets</span>
+  </div>
+  <p class="section-desc">각 세트의 단어를 유형A(빈칸완성) + 유형B(선지고르기) 2가지 유형으로 테스트합니다.</p>
+  <nav class="btn-grid grid-test" aria-label="세트별 테스트 목록">
+    <a href="test_set01.html" class="card-btn">Set 01</a>
+    <a href="test_set02.html" class="card-btn">Set 02</a>
+    <a href="test_set03.html" class="card-btn">Set 03</a>
+    <a href="test_set04.html" class="card-btn">Set 04</a>
+    <a href="test_set05.html" class="card-btn">Set 05</a>
+    <a href="test_set06.html" class="card-btn">Set 06</a>
+    <a href="test_set07.html" class="card-btn">Set 07</a>
+    <a href="test_set08.html" class="card-btn">Set 08</a>
+    <a href="test_set09.html" class="card-btn">Set 09</a>
+    <a href="test_set10.html" class="card-btn">Set 10</a>
+    <a href="test_set11.html" class="card-btn">Set 11</a>
+    <a href="test_set12.html" class="card-btn">Set 12</a>
+    <a href="test_set13.html" class="card-btn">Set 13</a>
+    <a href="test_set14.html" class="card-btn">Set 14</a>
+    <a href="test_set15.html" class="card-btn">Set 15</a>
+    <a href="test_set16.html" class="card-btn">Set 16</a>
+    <a href="test_set17.html" class="card-btn">Set 17</a>
+    <a href="test_set18.html" class="card-btn">Set 18</a>
+    <a href="test_set19.html" class="card-btn">Set 19</a>
+    <a href="test_set20.html" class="card-btn">Set 20</a>
+    <a href="test_set21.html" class="card-btn">Set 21</a>
+    <a href="test_set22.html" class="card-btn">Set 22</a>
+    <a href="test_set23.html" class="card-btn">Set 23</a>
+    <span class="card-btn disabled" aria-disabled="true" title="준비중"><span>Set 24</span></span>
+    <a href="test_set25.html" class="card-btn">Set 25</a>
+    <a href="test_set26.html" class="card-btn">Set 26</a>
+    <a href="test_set27.html" class="card-btn">Set 27</a>
+    <span class="card-btn disabled" aria-disabled="true" title="준비중"><span>Set 28</span></span>
+    <a href="test_set29.html" class="card-btn">Set 29</a>
+    <a href="test_set30.html" class="card-btn">Set 30</a>
+    <a href="test_set31.html" class="card-btn">Set 31</a>
+    <a href="test_set32.html" class="card-btn">Set 32</a>
+  </nav>
+</section>
+
+<hr class="section-divider" aria-hidden="true">
+
+<!-- ③ Random Test -->
+<section class="section-wrap" aria-labelledby="sec-rand">
+  <div class="section-head">
+    <div class="section-icon icon-rand" aria-hidden="true">⚡</div>
+    <h2 class="section-title" id="sec-rand">Random Test</h2>
+    <span class="section-badge badge-rand">30 Sets</span>
+  </div>
+  <p class="section-desc">1,805개 전 단어를 무작위 배치한 실전형 테스트입니다. 유형A 20문항 + 유형B 20문항 · 총 40문항.</p>
+  <nav class="btn-grid grid-rand" aria-label="랜덤 테스트 목록">
+    <a href="test_R01.html" class="card-btn">R01</a>
+    <a href="test_R02.html" class="card-btn">R02</a>
+    <a href="test_R03.html" class="card-btn">R03</a>
+    <a href="test_R04.html" class="card-btn">R04</a>
+    <a href="test_R05.html" class="card-btn">R05</a>
+    <a href="test_R06.html" class="card-btn">R06</a>
+    <a href="test_R07.html" class="card-btn">R07</a>
+    <a href="test_R08.html" class="card-btn">R08</a>
+    <a href="test_R09.html" class="card-btn">R09</a>
+    <a href="test_R10.html" class="card-btn">R10</a>
+    <a href="test_R11.html" class="card-btn">R11</a>
+    <a href="test_R12.html" class="card-btn">R12</a>
+    <a href="test_R13.html" class="card-btn">R13</a>
+    <a href="test_R14.html" class="card-btn">R14</a>
+    <a href="test_R15.html" class="card-btn">R15</a>
+    <a href="test_R16.html" class="card-btn">R16</a>
+    <a href="test_R17.html" class="card-btn">R17</a>
+    <a href="test_R18.html" class="card-btn">R18</a>
+    <a href="test_R19.html" class="card-btn">R19</a>
+    <a href="test_R20.html" class="card-btn">R20</a>
+    <a href="test_R21.html" class="card-btn">R21</a>
+    <a href="test_R22.html" class="card-btn">R22</a>
+    <a href="test_R23.html" class="card-btn">R23</a>
+    <a href="test_R24.html" class="card-btn">R24</a>
+    <a href="test_R25.html" class="card-btn">R25</a>
+    <a href="test_R26.html" class="card-btn">R26</a>
+    <a href="test_R27.html" class="card-btn">R27</a>
+    <a href="test_R28.html" class="card-btn">R28</a>
+    <a href="test_R29.html" class="card-btn">R29</a>
+    <a href="test_R30.html" class="card-btn">R30</a>
+  </nav>
+</section>
+
+</main>
+
+<footer>
+  <strong>민쌤영어 · 2026 압축보카</strong><br>
+  편입영어 논리완성 전문 · Stairs to 100<br>
+  본 자료는 수업용이며 무단 배포를 금합니다.
+</footer>
+
+</body>
+</html>

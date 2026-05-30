@@ -1,0 +1,1049 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>민쌤영어 Vocab · Set 03</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&family=DM+Sans:wght@400;500;600&family=Pretendard:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #0B0F1A;
+    --surface: #131929;
+    --surface-hover: #192136;
+    --accent: #7CA7EB;
+    --accent-glow: rgba(124, 167, 235, 0.25);
+    --accent-dim: rgba(124,167,235,0.14);
+    --accent-border: rgba(124,167,235,0.28);
+    --text: #F0EEE8;
+    --text-muted: rgba(240,238,232,0.55);
+    --text-dim: rgba(240,238,232,0.25);
+    
+    /* 카드 뒷면 프리미엄 라이트 테마 변수 */
+    --back-bg: #F7F5F0;
+    --back-text: #111111;
+    --back-muted: #555555;
+    --back-rule: rgba(0,0,0,0.06);
+    --back-ex-bg: rgba(11,15,26,0.04);
+    
+    --radius: 22px;
+    --card-w: 400px;
+    --card-h: 540px;
+    
+    /* 폰트 스택 최적화 */
+    --font-ko: 'Pretendard', 'Malgun Gothic', sans-serif;
+  }
+
+  body {
+    background: var(--bg);
+    background: radial-gradient(circle at top center, #161f36 0%, var(--bg) 70%);
+    color: var(--text);
+    font-family: 'DM Sans', var(--font-ko);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ── HEADER ── */
+  header {
+    width: 100%;
+    max-width: 900px;
+    padding: 2.5rem 2rem 1.2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    margin-bottom: 2rem;
+  }
+  .header-left {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .home-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: var(--text-muted);
+    font-size: 11px;
+    font-weight: 600;
+    padding: 6px 14px;
+    border-radius: 99px;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    letter-spacing: 0.04em;
+  }
+  .home-btn:hover {
+    background: var(--text);
+    color: var(--bg);
+    border-color: var(--text);
+  }
+  .brand { 
+    font-size: 14px; 
+    letter-spacing: 0.14em; 
+    color: var(--accent); 
+    font-weight: 600; 
+    text-transform: uppercase; 
+  }
+  .set-label { 
+    font-size: 13px; 
+    color: var(--text-muted); 
+    font-weight: 500;
+  }
+
+  /* ── PROGRESS ── */
+  .progress-wrap {
+    width: 100%;
+    max-width: 400px;
+    margin-bottom: 1.8rem;
+    padding: 0 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+  .progress-bar-bg {
+    width: 100%;
+    height: 4px;
+    background: rgba(255,255,255,0.08);
+    border-radius: 99px;
+    overflow: hidden;
+  }
+  .progress-bar-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--accent), #a0c4ff);
+    border-radius: 99px;
+    transition: width 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .progress-text {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--text-muted);
+    letter-spacing: 0.08em;
+  }
+
+  /* ── CARD STAGE ── */
+  .stage {
+    width: var(--card-w);
+    height: var(--card-h);
+    perspective: 2000px;
+    cursor: pointer;
+    outline: none;
+    margin-bottom: 0.5rem;
+  }
+
+  .card {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 0.7s cubic-bezier(0.34, 1.56, 0.64, 1);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3), 0 5px 15px rgba(0, 0, 0, 0.2);
+    border-radius: var(--radius);
+  }
+  
+  /* 마우스 오버 및 활성화 상태 입체감 증폭 */
+  .stage:hover .card {
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), 0 0 25px var(--accent-glow);
+  }
+  .stage:focus-visible .card { 
+    box-shadow: 0 0 0 3px var(--accent); 
+  }
+
+  /* 카드 플립 애니메이션 조정 (그림자 반전 포함) */
+  .card.flipped { 
+    transform: rotateY(180deg); 
+  }
+
+  .face {
+    position: absolute;
+    inset: 0;
+    border-radius: var(--radius);
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* ── FRONT ── */
+  .front {
+    background: var(--surface);
+    border: 1px solid rgba(255,255,255,0.08);
+  }
+  .front-topbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 24px 28px 0;
+  }
+  .front-label { 
+    font-size: 11px; 
+    letter-spacing: 0.14em; 
+    text-transform: uppercase; 
+    color: var(--text-dim); 
+    font-weight: 600; 
+  }
+  .pos-pill {
+    font-size: 11px;
+    color: var(--accent);
+    background: var(--accent-dim);
+    border: 1px solid var(--accent-border);
+    padding: 4px 12px;
+    border-radius: 99px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+  }
+  .front-body {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 30px 34px;
+  }
+  .sentence {
+    font-size: 19px;
+    line-height: 1.8;
+    color: rgba(240,238,232,0.92);
+    font-weight: 400;
+    word-break: keep-all;
+  }
+  .sentence .hw {
+    font-size: calc(19px * 1.25);
+    font-weight: 700;
+    color: var(--accent);
+    font-family: 'Playfair Display', serif;
+    display: inline;
+    border-bottom: 2px dashed var(--accent-border);
+    padding-bottom: 2px;
+  }
+  .front-footer {
+    padding: 0 30px 24px;
+    font-size: 12px;
+    color: var(--text-dim);
+    text-align: center;
+    letter-spacing: 0.05em;
+    font-weight: 500;
+  }
+  .deco-bar {
+    height: 4px;
+    background: linear-gradient(90deg, var(--accent) 0%, #a0c4ff 60%, transparent 100%);
+  }
+
+  /* ── BACK ── */
+  .back {
+    background: var(--back-bg);
+    transform: rotateY(180deg);
+  }
+  .back-header {
+    background: #0B0F1A;
+    padding: 24px 28px 20px;
+    border-radius: var(--radius) var(--radius) 0 0;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+  }
+  .back-word {
+    font-family: 'Playfair Display', serif;
+    font-size: 34px;
+    font-weight: 700;
+    color: #ffffff;
+    line-height: 1.1;
+    margin-bottom: 6px;
+    letter-spacing: -0.02em;
+  }
+  .back-pos { 
+    font-size: 12px; 
+    color: var(--accent); 
+    letter-spacing: 0.1em; 
+    font-weight: 600; 
+  }
+  
+  /* 콘텐츠가 길어질 경우 대비한 내부 스크롤바 최적화 */
+  .back-body {
+    flex: 1;
+    padding: 22px 26px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(0, 0, 0, 0.15) transparent;
+  }
+  .back-body::-webkit-scrollbar {
+    width: 5px;
+  }
+  .back-body::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 0, 0, 0.15);
+    border-radius: 99px;
+  }
+  
+  .meaning-block { 
+    display: flex; 
+    flex-direction: column; 
+    gap: 4px; 
+  }
+  .meaning-num { 
+    font-size: 10px; 
+    color: #185FA5; 
+    font-weight: 700; 
+    letter-spacing: 0.08em; 
+  }
+  .meaning-text { 
+    font-size: 15.5px; 
+    color: var(--back-text); 
+    font-weight: 600; 
+    line-height: 1.5; 
+    word-break: keep-all; 
+    overflow-wrap: break-word; 
+    font-family: var(--font-ko);
+  }
+  
+  .rule { 
+    height: 1px; 
+    background: var(--back-rule); 
+    margin: 4px 0;
+  }
+  .ex-block {
+    background: var(--back-ex-bg);
+    border-left: 4px solid var(--accent);
+    border-radius: 0 10px 10px 0;
+    padding: 14px 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .ex-eng { 
+    font-size: 13.5px; 
+    color: #2b2b2b; 
+    line-height: 1.65; 
+  }
+  .ex-eng strong { 
+    color: #185FA5; 
+    font-weight: 700; 
+    font-family: 'Playfair Display', serif;
+    font-size: 14.5px;
+  }
+  .ex-kor { 
+    font-size: 13px; 
+    color: #000000; 
+    font-weight: 700; 
+    line-height: 1.6; 
+    font-family: var(--font-ko);
+    word-break: keep-all;
+  }
+  
+  .back-deco {
+    height: 4px;
+    background: linear-gradient(90deg, transparent 0%, rgba(124,167,235,0.4) 40%, var(--accent) 100%);
+  }
+
+  /* ── NAVIGATION ── */
+  .nav {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    margin-top: 2rem;
+  }
+  .nav-btn {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.08);
+    color: var(--text-muted);
+    font-family: 'DM Sans', var(--font-ko);
+    font-size: 13px;
+    font-weight: 600;
+    padding: 11px 26px;
+    border-radius: 99px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    letter-spacing: 0.02em;
+  }
+  .nav-btn:hover:not(:disabled) { 
+    background: rgba(255,255,255,0.08); 
+    border-color: rgba(255,255,255,0.2); 
+    color: var(--text); 
+  }
+  .nav-btn:disabled { 
+    opacity: 0.15; 
+    cursor: default; 
+  }
+  .flip-btn {
+    background: var(--accent);
+    border: none;
+    color: #0B0F1A;
+    font-family: 'DM Sans', var(--font-ko);
+    font-size: 14px;
+    font-weight: 700;
+    padding: 11px 36px;
+    border-radius: 99px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    letter-spacing: 0.04em;
+    box-shadow: 0 4px 15px rgba(124, 167, 235, 0.3);
+  }
+  .flip-btn:hover { 
+    opacity: 0.95;
+    transform: translateY(-1px);
+    box-shadow: 0 6px 20px rgba(124, 167, 235, 0.4);
+  }
+
+  /* ── WORD LIST ── */
+  .wordlist {
+    width: 100%;
+    max-width: 720px;
+    margin-top: 3rem;
+    padding: 0 1.5rem 4rem;
+  }
+  .wordlist-title {
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--text-dim);
+    margin-bottom: 12px;
+    font-weight: 600;
+  }
+  
+  /* 모바일/데스크톱 대응 최대 높이 제한 및 목록 내부 스크롤화 */
+  .wordlist-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    max-height: 220px;
+    overflow-y: auto;
+    padding-right: 6px;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(255,255,255,0.1) transparent;
+  }
+  .wordlist-grid::-webkit-scrollbar {
+    width: 4px;
+  }
+  .wordlist-grid::-webkit-scrollbar-thumb {
+    background: rgba(255,255,255,0.1);
+    border-radius: 99px;
+  }
+  
+  .word-chip {
+    font-size: 13px;
+    padding: 6px 14px;
+    border-radius: 99px;
+    border: 1px solid rgba(255,255,255,0.08);
+    color: rgba(255,255,255,0.7);
+    cursor: pointer;
+    transition: all 0.18s cubic-bezier(0.4, 0, 0.2, 1);
+    background: transparent;
+    font-family: 'DM Sans', sans-serif;
+  }
+  .word-chip:hover { 
+    border-color: rgba(124,167,235,0.4); 
+    color: var(--accent); 
+    background: rgba(124,167,235,0.05);
+  }
+  .word-chip.active { 
+    background: var(--accent-dim); 
+    border-color: var(--accent); 
+    color: var(--accent); 
+    font-weight: 600; 
+    box-shadow: 0 0 12px rgba(124, 167, 235, 0.15);
+  }
+
+  @media (max-width: 480px) {
+    :root { --card-w: calc(100vw - 2rem); --card-h: 510px; }
+    header { padding: 1.5rem 1rem 1rem; }
+    .brand { font-size: 12px; }
+    .home-btn { padding: 4px 10px; font-size: 10px; }
+    .nav { gap: 10px; width: 100%; padding: 0 1rem; }
+    .nav-btn { flex: 1; padding: 11px 0; text-align: center; }
+    .flip-btn { flex: 1.5; padding: 11px 0; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-left">
+    <a href="index.html" class="home-btn">← 메인</a>
+    <span class="brand">민쌤영어 · English Lab</span>
+  </div>
+  <span class="set-label">Vocabulary Set 03</span>
+</header>
+
+<div class="progress-wrap">
+  <div class="progress-bar-bg"><div class="progress-bar-fill" id="progressFill" style="width:2.4%"></div></div>
+  <span class="progress-text" id="progressText">1 / 42</span>
+</div>
+
+<div class="stage" id="stage" tabindex="0" role="button" aria-label="카드 뒤집기">
+  <div class="card" id="card">
+    <div class="face front" id="frontFace">
+      <div class="front-topbar">
+        <span class="front-label">민쌤영어 · vocab</span>
+        <span class="pos-pill" id="fPos">a.</span>
+      </div>
+      <div class="front-body">
+        <p class="sentence" id="fSentence"></p>
+      </div>
+      <div class="front-footer">탭하거나 스페이스바로 뜻 확인 →</div>
+      <div class="deco-bar"></div>
+    </div>
+    <div class="face back">
+      <div class="back-header">
+        <div class="back-word" id="bWord"></div>
+        <div class="back-pos" id="bPos"></div>
+      </div>
+      <div class="back-body" id="bBody"></div>
+      <div class="back-deco"></div>
+    </div>
+  </div>
+</div>
+
+<div class="nav">
+  <button class="nav-btn" id="btnPrev" onclick="go(-1)">← 이전</button>
+  <button class="flip-btn" onclick="flip()">뒤집기</button>
+  <button class="nav-btn" id="btnNext" onclick="go(1)">다음 →</button>
+</div>
+
+<div class="wordlist">
+  <div class="wordlist-title">Set 03 단어 목록</div>
+  <div class="wordlist-grid" id="wordGrid"></div>
+</div>
+
+<script>
+const DATA = [
+  {
+    word: "supple", pos: "a.",
+    meanings: [
+      { num:"①", text:"(몸·재료가) 유연한, 잘 휘는" },
+      { num:"②", text:"(사고·태도가) 탄력 있는, 융통성 있는" }
+    ],
+    sentence: "Regular stretching keeps the muscles {supple} and significantly reduces the risk of injury during high-intensity physical activity.",
+    translation: "규칙적인 스트레칭은 근육을 유연하게 유지시켜 고강도 신체 활동 중 부상 위험을 크게 줄여준다."
+  },
+  {
+    word: "tactic", pos: "n.",
+    meanings: [
+      { num:"①", text:"(목적 달성을 위한) 전술, 방법" },
+      { num:"②", text:"(군사) 전술, 작전 (cf. strategy 전략보다 구체적·단기적 개념)" },
+      { num:"※", text:"tactics로 복수형으로 자주 쓰임" }
+    ],
+    sentence: "The negotiating team shifted {tactics} midway through the talks, abandoning their aggressive approach in favor of a more conciliatory one.",
+    translation: "협상팀은 회담 도중 전술을 바꾸어, 공격적인 접근 방식을 버리고 보다 화해적인 방식을 택했다."
+  },
+  {
+    word: "trail", pos: "n. / v.",
+    meanings: [
+      { num:"①", text:"(사람·동물이 남긴) 자국, 흔적 / (산·숲의) 오솔길, 산책로" },
+      { num:"②", text:"(연기·먼지 등의) 긴 줄기" },
+      { num:"③", text:"(v.) 뒤쫓다, 미행하다 / 질질 끌리다, 처지다" }
+    ],
+    sentence: "Investigators followed the financial {trail} left by the suspect, eventually uncovering a network of offshore accounts used to launder money.",
+    translation: "수사관들은 용의자가 남긴 금융 흔적을 추적하여 결국 돈세탁에 사용된 역외 계좌 네트워크를 밝혀냈다."
+  },
+  {
+    word: "archaeologist", pos: "n.",
+    meanings: [
+      { num:"①", text:"고고학자 (archaeology 고고학)" },
+      { num:"②", text:"유물·유적을 발굴·연구하는 학자" }
+    ],
+    sentence: "The {archaeologist} spent three field seasons excavating the ancient settlement, carefully documenting each layer of occupation to reconstruct the site's history.",
+    translation: "그 고고학자는 유적지의 역사를 재구성하기 위해 각 점유 층위를 꼼꼼히 기록하며 세 차례의 현장 시즌 동안 고대 정착지를 발굴했다."
+  },
+  {
+    word: "biologist", pos: "n.",
+    meanings: [
+      { num:"①", text:"생물학자 (biology 생물학)" },
+      { num:"cf.", text:"microbiologist 미생물학자 / marine biologist 해양생물학자" }
+    ],
+    sentence: "The marine {biologist} documented a sharp decline in coral reef populations, attributing the deterioration primarily to rising ocean temperatures.",
+    translation: "그 해양 생물학자는 산호초 개체 수의 급격한 감소를 기록했으며, 그 원인을 주로 상승하는 해수 온도로 돌렸다."
+  },
+  {
+    word: "conceal", pos: "v.",
+    meanings: [
+      { num:"①", text:"(물건·사실을) 감추다, 숨기다 ↔ reveal" },
+      { num:"②", text:"(감정을) 드러내지 않다 (conceal one's feelings)" },
+      { num:"③", text:"(concealment n. 은폐)" }
+    ],
+    sentence: "The company had deliberately {concealed} safety data from regulators for years, a revelation that triggered an immediate government investigation.",
+    translation: "그 회사는 수년간 규제 당국으로부터 안전 데이터를 의도적으로 숨겨왔으며, 이 사실이 밝혀지면서 즉각적인 정부 조사가 시작되었다."
+  },
+  {
+    word: "decay", pos: "v. / n.",
+    meanings: [
+      { num:"①", text:"(유기물이) 부패하다, 썩다" },
+      { num:"②", text:"(건물·사회가) 노후화하다, 쇠퇴하다" },
+      { num:"③", text:"(n.) 부패, 부식 / 붕괴, 쇠락 (tooth decay 충치)" }
+    ],
+    sentence: "Once a thriving industrial hub, the city began to {decay} as factories closed and younger generations migrated to more economically dynamic regions.",
+    translation: "한때 번성했던 산업 중심지였던 그 도시는 공장들이 문을 닫고 젊은 세대가 더 역동적인 경제 지역으로 이주하면서 쇠퇴하기 시작했다."
+  },
+  {
+    word: "disadvantage", pos: "n.",
+    meanings: [
+      { num:"①", text:"불리한 점, 약점 ↔ advantage" },
+      { num:"②", text:"(경쟁상) 불이익, 핸디캡 (at a disadvantage 불리한 상황에서)" }
+    ],
+    sentence: "Candidates who lack access to quality education from an early age are placed at a significant {disadvantage} in an increasingly competitive job market.",
+    translation: "어릴 때부터 양질의 교육을 받지 못한 지원자들은 점점 더 경쟁이 치열해지는 취업 시장에서 상당한 불이익을 받게 된다."
+  },
+  {
+    word: "domain", pos: "n.",
+    meanings: [
+      { num:"①", text:"(활동·지식의) 영역, 분야" },
+      { num:"②", text:"(통치·소유의) 영토, 영지" },
+      { num:"③", text:"(인터넷) 도메인" }
+    ],
+    sentence: "Artificial intelligence is rapidly expanding into {domains} once thought to be exclusively human, including creative writing, medical diagnosis, and legal analysis.",
+    translation: "인공지능은 창작, 의료 진단, 법률 분석을 포함하여 한때 인간 고유의 것으로 여겨졌던 영역으로 빠르게 확장되고 있다."
+  },
+  {
+    word: "initiative", pos: "n.",
+    meanings: [
+      { num:"①", text:"주도권, 솔선 (take the initiative 주도권을 잡다)" },
+      { num:"②", text:"(정부·단체의) 계획, 정책" },
+      { num:"③", text:"(새로운 문제 해결을 위한) 발의, 제안" }
+    ],
+    sentence: "The government launched a nationwide {initiative} to promote digital literacy among elderly citizens who had been largely excluded from the information economy.",
+    translation: "정부는 정보 경제에서 크게 소외되었던 노령 시민들의 디지털 리터러시를 증진하기 위한 전국적인 계획을 시작했다."
+  },
+  {
+    word: "latter", pos: "a.",
+    meanings: [
+      { num:"①", text:"(둘 중) 후자의 ↔ former" },
+      { num:"②", text:"(기간의) 후반의, 나중의 (the latter half 후반부)" }
+    ],
+    sentence: "Between economic growth and environmental protection, policymakers have too often prioritized the former at the expense of the {latter}.",
+    translation: "경제 성장과 환경 보호 사이에서, 정책 입안자들은 너무 자주 후자를 희생시키면서 전자를 우선시해왔다."
+  },
+  {
+    word: "lucrative", pos: "a.",
+    meanings: [
+      { num:"①", text:"(사업·직업이) 수익성이 좋은, 돈이 되는" },
+      { num:"②", text:"(a lucrative deal 수익성 높은 거래)" }
+    ],
+    sentence: "What began as a weekend hobby gradually evolved into a highly {lucrative} business, generating more income than her original full-time career.",
+    translation: "주말 취미로 시작된 것이 점차 수익성이 매우 높은 사업으로 발전하여, 원래의 본업보다 더 많은 수입을 창출하게 되었다."
+  },
+  {
+    word: "luster", pos: "n.",
+    meanings: [
+      { num:"①", text:"(표면의) 광택, 윤기" },
+      { num:"②", text:"(명성·업적의) 빛, 영광 (lose its luster 빛을 잃다)" },
+      { num:"※", text:"lustre (영국식 철자)" }
+    ],
+    sentence: "Once celebrated as a pioneer of modern architecture, the firm's {luster} has faded considerably following a series of high-profile project failures.",
+    translation: "한때 현대 건축의 선구자로 칭송받던 그 회사의 명성은 일련의 주목받는 프로젝트 실패 이후 상당히 빛을 잃었다."
+  },
+  {
+    word: "mechanical", pos: "a.",
+    meanings: [
+      { num:"①", text:"기계의, 기계로 작동하는 (mechanical engineering 기계공학)" },
+      { num:"②", text:"(행동이) 기계적인, 자동적인, 생각 없이 하는" },
+      { num:"③", text:"역학의 (mechanical energy 역학적 에너지)" }
+    ],
+    sentence: "Years of repetitive work had made his responses {mechanical}; he answered questions without genuine thought or engagement.",
+    translation: "수년간의 반복적인 업무가 그의 반응을 기계적으로 만들었다. 그는 진정한 사고나 관심 없이 질문에 답했다."
+  },
+  {
+    word: "merchant", pos: "n. / a.",
+    meanings: [
+      { num:"①", text:"(대규모) 상인, 무역업자" },
+      { num:"②", text:"(특정 품목의) 도매상, 판매업자" },
+      { num:"③", text:"(a.) 상업의, 무역의 (merchant ship 상선)" }
+    ],
+    sentence: "Venetian {merchants} of the fifteenth century controlled much of the trade between Europe and the Far East, accumulating enormous wealth in the process.",
+    translation: "15세기 베네치아 상인들은 유럽과 극동 사이의 무역 대부분을 장악하여 그 과정에서 막대한 부를 축적했다."
+  },
+  {
+    word: "mobility", pos: "n.",
+    meanings: [
+      { num:"①", text:"(신체·물리적) 이동성, 가동성" },
+      { num:"②", text:"(사회·계층 간) 유동성, 이동 가능성 (social mobility 사회적 이동성)" },
+      { num:"③", text:"(군사) 기동성" }
+    ],
+    sentence: "Scholars argue that education is the single most powerful driver of social {mobility}, enabling individuals to transcend the economic circumstances of their birth.",
+    translation: "학자들은 교육이 사회적 이동성의 가장 강력한 원동력으로, 개인이 태어난 경제적 환경을 극복할 수 있게 해준다고 주장한다."
+  },
+  {
+    word: "offend", pos: "v.",
+    meanings: [
+      { num:"①", text:"(말·행동으로) 불쾌하게 하다, 감정을 상하게 하다" },
+      { num:"②", text:"(법·규칙을) 위반하다" },
+      { num:"③", text:"(도덕·감각에) 거슬리다 (offend against ~을 어기다)" }
+    ],
+    sentence: "The advertisement was widely criticized for {offending} cultural sensitivities and was pulled from broadcast within twenty-four hours of its release.",
+    translation: "그 광고는 문화적 감수성을 해쳤다는 이유로 광범위한 비판을 받았으며, 공개 후 24시간 이내에 방송에서 내려졌다."
+  },
+  {
+    word: "pervasive", pos: "a.",
+    meanings: [
+      { num:"①", text:"(냄새·영향·태도 등이) 구석구석 퍼지는, 만연한, 널리 퍼진" },
+      { num:"②", text:"(a pervasive influence 광범위한 영향력)" }
+    ],
+    sentence: "The influence of social media on political discourse has become so {pervasive} that it is now nearly impossible to separate online narratives from real-world opinion.",
+    translation: "정치 담론에 대한 소셜 미디어의 영향이 너무 만연해져, 온라인 서사와 현실 여론을 분리하는 것이 이제는 거의 불가능하다."
+  },
+  {
+    word: "prone", pos: "a.",
+    meanings: [
+      { num:"①", text:"(~하는) 경향이 있는, ~하기 쉬운 (prone to error 실수하기 쉬운)" },
+      { num:"②", text:"(자세가) 엎드린, 앞으로 기울어진 ↔ supine" }
+    ],
+    sentence: "Individuals who are {prone} to anxiety tend to interpret ambiguous situations as threatening, even when objective evidence suggests otherwise.",
+    translation: "불안 경향이 있는 사람들은 객관적 증거가 그렇지 않음을 시사할 때조차 모호한 상황을 위협적으로 해석하는 경향이 있다."
+  },
+  {
+    word: "provoke", pos: "v.",
+    meanings: [
+      { num:"①", text:"(반응·감정을) 유발하다, 불러일으키다" },
+      { num:"②", text:"(사람을) 자극하다, 화나게 하다" },
+      { num:"③", text:"(의도적으로) 도발하다 (provoke a reaction 반응을 유발하다)" }
+    ],
+    sentence: "The publication of the study {provoked} a heated debate among scientists about the ethical boundaries of genetic research.",
+    translation: "그 연구의 발표는 유전자 연구의 윤리적 경계에 대한 과학자들 사이의 격렬한 논쟁을 유발했다."
+  },
+  {
+    word: "reluctant", pos: "a.",
+    meanings: [
+      { num:"①", text:"(하기를) 꺼리는, 주저하는, 내키지 않는 (be reluctant to do)" },
+      { num:"※", text:"unwilling보다 완곡한 표현" }
+    ],
+    sentence: "Many senior executives are {reluctant} to embrace radical organizational change, fearing disruption to systems that have historically delivered reliable results.",
+    translation: "많은 고위 임원들은 역사적으로 안정적인 결과를 가져다준 시스템의 혼란을 우려하여 급진적인 조직 변화를 받아들이기를 꺼린다."
+  },
+  {
+    word: "sanction", pos: "n. / v.",
+    meanings: [
+      { num:"①", text:"(위반에 대한) 제재, 처벌 (economic sanctions 경제 제재)" },
+      { num:"②", text:"(공식적) 허가, 승인" },
+      { num:"③", text:"(v.) 공식적으로 승인하다, 허가하다" }
+    ],
+    sentence: "The international community imposed sweeping economic {sanctions} on the regime in response to its continued violation of human rights agreements.",
+    translation: "국제 사회는 인권 협약의 지속적인 위반에 대응하여 그 정권에 포괄적인 경제 제재를 부과했다."
+  },
+  {
+    word: "seemingly", pos: "ad.",
+    meanings: [
+      { num:"①", text:"겉보기에는, 외견상으로는 (seemingly impossible 겉보기에는 불가능한)" },
+      { num:"※", text:"실제와 다를 수 있음을 암시" }
+    ],
+    sentence: "What appeared to be a {seemingly} straightforward contract dispute turned out to involve a complex web of hidden financial arrangements and undisclosed conflicts of interest.",
+    translation: "겉보기에는 단순한 계약 분쟁처럼 보였던 것이 숨겨진 금융 거래와 공개되지 않은 이해 충돌의 복잡한 망을 포함하고 있는 것으로 드러났다."
+  },
+  {
+    word: "soar", pos: "v.",
+    meanings: [
+      { num:"①", text:"(새·비행체가) 높이 날다, 치솟다" },
+      { num:"②", text:"(가격·수치가) 급상승하다, 폭등하다" },
+      { num:"③", text:"(감정·희망이) 고양되다" }
+    ],
+    sentence: "Housing prices in the capital have continued to {soar} despite government intervention, pricing an entire generation out of the property market.",
+    translation: "정부 개입에도 불구하고 수도의 주택 가격은 계속 폭등하여, 한 세대 전체를 부동산 시장에서 배제시키고 있다."
+  },
+  {
+    word: "so-called", pos: "a.",
+    meanings: [
+      { num:"①", text:"소위, 이른바 (객관적 지칭)" },
+      { num:"②", text:"(의심·비꼼을 담아) 이른바, 소위 ~라는 (the so-called expert)" }
+    ],
+    sentence: "The {so-called} gig economy has created flexible work opportunities for many, but critics argue that it has simultaneously eroded job security and worker protections.",
+    translation: "이른바 긱 이코노미는 많은 사람들에게 유연한 일자리 기회를 창출했지만, 비평가들은 동시에 고용 안정성과 노동자 보호를 약화시켰다고 주장한다."
+  },
+  {
+    word: "theoretical", pos: "a.",
+    meanings: [
+      { num:"①", text:"이론적인, 이론에 기반한 ↔ practical" },
+      { num:"②", text:"(실제로는 일어나지 않는) 가상의, 이론상의" }
+    ],
+    sentence: "The gap between {theoretical} models and real-world outcomes remains one of the central challenges in economic forecasting.",
+    translation: "이론적 모델과 현실 결과 사이의 격차는 경제 예측에서 핵심적인 과제 중 하나로 남아 있다."
+  },
+  {
+    word: "ticket", pos: "n.",
+    meanings: [
+      { num:"①", text:"(교통·공연의) 표, 티켓" },
+      { num:"②", text:"(주차·교통 위반) 딱지, 과태료" },
+      { num:"③", text:"(선거의) 후보자 명단, 공천 / (비격식) 딱 맞는 것 (just the ticket)" }
+    ],
+    sentence: "He returned to find a parking {ticket} tucked under his windshield wiper, despite having been gone for less than ten minutes.",
+    translation: "그는 10분도 채 지나지 않아 돌아왔지만 앞 유리 와이퍼 아래에 주차 딱지가 꽂혀 있는 것을 발견했다."
+  },
+  {
+    word: "addiction", pos: "n.",
+    meanings: [
+      { num:"①", text:"(약물·행동에 대한) 중독 (addiction to gambling 도박 중독)" },
+      { num:"②", text:"(강한) 집착, 탐닉" },
+      { num:"③", text:"addict n. 중독자 / addictive a. 중독성 있는" }
+    ],
+    sentence: "Researchers have found that social media platforms are deliberately designed to exploit psychological vulnerabilities and foster {addiction} in their users.",
+    translation: "연구자들은 소셜 미디어 플랫폼이 사용자의 심리적 취약점을 이용하고 중독을 조장하도록 의도적으로 설계되었다는 사실을 발견했다."
+  },
+  {
+    word: "allege", pos: "v.",
+    meanings: [
+      { num:"①", text:"(증거 없이) 주장하다, 단언하다" },
+      { num:"②", text:"(법적으로) ~라고 주장하다, 혐의를 제기하다 (it is alleged that)" },
+      { num:"※", text:"아직 입증되지 않은 주장에 사용" }
+    ],
+    sentence: "The whistleblower {alleged} that senior management had been aware of the safety violations for months before the accident occurred.",
+    translation: "내부 고발자는 고위 경영진이 사고 발생 수개월 전부터 안전 위반 사실을 알고 있었다고 주장했다."
+  },
+  {
+    word: "cheer", pos: "v. / n.",
+    meanings: [
+      { num:"①", text:"응원하다, 환호하다 / (사람을) 기운 나게 하다 (cheer up)" },
+      { num:"②", text:"(n.) 환호성, 응원" },
+      { num:"③", text:"(pl.) 건배 (Three cheers! 만세 세 번!)" }
+    ],
+    sentence: "The unexpected letter of support from her former mentor {cheered} her considerably during what had been an especially difficult period in her career.",
+    translation: "전 멘토로부터의 예상치 못한 지지 편지는 그녀의 경력에서 특히 힘든 시기 동안 그녀를 상당히 기운 나게 해주었다."
+  },
+  {
+    word: "clinical", pos: "a.",
+    meanings: [
+      { num:"①", text:"(의학) 임상의, 임상에 관한 (clinical trial 임상시험)" },
+      { num:"②", text:"(태도가) 냉정한, 감정 없는, 객관적인" },
+      { num:"③", text:"(환경이) 삭막한, 무미건조한" }
+    ],
+    sentence: "The drug passed all {clinical} trials successfully, demonstrating both safety and efficacy across a diverse range of patient populations.",
+    translation: "그 약물은 다양한 환자군에서 안전성과 유효성을 모두 입증하며 모든 임상 시험을 성공적으로 통과했다."
+  },
+  {
+    word: "compared with", pos: "phr.",
+    meanings: [
+      { num:"①", text:"~와 비교하여, ~에 비해서" },
+      { num:"※", text:"compared to(유사성 강조)와 구별; compared with는 차이점 대조 시 선호" }
+    ],
+    sentence: "{Compared with} previous generations, today's students have access to an unprecedented volume of information but often struggle to evaluate its reliability.",
+    translation: "이전 세대와 비교하여, 오늘날의 학생들은 전례 없는 양의 정보에 접근할 수 있지만 그 신뢰성을 평가하는 데 어려움을 겪는 경우가 많다."
+  },
+  {
+    word: "deserve", pos: "v.",
+    meanings: [
+      { num:"①", text:"(보상·처벌을) ~받을 만하다, ~할 자격이 있다" },
+      { num:"②", text:"(관심·고려를) ~할 가치가 있다 (deserve attention 주목받을 만하다)" }
+    ],
+    sentence: "The question of whether economic growth should take precedence over environmental protection {deserves} far more serious attention than it currently receives in policy debates.",
+    translation: "경제 성장이 환경 보호보다 우선시되어야 하는지의 문제는 현재 정책 논쟁에서 받고 있는 것보다 훨씬 더 진지한 주목을 받을 가치가 있다."
+  },
+  {
+    word: "devastating", pos: "a.",
+    meanings: [
+      { num:"①", text:"(피해·충격이) 파괴적인, 엄청난" },
+      { num:"②", text:"(비판이) 통렬한, 신랄한" },
+      { num:"③", text:"(비격식) 매우 매력적인, 압도적인" }
+    ],
+    sentence: "The wildfire had a {devastating} impact on the region's biodiversity, destroying habitats that had taken centuries to develop.",
+    translation: "산불은 그 지역의 생물 다양성에 파괴적인 영향을 미쳐, 수백 년에 걸쳐 형성된 서식지를 파괴했다."
+  },
+  {
+    word: "dose", pos: "n. / v.",
+    meanings: [
+      { num:"①", text:"(약의) 복용량, 1회 분량" },
+      { num:"②", text:"(경험·감정의) 일정량, 한 차례 (a dose of reality 현실 직시)" },
+      { num:"③", text:"(v.) (약을) 복용시키다, 투여하다" }
+    ],
+    sentence: "Traveling alone through unfamiliar territory gave her a healthy {dose} of humility and a renewed appreciation for the kindness of strangers.",
+    translation: "낯선 지역을 혼자 여행하는 것은 그녀에게 적당한 겸손함과 낯선 이들의 친절에 대한 새로운 감사함을 가져다주었다."
+  },
+  {
+    word: "embed", pos: "v.",
+    meanings: [
+      { num:"①", text:"(물체를) 박다, 끼워 넣다" },
+      { num:"②", text:"(개념·정보를) 삽입하다, 내재시키다 (deeply embedded 깊이 뿌리박힌)" },
+      { num:"③", text:"(기자를 부대에) 종군시키다" }
+    ],
+    sentence: "Prejudice that is deeply {embedded} in institutional structures is far more difficult to address than overt acts of individual discrimination.",
+    translation: "제도적 구조에 깊이 뿌리박힌 편견은 개인의 명백한 차별 행위보다 해결하기가 훨씬 더 어렵다."
+  },
+  {
+    word: "empirical", pos: "a.",
+    meanings: [
+      { num:"①", text:"(이론이 아닌) 경험에 기반한, 실증적인" },
+      { num:"②", text:"실험·관찰로 검증 가능한 (empirical evidence 실증적 증거) ↔ theoretical" }
+    ],
+    sentence: "The theory, however elegant, cannot be accepted by the scientific community until it is supported by sufficient {empirical} evidence gathered through controlled experimentation.",
+    translation: "아무리 우아한 이론이라도 통제된 실험을 통해 수집된 충분한 실증적 증거가 뒷받침되기 전까지는 과학계에서 받아들여질 수 없다."
+  },
+  {
+    word: "expense", pos: "n.",
+    meanings: [
+      { num:"①", text:"비용, 지출 / (pl.) 경비, 업무상 지출" },
+      { num:"②", text:"at the expense of ~을 희생하여" },
+      { num:"③", text:"(비유) 대가, 희생" }
+    ],
+    sentence: "The company achieved record profits, but critics argued that this success came at the {expense} of employee welfare and long-term sustainability.",
+    translation: "회사는 기록적인 수익을 달성했지만, 비평가들은 이 성공이 직원 복지와 장기적 지속 가능성을 희생한 대가로 이루어졌다고 주장했다."
+  },
+  {
+    word: "highlight", pos: "v. / n.",
+    meanings: [
+      { num:"①", text:"(v.) 강조하다, 부각시키다 / (형광펜으로) 표시하다" },
+      { num:"②", text:"(n.) (행사·경기의) 하이라이트, 가장 흥미로운 부분" },
+      { num:"③", text:"(n.) (머리의) 하이라이트 염색" }
+    ],
+    sentence: "The report {highlighted} a number of systemic weaknesses in the country's public health infrastructure that had been overlooked for decades.",
+    translation: "그 보고서는 수십 년간 간과되어 온 국가 공중 보건 인프라의 여러 구조적 약점들을 부각시켰다."
+  },
+  {
+    word: "household", pos: "n. / a.",
+    meanings: [
+      { num:"①", text:"(함께 사는) 가정, 세대 / 가족 구성원" },
+      { num:"②", text:"(a.) 가정의, 가정용의" },
+      { num:"③", text:"(a.) 누구나 아는, 친숙한 (household name)" }
+    ],
+    sentence: "The survey found that the average {household} in the region spends nearly thirty percent of its monthly income on housing alone.",
+    translation: "그 설문조사는 해당 지역의 평균 가정이 월 소득의 거의 30퍼센트를 주거비에만 지출한다는 것을 발견했다."
+  },
+  {
+    word: "impressive", pos: "a.",
+    meanings: [
+      { num:"①", text:"(규모·성과가) 인상적인, 감동적인" },
+      { num:"②", text:"(능력이) 주목할 만한, 뛰어난" }
+    ],
+    sentence: "The young pianist's {impressive} performance silenced even the most skeptical members of the audience, who had not expected such technical mastery from someone so young.",
+    translation: "그 젊은 피아니스트의 인상적인 연주는 그토록 어린 사람에게서 그런 기교적 숙련도를 기대하지 않았던 가장 회의적인 청중마저 침묵하게 만들었다."
+  },
+  {
+    word: "in short", pos: "phr.",
+    meanings: [
+      { num:"①", text:"간단히 말하면, 요컨대 (= in brief, in a word)" },
+      { num:"※", text:"앞 내용을 요약·정리할 때 사용" }
+    ],
+    sentence: "The project was underfunded, poorly managed, and launched without adequate testing; {in short}, it was destined to fail from the very beginning.",
+    translation: "그 프로젝트는 자금이 부족하고, 관리가 부실했으며, 충분한 테스트 없이 출시되었다. 요컨대, 처음부터 실패할 운명이었다."
+  },
+  {
+    word: "infrastructure", pos: "n.",
+    meanings: [
+      { num:"①", text:"(도로·전력·통신 등) 사회 기반 시설" },
+      { num:"②", text:"(조직·시스템의) 기본 구조, 하부 구조" }
+    ],
+    sentence: "Sustained economic development is impossible without first investing in the {infrastructure} necessary to support transportation, communication, and energy distribution.",
+    translation: "교통, 통신, 에너지 분배를 지원하는 데 필요한 사회 기반 시설에 먼저 투자하지 않고서는 지속적인 경제 발전이 불가능하다."
+  },
+  {
+    word: "initiate", pos: "v.",
+    meanings: [
+      { num:"①", text:"(과정·행동을) 시작하다, 개시하다" },
+      { num:"②", text:"(새로운 구성원을) 입문시키다, 가입시키다" },
+      { num:"③", text:"(비밀·지식을) 전수하다 (initiate A into B)" }
+    ],
+    sentence: "The government {initiated} a formal review of its immigration policy following mounting public pressure from both ends of the political spectrum.",
+    translation: "정부는 정치적 스펙적트럼의 양 극단으로부터 커지는 공적 압력에 따라 이민 정책에 대한 공식 검토를 개시했다."
+  },
+  {
+    word: "legacy", pos: "n.",
+    meanings: [
+      { num:"①", text:"(선인이 남긴) 유산, 업적" },
+      { num:"②", text:"(법적) 유증, 상속 재산" },
+      { num:"③", text:"(과거에서 비롯된) 잔재, 영향 (legacy system 구형 시스템)" }
+    ],
+    sentence: "The civil rights movement left an enduring {legacy} that continues to shape legislation, judicial interpretation, and social norms decades after its peak.",
+    translation: "민권 운동은 그 절정기로부터 수십 년이 지난 지금도 입법, 사법 해석, 사회 규범을 계속해서 형성하는 지속적인 유산을 남겼다."
+  },
+  {
+    word: "pose", pos: "v. / n.",
+    meanings: [
+      { num:"①", text:"(문제·위협을) 제기하다, 야기하다 (pose a threat)" },
+      { num:"②", text:"(사진을 위해) 자세를 취하다 / (~인 척) 가장하다 (pose as)" },
+      { num:"③", text:"(n.) 자세, 포즈 / 가식, 허세" }
+    ],
+    sentence: "The rapid proliferation of deepfake technology {poses} a serious threat to the integrity of democratic elections and the public's ability to distinguish fact from fiction.",
+    translation: "딥페이크 기술의 급속한 확산은 민주주의 선거의 무결성과 사실과 허구를 구별하는 대중의 능력에 심각한 위협을 제기한다."
+  },
+  {
+    word: "preference", pos: "n.",
+    meanings: [
+      { num:"①", text:"(더 좋아하는) 선호, 기호" },
+      { num:"②", text:"우선권, 우대 (give preference to ~을 우선시하다)" },
+      { num:"③", text:"in preference to ~보다 선호하여" }
+    ],
+    sentence: "Consumer {preferences} have shifted dramatically over the past decade, with an increasing number of buyers prioritizing sustainability over price when making purchasing decisions.",
+    translation: "지난 10년간 소비자 선호도가 크게 변화하여, 구매 결정 시 가격보다 지속 가능성을 우선시하는 구매자가 점점 늘고 있다."
+  },
+  {
+    word: "ratification", pos: "n.",
+    meanings: [
+      { num:"①", text:"(조약·협약의) 비준, 공식 승인" },
+      { num:"②", text:"(결정·합의의) 재확인, 인준 (ratify v. 비준하다)" }
+    ],
+    sentence: "The treaty required {ratification} by at least two-thirds of the member states before it could come into legal effect across the region.",
+    translation: "그 조약은 지역 전반에 걸쳐 법적 효력을 발휘하기 전에 회원국의 최소 3분의 2의 비준을 필요로 했다."
+  }
+];
+
+let current = 0;
+
+function renderSentence(t) {
+  return t.replace(/\{([^}]+)\}/g, '<span class="hw">$1</span>');
+}
+
+function renderCard(idx) {
+  const d = DATA[idx];
+  document.getElementById('fPos').textContent = d.pos;
+  document.getElementById('fSentence').innerHTML = renderSentence(d.sentence);
+  document.getElementById('bWord').textContent = d.word;
+  document.getElementById('bPos').textContent = d.pos;
+
+  const exEng = d.sentence.replace(/\{([^}]+)\}/g, '<strong>$1</strong>');
+  const exHtml = `<div class="ex-block"><p class="ex-eng">${exEng}</p><p class="ex-kor">${d.translation}</p></div>`;
+
+  let bodyHtml = '';
+  d.meanings.forEach(m => {
+    bodyHtml += `<div class="meaning-block"><span class="meaning-num">${m.num} 의미</span><span class="meaning-text">${m.text}</span></div>`;
+  });
+  bodyHtml += '<div class="rule"></div>' + exHtml;
+  
+  const bBody = document.getElementById('bBody');
+  bBody.innerHTML = bodyHtml;
+  
+  // 새로운 단어로 넘어갈 때 뒷면 내부 스크롤 위치를 맨 위로 초기화
+  bBody.scrollTop = 0;
+
+  document.getElementById('progressFill').style.width = ((idx + 1) / DATA.length * 100).toFixed(1) + '%';
+  document.getElementById('progressText').textContent = `${idx + 1} / ${DATA.length}`;
+  document.getElementById('btnPrev').disabled = idx === 0;
+  document.getElementById('btnNext').disabled = idx === DATA.length - 1;
+  document.querySelectorAll('.word-chip').forEach((el, i) => el.classList.toggle('active', i === idx));
+
+  // 현재 활성화된 단어 칩 위치를 자동 감지해 칩 목록 뷰를 부드럽게 스크롤링
+  const activeChip = document.querySelector('.word-chip.active');
+  if (activeChip) {
+    activeChip.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'nearest' });
+  }
+
+  document.getElementById('card').classList.remove('flipped');
+}
+
+function flip() { document.getElementById('card').classList.toggle('flipped'); }
+function go(dir) {
+  const next = current + dir;
+  if (next < 0 || next >= DATA.length) return;
+  current = next; renderCard(current);
+}
+
+const grid = document.getElementById('wordGrid');
+DATA.forEach((d, i) => {
+  const btn = document.createElement('button');
+  btn.className = 'word-chip' + (i === 0 ? ' active' : '');
+  btn.textContent = d.word;
+  btn.onclick = () => { current = i; renderCard(i); };
+  grid.appendChild(btn);
+});
+
+document.getElementById('stage').addEventListener('click', flip);
+document.addEventListener('keydown', e => {
+  if (e.key === 'ArrowRight') go(1);
+  if (e.key === 'ArrowLeft') go(-1);
+  if (e.key === ' ' || e.key === 'Enter') { e.preventDefault(); flip(); }
+});
+
+renderCard(0);
+</script>
+</body>
+</html>

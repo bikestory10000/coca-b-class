@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>민쌤영어 Vocab · Set 25</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,400&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+
+<style>
+  /* 범용 디자인 시스템 및 CSS 변수 정밀화 */
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  
+  :root {
+    --bg: #0B0F1A; 
+    --surface: #131929; 
+    --accent: #7CA7EB;
+    --accent-dim: rgba(124, 167, 235, 0.12); 
+    --accent-border: rgba(124, 167, 235, 0.25);
+    --text: #F0EEE8; 
+    --text-muted: rgba(240, 238, 232, 0.5); 
+    --text-dim: rgba(240, 238, 232, 0.25);
+    
+    /* 백면 세팅 */
+    --back-bg: #F8F7F4; 
+    --back-text: #111111; 
+    --back-muted: #4A4A4A; 
+    --back-rule: rgba(0, 0, 0, 0.06); 
+    --back-ex-bg: rgba(11, 15, 26, 0.04);
+    
+    /* 카드 및 컴포넌트 구조 수치 */
+    --radius: 24px; 
+    --card-w: 400px; 
+    --card-h: 540px;
+    
+    /* 프리미엄 폰트 스택 */
+    --font-ko: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+    --font-en: 'DM Sans', sans-serif;
+    --font-serif: 'Playfair Display', Georgia, serif;
+  }
+
+  body { 
+    background: var(--bg); 
+    color: var(--text); 
+    font-family: var(--font-en); 
+    min-height: 100vh; 
+    display: flex; 
+    flex-direction: column; 
+    align-items: center;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* 글로벌 웹킷 스크롤바 커스텀 */
+  ::-webkit-scrollbar { width: 6px; height: 6px; }
+  ::-webkit-scrollbar-track { background: transparent; }
+  ::-webkit-scrollbar-thumb { background: rgba(255, 255, 255, 0.1); border-radius: 99px; }
+  ::-webkit-scrollbar-thumb:hover { background: rgba(255, 255, 255, 0.2); }
+
+  /* 헤더 및 홈 링크 고도화 */
+  header { 
+    width: 100%; 
+    max-width: 900px; 
+    padding: 2.5rem 2rem 1.2rem; 
+    display: flex; 
+    align-items: center; 
+    justify-content: space-between; 
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05); 
+    margin-bottom: 2rem; 
+  }
+  .header-left { display: flex; align-items: center; gap: 16px; }
+  .home-btn {
+    font-family: var(--font-ko);
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--text-muted);
+    text-decoration: none;
+    padding: 6px 14px;
+    border-radius: 99px;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    transition: all 0.2s ease;
+  }
+  .home-btn:hover {
+    color: var(--accent);
+    background: var(--accent-dim);
+    border-color: var(--accent-border);
+  }
+  .brand { font-size: 14px; letter-spacing: 0.14em; color: #ffffff; font-weight: 700; text-transform: uppercase; }
+  .brand span { color: var(--accent); }
+  .set-label { font-size: 13px; color: var(--text-muted); font-weight: 500; letter-spacing: 0.03em; }
+
+  /* 프로그레스 바 */
+  .progress-wrap { width: 100%; max-width: 400px; margin-bottom: 1.8rem; padding: 0 1rem; display: flex; flex-direction: column; align-items: center; gap: 10px; }
+  .progress-bar-bg { width: 100%; height: 4px; background: rgba(255, 255, 255, 0.06); border-radius: 99px; overflow: hidden; }
+  .progress-bar-fill { height: 100%; background: linear-gradient(90deg, #5B86E5, var(--accent)); border-radius: 99px; transition: width 0.45s cubic-bezier(0.4, 0, 0.2, 1); }
+  .progress-text { font-size: 12px; color: var(--text-muted); letter-spacing: 0.1em; font-weight: 600; }
+
+  /* 스테이지 및 3D 입체 플립 카드 시스템 */
+  .stage { width: var(--card-w); height: var(--card-h); perspective: 2000px; cursor: pointer; outline: none; }
+  .card { 
+    width: 100%; 
+    height: 100%; 
+    position: relative; 
+    transform-style: preserve-3d; 
+    transition: transform 0.7s cubic-bezier(0.23, 1, 0.32, 1); 
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.35), 0 5px 15px rgba(0, 0, 0, 0.2);
+    border-radius: var(--radius);
+  }
+  
+  /* 뒤집힐 때 입체감 전환 효과 */
+  .card.flipped { 
+    transform: rotateY(180deg); 
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15), 0 5px 15px rgba(0, 0, 0, 0.08);
+  }
+  
+  .face { position: absolute; inset: 0; border-radius: var(--radius); backface-visibility: hidden; -webkit-backface-visibility: hidden; overflow: hidden; }
+  
+  /* 카드 앞면 (Dark 프리미엄) */
+  .front { background: var(--surface); border: 1px solid rgba(255, 255, 255, 0.06); display: flex; flex-direction: column; }
+  .front-topbar { display: flex; align-items: center; justify-content: space-between; padding: 26px 28px 0; }
+  .front-label { font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-dim); font-weight: 600; }
+  .pos-pill { font-size: 11px; color: var(--accent); background: var(--accent-dim); border: 1px solid var(--accent-border); padding: 4px 14px; border-radius: 99px; font-weight: 600; letter-spacing: 0.05em; font-style: italic; }
+  .front-body { flex: 1; display: flex; flex-direction: column; justify-content: center; padding: 0 34px; }
+  
+  /* 영문 코퍼스 타이포그래피 */
+  .sentence { font-size: 18px; line-height: 1.8; color: rgba(240, 238, 232, 0.9); font-weight: 400; letter-spacing: -0.01em; }
+  .sentence .hw { font-family: var(--font-serif); font-size: 24px; font-weight: 700; color: var(--accent); display: inline; margin-right: 2px; text-underline-offset: 4px; }
+  .front-footer { padding: 0 34px 24px; font-size: 12px; color: var(--text-muted); text-align: center; letter-spacing: 0.05em; font-family: var(--font-ko); font-weight: 500; opacity: 0.8; }
+  .deco-bar { height: 4px; background: linear-gradient(90deg, var(--accent) 0%, #5B86E5 50%, transparent 100%); }
+
+  /* 카드 뒷면 (Light 아카데믹 텍스트북 스타일) */
+  .back { background: var(--back-bg); transform: rotateY(180deg); display: flex; flex-direction: column; border: 1px solid rgba(0, 0, 0, 0.08); }
+  .back-header { background: #0F1424; padding: 26px 28px 22px; border-radius: calc(var(--radius) - 1px) calc(var(--radius) - 1px) 0 0; }
+  .back-word { font-family: var(--font-serif); font-size: 36px; font-weight: 700; color: #ffffff; line-height: 1.1; letter-spacing: -0.02em; }
+  .back-pos { font-size: 12px; color: var(--accent); letter-spacing: 0.1em; font-weight: 600; text-transform: uppercase; margin-top: 4px; }
+  
+  /* 내부 스크롤바 방어 코드 및 커스텀 트랙 */
+  .back-body { flex: 1; padding: 22px 26px; display: flex; flex-direction: column; gap: 14px; overflow-y: auto; scroll-behavior: smooth; }
+  .back-body::-webkit-scrollbar { width: 5px; }
+  .back-body::-webkit-scrollbar-thumb { background: rgba(0, 0, 0, 0.12); border-radius: 99px; }
+  .back-body::-webkit-scrollbar-thumb:hover { background: rgba(0, 0, 0, 0.25); }
+  
+  /* 아카데믹 한국어 폰트 매핑 및 가독성 최적화 */
+  .meaning-block { display: flex; flex-direction: column; gap: 4px; font-family: var(--font-ko); }
+  .meaning-num { font-size: 10px; color: #185FA5; font-weight: 800; letter-spacing: 0.08em; }
+  .meaning-text { font-size: 15.5px; color: var(--back-text) !important; font-weight: 700; line-height: 1.65; word-break: keep-all; }
+  .meaning-sub { font-size: 13.5px; color: var(--back-muted); font-weight: 500; line-height: 1.6; display: block; padding-left: 6px; margin-top: 2px; border-left: 2px solid rgba(0, 0, 0, 0.08); }
+  
+  .rule { height: 1px; background: var(--back-rule); margin: 4px 0; }
+  .ex-block { background: var(--back-ex-bg); border-left: 4px solid #185FA5; border-radius: 0 12px 12px 0; padding: 14px 16px; display: flex; flex-direction: column; gap: 8px; }
+  .ex-eng { font-size: 13.5px; color: #222222; line-height: 1.65; font-weight: 400; letter-spacing: -0.01em; }
+  .ex-eng strong { color: #185FA5; font-weight: 700; font-family: var(--font-serif); font-size: 15px; }
+  .ex-kor { font-size: 13.5px; color: #000000; font-weight: 600; line-height: 1.65; font-family: var(--font-ko); word-break: keep-all; }
+  .back-deco { height: 4px; background: linear-gradient(90deg, transparent 0%, rgba(24, 95, 165, 0.2) 50%, #185FA5 100%); }
+
+  /* 컨트롤 컨트롤러 네비게이션 */
+  .nav { display: flex; align-items: center; gap: 16px; margin-top: 2.2rem; }
+  .nav-btn { background: rgba(255, 255, 255, 0.04); border: 1px solid rgba(255, 255, 255, 0.08); color: var(--text); font-family: var(--font-ko); font-size: 13.5px; font-weight: 600; padding: 11px 26px; border-radius: 99px; cursor: pointer; transition: all 0.2s ease; letter-spacing: -0.02em; }
+  .nav-btn:hover:not(:disabled) { background: rgba(124, 167, 235, 0.08); border-color: var(--accent-border); color: var(--accent); }
+  .nav-btn:disabled { opacity: 0.15; cursor: not-allowed; }
+  .flip-btn { background: linear-gradient(135deg, var(--accent), #5B86E5); border: none; color: #0B0F1A; font-family: var(--font-ko); font-size: 14px; font-weight: 700; padding: 11px 36px; border-radius: 99px; cursor: pointer; transition: all 0.25s ease; box-shadow: 0 4px 15px rgba(124, 167, 235, 0.25); letter-spacing: -0.02em; }
+  .flip-btn:hover { transform: translateY(-1px); box-shadow: 0 6px 20px rgba(124, 167, 235, 0.4); opacity: 0.95; }
+
+  /* 하단 단어 그리드 및 스마트 뷰포트 제한 스크롤 컴포넌트 */
+  .wordlist { width: 100%; max-width: 750px; margin-top: 3.5rem; padding: 0 1.5rem 4rem; }
+  .wordlist-title { font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 14px; font-weight: 600; font-family: var(--font-ko); }
+  
+  /* 세로 제한 스크롤 뷰 구현 */
+  .wordlist-grid { 
+    display: flex; 
+    flex-wrap: wrap; 
+    gap: 8px; 
+    max-height: 180px; 
+    overflow-y: auto; 
+    padding: 6px 4px;
+    border: 1px solid rgba(255, 255, 255, 0.03);
+    border-radius: 14px;
+    background: rgba(255, 255, 255, 0.01);
+    scroll-behavior: smooth;
+  }
+  .wordlist-grid::-webkit-scrollbar { width: 4px; }
+  .wordlist-grid::-webkit-scrollbar-thumb { background: rgba(255, 255, 255, 0.08); border-radius: 99px; }
+
+  .word-chip { 
+    font-size: 12.5px; 
+    padding: 6px 14px; 
+    border-radius: 99px; 
+    border: 1px solid rgba(255, 255, 255, 0.08); 
+    color: rgba(255, 255, 255, 0.7); 
+    cursor: pointer; 
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1); 
+    background: transparent; 
+    font-family: var(--font-en);
+    font-weight: 500;
+  }
+  .word-chip:hover { border-color: var(--accent-border); color: #ffffff; background: rgba(255, 255, 255, 0.02); }
+  .word-chip.active { background: var(--accent-dim); border-color: var(--accent); color: var(--accent); font-weight: 600; box-shadow: inset 0 0 8px rgba(124, 167, 235, 0.1); }
+
+  @media (max-width: 480px) { 
+    :root { --card-w: calc(100vw - 2rem); --card-h: 520px; } 
+    header { padding: 1.5rem 1rem 1rem; margin-bottom: 1.2rem; } 
+    .home-btn { padding: 5px 10px; font-size: 11px; }
+    .brand { font-size: 12px; }
+    .nav { gap: 10px; }
+    .nav-btn { padding: 10px 18px; font-size: 12px; }
+    .flip-btn { padding: 10px 28px; font-size: 13px; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-left">
+    <a href="index.html" class="home-btn">← 메인으로</a>
+    <span class="brand">민쌤영어 <span>·</span> English Lab</span>
+  </div>
+  <span class="set-label">Vocabulary Set 25</span>
+</header>
+
+<div class="progress-wrap">
+  <div class="progress-bar-bg"><div class="progress-bar-fill" id="progressFill"></div></div>
+  <span class="progress-text" id="progressText">1 / 58</span>
+</div>
+
+<div class="stage" id="stage" tabindex="0" role="button" aria-label="카드 뒤집기">
+  <div class="card" id="card">
+    <div class="face front">
+      <div class="front-topbar">
+        <span class="front-label">민쌤영어 · vocab</span>
+        <span class="pos-pill" id="fPos">n.</span>
+      </div>
+      <div class="front-body">
+        <p class="sentence" id="fSentence"></p>
+      </div>
+      <div class="front-footer">탭하거나 스페이스바로 뜻 확인 →</div>
+      <div class="deco-bar"></div>
+    </div>
+    <div class="face back">
+      <div class="back-header">
+        <div class="back-word" id="bWord"></div>
+        <div class="back-pos" id="bPos"></div>
+      </div>
+      <div class="back-body" id="bBody"></div>
+      <div class="back-deco"></div>
+    </div>
+  </div>
+</div>
+
+<div class="nav">
+  <button class="nav-btn" id="btnPrev" onclick="go(-1)">← 이전 단어</button>
+  <button class="flip-btn" onclick="flip()">정답 확인</button>
+  <button class="nav-btn" id="btnNext" onclick="go(1)">다음 단어 →</button>
+</div>
+
+<div class="wordlist">
+  <div class="wordlist-title">Set 25 단어 목록</div>
+  <div class="wordlist-grid" id="wordGrid"></div>
+</div>
+
+<script>
+// 구조 일관성 유지를 위한 데이터 객체
+const DATA = [{"word": "perpetual", "pos": "a.", "meanings": [{"num": "①", "text": "(끊임없이) 계속되는, 영속적인 / (비격식) 자주 일어나는 (perpetual motion 영구 운동)"}, {"num": "②", "text": "perpetually ad. 영속적으로"}], "sentence": "The {perpetual} tension between the need for organizational stability and the imperative to adapt to changing circumstances is one of the defining challenges of institutional management.", "translation": "조직적 안정의 필요와 변화하는 상황에 적응해야 하는 명령 사이의 영속적인 긴장은 제도적 관리의 결정적인 도전 중 하나이다."}, {"word": "poisonous", "pos": "a.", "meanings": [{"num": "①", "text": "(물질이) 유독한, 독이 있는 / (영향이) 해로운, 독성의 (poisonous snake 독사)"}, {"num": "②", "text": "poisonous atmosphere 해로운 분위기"}], "sentence": "The {poisonous} atmosphere that developed within the organization following the leadership dispute made productive collaboration virtually impossible.", "translation": "리더십 분쟁 이후 조직 내에서 발전한 해로운 분위기는 생산적인 협업을 사실상 불가능하게 만들었다."}, {"word": "pregnancy", "pos": "n.", "meanings": [{"num": "①", "text": "임신 (during pregnancy 임신 중에 / pregnant a. 임신한)"}, {"num": "②", "text": "※ gestation(주로 동물의 임신 기간)과 구별"}], "sentence": "The correlation between adequate nutritional support during {pregnancy} and positive long-term cognitive outcomes in children has been consistently documented across multiple longitudinal studies.", "translation": "임신 중 충분한 영양 지원과 아동의 긍정적인 장기 인지 결과 사이의 상관관계는 여러 종단 연구에서 일관되게 기록되어 왔다."}, {"word": "proliferation", "pos": "n.", "meanings": [{"num": "①", "text": "(수·양의) 급증, 확산 / (핵무기의) 확산 (nuclear proliferation 핵 확산)"}, {"num": "②", "text": "※ spread보다 빠르고 광범위한 증가 강조"}], "sentence": "The {proliferation} of online platforms offering unverified health information has created a public health challenge that traditional communication strategies were not designed to address.", "translation": "검증되지 않은 건강 정보를 제공하는 온라인 플랫폼의 급증은 전통적인 소통 전략이 다루도록 설계되지 않은 공중 보건 도전을 만들어냈다."}, {"word": "prolific", "pos": "a.", "meanings": [{"num": "①", "text": "(작가·예술가가) 다작하는, 작품이 많은 / (생물이) 다산의, 번식력 강한 (prolific writer 다작 작가)"}, {"num": "②", "text": "(결과가) 풍부한 / prolific scorer 다득점 선수"}], "sentence": "Despite being one of the most {prolific} composers in the Western classical tradition, he remained financially precarious throughout his life, dependent on the patronage of institutions and individuals.", "translation": "사실상 모든 장르에 걸쳐 600개 이상의 작품을 만들며 서양 클래식 전통에서 가장 다작하는 작곡가 중 한 명임에도 불구하고, 그는 평생 재정적으로 불안정했다."}, {"word": "qualification", "pos": "n.", "meanings": [{"num": "①", "text": "(능력·경험의) 자격, 자질 / (조건·제한의) 단서, 조건"}, {"num": "②", "text": "without qualification 아무런 단서 없이 ※ '단서·조건' 의미가 편입 논리 빈출!"}], "sentence": "The committee's endorsement of the proposal came with an important {qualification}: the implementation timeline would need to be extended by at least six months.", "translation": "위원회의 제안 승인에는 중요한 단서가 붙었다. 즉, 실행 일정이 최소 6개월 연장되어야 한다는 것이었다."}, {"word": "rehabilitation", "pos": "n.", "meanings": [{"num": "①", "text": "(신체·정신의) 재활, 회복 / (범죄자의) 갱생, 사회 복귀 (rehabilitation center 재활 센터)"}, {"num": "②", "text": "(명예·평판의) 복원"}], "sentence": "The criminal justice system's emphasis on punishment over {rehabilitation} has been challenged by evidence that programs designed to address the underlying causes of offending produce significantly lower rates of reoffending.", "translation": "처벌을 갱생보다 우선하는 형사 사법 시스템의 강조는 범죄의 근본적 원인을 다루기 위해 설계된 프로그램들이 현저히 낮은 재범률을 만들어낸다는 증거에 의해 도전받아왔다."}, {"word": "ridicule", "pos": "n. / v.", "meanings": [{"num": "①", "text": "(n.) (공개적) 조롱, 비웃음 (subject to ridicule 조롱의 대상이 되다)"}, {"num": "②", "text": "(v.) 조롱하다, 비웃다"}], "sentence": "Scientists who propose hypotheses that depart significantly from established consensus risk being {ridiculed} by peers, a dynamic that can impede bold theoretical innovation.", "translation": "확립된 합의에서 크게 벗어나는 가설을 제안하는 과학자들은 동료들에게 조롱받을 위험이 있는데, 이 역학은 대담한 이론적 혁신을 방해할 수 있다."}, {"word": "sporadic", "pos": "a.", "meanings": [{"num": "①", "text": "(일정한 간격 없이) 산발적인, 이따금 발생하는 (sporadic violence 산발적 폭력)"}, {"num": "②", "text": "sporadic rainfall 산발적 강우 ※ 불규칙하고 예측 불가능한 패턴 강조"}], "sentence": "{Sporadic} outbreaks of the disease had been documented in the region for decades, but the scale and speed of transmission observed in the current episode suggested the pathogen had acquired significantly more dangerous characteristics.", "translation": "그 질병의 산발적인 발생이 그 지역에서 수십 년간 기록되어 왔지만, 현재 에피소드에서 관찰된 전파의 규모와 속도는 병원체가 훨씬 더 위험한 특성을 획득했다는 것을 시사했다."}, {"word": "stark", "pos": "a. / ad.", "meanings": [{"num": "①", "text": "(a.) (경관이) 삭막한, 황량한 / (차이가) 극명한, 뚜렷한 / (사실이) 냉혹한 (stark contrast 극명한 대조)"}, {"num": "②", "text": "(ad.) 완전히 (stark reality 냉혹한 현실)"}], "sentence": "The {stark} contrast between the resources available to well-funded urban schools and those serving communities in areas of concentrated poverty illustrates how formal equality of access can coexist with profound inequality of outcome.", "translation": "자금이 풍부한 도시 학교와 집중된 빈곤 지역의 공동체를 섬기는 학교에 이용 가능한 자원 사이의 극명한 대조는 공식적인 접근의 평등이 결과의 심오한 불평등과 어떻게 공존할 수 있는지를 보여준다."}, {"word": "stringent", "pos": "a.", "meanings": [{"num": "①", "text": "(규칙·기준이) 엄격한, 엄밀한 (stringent regulations 엄격한 규정)"}, {"num": "②", "text": "(재정이) 긴축의, 빠듯한 (stringent budget 긴축 예산)"}], "sentence": "{Stringent} data protection requirements have been introduced in response to growing evidence that inadequate safeguards had enabled the misuse of personal information on a scale that caused significant harm to individuals.", "translation": "엄격한 데이터 보호 요건은 불충분한 안전장치가 상당한 피해를 야기하는 규모로 개인 정보의 오용을 가능하게 했다는 증가하는 증거에 대응하여 도입되었다."}, {"word": "subsequently", "pos": "ad.", "meanings": [{"num": "①", "text": "그 후에, 나중에, 이어서 (= afterward)"}], "sentence": "The initial findings were published in a preliminary report and {subsequently} subjected to independent review, a process that confirmed the central conclusions while identifying several methodological limitations.", "translation": "초기 결과물은 예비 보고서에 발표되었으며 이어서 독립적인 검토를 받았는데, 이 과정은 여러 방법론적 한계를 파악하면서 핵심 결론을 확인했다."}, {"word": "supplant", "pos": "v.", "meanings": [{"num": "①", "text": "(기존의 것을) 대체하다, 대신하다 (supplant traditional methods 전통적 방법을 대체하다)"}], "sentence": "Streaming services have largely {supplanted} physical media formats that dominated the entertainment industry for decades, though the transition has created new questions about ownership, accessibility, and preservation.", "translation": "스트리밍 서비스는 수십 년간 오락 산업을 지배했던 물리적 미디어 형식을 대부분 대체했지만, 그 전환은 소유권, 접근성, 그리고 보존에 대한 새로운 질문들을 만들어냈다."}, {"word": "symmetry", "pos": "n.", "meanings": [{"num": "①", "text": "(형태의) 대칭, 균형 / (구성의) 조화, 균형미 ↔ asymmetry (bilateral symmetry 양측 대칭)"}, {"num": "②", "text": "symmetrical a. 대칭적인"}], "sentence": "The {symmetry} between the novel's opening and closing chapters — in which nearly identical scenes are presented from perspectives fundamentally altered by intervening events — creates a structure that reinforces the thematic concern with transformation.", "translation": "소설의 첫 번째와 마지막 챕터 사이의 대칭 — 거의 동일한 장면들이 중간 사건들에 의해 근본적으로 변화된 관점에서 제시되는 — 은 변형의 주제적 관심을 강화하는 구조를 만들어낸다."}, {"word": "take over", "pos": "phr.", "meanings": [{"num": "①", "text": "(사업·조직을) 인수하다, 장악하다 / (역할·책임을) 이어받다 / 점령하다"}, {"num": "②", "text": "take over a company 회사를 인수하다 / takeover n. 인수"}], "sentence": "When the founding director retired, the organization faced the challenge of ensuring that the values she had established would be preserved as new leadership {took over}.", "translation": "창립 이사가 은퇴했을 때, 조직은 새 리더십이 이어받으면서 그녀가 확립한 가치와 문화가 보존될 수 있도록 하는 도전에 직면했다."}, {"word": "take up", "pos": "phr.", "meanings": [{"num": "①", "text": "(시간·공간을) 차지하다 / (새로운 활동을) 시작하다 / (제안을) 받아들이다 / (문제를) 다루다"}, {"num": "②", "text": "※ 다의어로 문맥 구별 필수; 편입 빈출 표현"}], "sentence": "Administrative and compliance-related tasks now {take up} a proportion of the average professional's working day that was virtually unimaginable a generation ago, crowding out the substantive work that originally defined the role.", "translation": "행정 및 준수 관련 업무가 이제 평균 전문가의 근무일의 한 세대 전에는 사실상 상상할 수 없었던 비율을 차지하여, 원래 역할을 정의했던 실질적인 작업을 밀어내고 있다."}, {"word": "temperament", "pos": "n.", "meanings": [{"num": "①", "text": "(타고난) 기질, 성미 / (예술가의) 기질, 감수성 (artistic temperament 예술가적 기질)"}], "sentence": "The research suggests that {temperament} — the innate dispositions toward emotional reactivity, sociability, and self-regulation that appear in infancy — interacts with environmental factors in ways that neither nature nor nurture alone can adequately explain.", "translation": "연구는 기질 — 유아기에 나타나는 감정적 반응성, 사교성, 그리고 자기 조절을 향한 타고난 성향 — 이 본성도 양육도 단독으로 적절히 설명할 수 없는 방식으로 환경적 요인들과 상호작용한다는 것을 시사한다."}, {"word": "temporarily", "pos": "ad.", "meanings": [{"num": "①", "text": "일시적으로, 임시로 ↔ permanently (temporarily closed 일시 폐쇄된)"}, {"num": "②", "text": "※ momentarily(순간적으로)보다 지속 기간이 있는 상태"}], "sentence": "The facility was {temporarily} closed following the inspection, pending the completion of remedial work to address the safety deficiencies identified as presenting an unacceptable risk.", "translation": "그 시설은 받아들이기 어려운 위험을 제시한다고 파악된 안전 결함을 해결하기 위한 개선 작업이 완료될 때까지 검사 이후 일시적으로 폐쇄되었다."}, {"word": "temptation", "pos": "n.", "meanings": [{"num": "①", "text": "(하고 싶게 만드는) 유혹 / 유혹하는 것 (resist temptation 유혹을 물리치다)"}], "sentence": "The {temptation} to present preliminary findings as more conclusive than the evidence warrants is particularly strong when researchers are competing for attention, but yielding to it ultimately undermines scientific credibility.", "translation": "예비 결과물을 증거가 정당화하는 것보다 더 결정적인 것으로 제시하려는 유혹이 연구자들이 주목을 위해 경쟁할 때 특히 강하지만, 그것에 굴복하는 것은 궁극적으로 과학적 신뢰성을 약화시킨다."}, {"word": "tentative", "pos": "a.", "meanings": [{"num": "①", "text": "(계획·합의가) 잠정적인, 임시의 (tentative agreement 잠정 합의)"}, {"num": "②", "text": "(행동·태도가) 머뭇거리는, 자신 없는 (tentatively ad. 잠정적으로)"}], "sentence": "A {tentative} agreement was reached after three days of intensive negotiations, with both sides acknowledging that the final text would require further refinement before it could be presented for approval.", "translation": "잠정적인 합의가 3일간의 집중 협상 이후 도달되었으며, 양측은 최종 문서가 승인을 위해 제출되기 전에 추가적인 개선이 필요할 것이라고 인정했다."}, {"word": "thermal", "pos": "a. / n.", "meanings": [{"num": "①", "text": "(a.) (열에 관한) 열의, 온열의 (thermal energy 열에너지)"}, {"num": "②", "text": "(온천에 관한) 온천의 (thermal spring 온천) / (n.) 열기류"}], "sentence": "The conversion of {thermal} energy from industrial processes into usable electricity represents one of the most cost-effective opportunities for improving energy efficiency in the manufacturing sector.", "translation": "산업 공정의 열 에너지를 사용 가능한 전기로 변환하는 것은 제조 부문의 에너지 효율을 개선하기 위한 가장 비용 효율적인 기회 중 하나를 나타낸다."}, {"word": "tilt", "pos": "v. / n.", "meanings": [{"num": "①", "text": "(v.) (기울어지게) 기울이다, 젖히다 / (균형을) 기울다, 치우치다"}, {"num": "②", "text": "(n.) 기울기, 경사 (tilt at windmills 불가능한 일에 싸우다) ※ lean보다 의도적·물리적인 기울임 강조"}], "sentence": "The new evidence significantly {tilted} the balance of scientific opinion toward the hypothesis that had previously been regarded as a minority view, though several prominent researchers cautioned that a single study was insufficient.", "translation": "새로운 증거는 이전에 소수 견해로 여겨졌던 가설 쪽으로 과학적 의견의 균형을 크게 기울였지만, 여러 저명한 연구자들은 단일 연구가 확립된 체계를 포기하는 것을 정당화하기에 불충분하다고 경고했다."}, {"word": "traverse", "pos": "v. / n.", "meanings": [{"num": "①", "text": "(v.) (지역·장거리를) 가로지르다, 횡단하다 / (문제를) 검토하다 (traverse the continent 대륙을 횡단하다)"}, {"num": "②", "text": "(n.) 횡단"}], "sentence": "The migratory routes that certain bird species {traverse} each year — spanning thousands of miles across multiple continents — represent one of the most remarkable feats of biological adaptation in the natural world.", "translation": "특정 조류 종들이 매년 가로지르는 이동 경로 — 여러 대륙에 걸쳐 수천 마일에 걸치는 — 는 자연 세계에서 생물학적 적응의 가장 놀라운 위업 중 하나를 나타낸다."}, {"word": "turn out", "pos": "phr.", "meanings": [{"num": "①", "text": "(결과가) ~임이 드러나다, 판명되다 / (제품을) 생산하다 / 참석하다 / 불을 끄다"}, {"num": "②", "text": "turn out to be ~임이 판명되다 ※ ①의 의미가 편입 논리완성에서 자주 출제!"}], "sentence": "What had initially appeared to be a straightforward audit {turned out} to be a far more complex investigation when the team discovered that the financial records had been systematically altered over several years.", "translation": "처음에 간단한 감사로 보였던 것이 팀이 재무 기록이 수년에 걸쳐 체계적으로 변경되었다는 것을 발견했을 때 훨씬 더 복잡한 조사임이 판명되었다."}, {"word": "uphold", "pos": "v.", "meanings": [{"num": "①", "text": "(원칙·가치를) 지지하다, 유지하다 / (판결·결정을) 확인하다, 지지하다"}, {"num": "②", "text": "uphold the law 법을 수호하다"}], "sentence": "The appellate court {upheld} the original verdict, ruling that the procedural challenges raised by the defense did not meet the threshold required to justify overturning a properly conducted decision.", "translation": "항소 법원은 원래 판결을 확인하며, 변호측이 제기한 절차적 도전이 적절하게 진행된 결정을 뒤집는 것을 정당화하는 데 필요한 임계값을 충족하지 못한다고 판결했다."}, {"word": "varying", "pos": "a.", "meanings": [{"num": "①", "text": "(정도·양이) 다양한, 변화하는 (varying degrees 다양한 정도 / varying opinions 다양한 의견)"}], "sentence": "The effectiveness of the intervention varied considerably across the study population, with participants showing {varying} degrees of response that appeared to correlate with pre-existing differences in baseline health status.", "translation": "그 개입의 효과성은 연구 집단 전반에 걸쳐 상당히 다양했으며, 참가자들은 기준선 건강 상태의 기존 차이와 상관관계가 있는 것으로 보이는 다양한 정도의 반응을 보였다."}, {"word": "versus", "pos": "prep.", "meanings": [{"num": "①", "text": "(소송·경기) ~대, ~와 / (비교·대비) ~와 대비하여 (= vs.) (quality versus quantity 질 대 양)"}, {"num": "②", "text": "※ 공식적인 대립·비교 구도 강조"}], "sentence": "The debate over quality {versus} quantity in higher education reflects a tension that has no easy resolution, as expanding access to serve a broader population inevitably creates pressure on the resources and standards that define quality.", "translation": "고등 교육에서 질 대 양에 대한 논쟁은 더 광범위한 인구를 서비스하기 위해 접근을 확대하는 것이 불가피하게 교육 경험의 질을 정의하는 자원과 기준에 압박을 만들어내기 때문에 쉬운 해결책이 없는 긴장을 반영한다."}, {"word": "volatile", "pos": "a.", "meanings": [{"num": "①", "text": "(상황·가격이) 변덕스러운, 불안정한 (volatile market 불안정한 시장)"}, {"num": "②", "text": "(사람이) 격하기 쉬운 / 휘발성의"}], "sentence": "The {volatile} nature of commodity markets makes long-term planning extremely difficult for producers who cannot easily adjust their output in response to price swings that can wipe out an entire year's profit margin within weeks.", "translation": "상품 시장의 불안정한 특성은 몇 주 내에 연간 이익 마진 전체를 없앨 수 있는 가격 변동에 대응하여 생산량을 쉽게 조정할 수 없는 생산자들에게 장기 계획을 극도로 어렵게 만든다."}, {"word": "wane", "pos": "v. / n.", "meanings": [{"num": "①", "text": "(v.) (힘·영향이) 약해지다, 줄어들다 / (달이) 이울다 ↔ wax"}, {"num": "②", "text": "(n.) 감소, 쇠퇴 (on the wane 쇠퇴 중인 / waning influence 약해지는 영향력)"}], "sentence": "Public confidence in the institution is clearly on the {wane}, with successive surveys showing a steady decline in the proportion of respondents who trust it to act in the public interest.", "translation": "그 기관에 대한 대중의 신뢰는 명백히 쇠퇴 중이며, 연속적인 조사들이 그것이 공공의 이익을 위해 행동할 것이라고 신뢰하는 응답자들의 비율의 꾸준한 하락을 보여주고 있다."}, {"word": "wax", "pos": "v. / n.", "meanings": [{"num": "①", "text": "(v.) (달이) 차오르다, 커지다 ↔ wane / (감정·힘이) 강해지다"}, {"num": "②", "text": "(n.) 밀랍 (wax and wane 성쇠를 거듭하다) ※ wax and wane 관용표현은 무조건 암기!"}], "sentence": "The influence of any single theoretical paradigm tends to {wax and wane} over the course of decades, as the problems it was designed to address are either resolved or revealed to be intractable.", "translation": "어떤 단일 이론적 패러다임의 영향력은 그것이 다루기 위해 설계된 문제들이 해결되거나 다루기 어려운 것으로 드러나면서 수십 년에 걸쳐 성쇠를 거듭하는 경향이 있다."}, {"word": "adversity", "pos": "n.", "meanings": [{"num": "①", "text": "(극복해야 할) 역경, 고난 (in the face of adversity 역경에 맞서)"}], "sentence": "The capacity to maintain focus and productivity in the face of {adversity} — whether in the form of resource constraints, organizational conflict, or external disruption — is one of the qualities that most reliably distinguishes exceptional performers.", "translation": "역경 — 자원 제약, 조직적 갈등, 또는 외부 혼란의 형태이든 — 에 직면해서 집중력과 생산성을 유지하는 능력은 탁월한 수행자를 단순히 유능한 사람들과 가장 신뢰할 수 있게 구별하는 특성 중 하나이다."}, {"word": "anonymity", "pos": "n.", "meanings": [{"num": "①", "text": "익명성 / 무개성 (maintain anonymity 익명성을 유지하다)"}, {"num": "②", "text": "anonymous a. 익명의 / anonymously ad. 익명으로"}], "sentence": "The {anonymity} offered by online platforms has been simultaneously celebrated as a protection for free expression and criticized as a shield for harmful behavior, reflecting deeper disagreements about the balance between privacy and accountability.", "translation": "온라인 플랫폼이 제공하는 익명성은 자유로운 표현의 보호로 동시에 찬사를 받으며 해로운 행동의 방패로 비판받아왔는데, 이는 프라이버시와 책임 사이의 균형에 대한 더 깊은 의견 불일치를 반영한다."}, {"word": "antidote", "pos": "n.", "meanings": [{"num": "①", "text": "(독에 대한) 해독제 / (문제에 대한) 해결책, 치유책 (antidote to stress 스트레스 해소책)"}, {"num": "②", "text": "※ ②의 비유적 의미가 편입 단골 출제"}], "sentence": "Travel is frequently prescribed as an {antidote} to the narrowness of perspective that comes from extended immersion in a single cultural environment, though the evidence that it actually broadens worldviews systematically is more limited than advocates acknowledge.", "translation": "여행은 단일 문화 환경에 장기간 몰입함으로써 오는 관점의 협소함에 대한 해결책으로 자주 처방되지만, 그것이 실제로 체계적으로 세계관을 넓힌다는 증거는 그 옹호자들이 인정하는 것보다 더 제한적이다."}, {"word": "arrogant", "pos": "a.", "meanings": [{"num": "①", "text": "(우월하다는) 오만한, 거만한 ↔ humble (arrogant attitude 오만한 태도)"}, {"num": "②", "text": "arrogance n. 오만"}], "sentence": "The most {arrogant} assumption embedded in the project's original design was that the communities it was intended to benefit would simply adapt their existing practices to accommodate a solution developed without any meaningful engagement with their actual needs.", "translation": "그 프로젝트의 원래 설계에 내재된 가장 오만한 가정은 그것이 혜택을 주려는 공동체들이 자신들의 실제 필요에 대한 의미 있는 참여 없이 개발된 해결책을 수용하기 위해 단순히 기존 관행을 적응시킬 것이라는 것이었다."}, {"word": "assimilate", "pos": "v.", "meanings": [{"num": "①", "text": "(지식·사상을) 흡수하다, 소화하다 / (문화·집단에) 동화되다 (assimilate into society 사회에 동화되다)"}, {"num": "②", "text": "※ 단순 흡수보다 '완전한 통합' 강조"}], "sentence": "The pace at which newcomers are expected to {assimilate} into the dominant culture has become a politically contentious issue, with those emphasizing social cohesion arguing for faster integration.", "translation": "이주민들이 지배적인 문화에 동화될 것으로 기대되는 속도는 정치적으로 논란이 많은 문제가 되었으며, 사회적 결속을 강조하는 사람들은 더 빠른 통합을 주장한다."}, {"word": "astound", "pos": "v.", "meanings": [{"num": "①", "text": "(강하게) 크게 놀라게 하다, 경악시키다 (be astounded by ~에 경악하다)"}], "sentence": "Researchers were {astounded} by the speed with which the organisms had adapted to the altered environmental conditions, as the degree of change observed in such a short period significantly exceeded what existing evolutionary models would have predicted.", "translation": "연구자들은 유기체들이 변화된 환경 조건에 적응한 속도에 크게 놀랐는데, 그토록 짧은 기간에 관찰된 변화의 정도가 기존 진화 모델이 예측했을 것을 크게 초과했기 때문이다."}, {"word": "barren", "pos": "a.", "meanings": [{"num": "①", "text": "(토지가) 불모의, 메마른 ↔ fertile (barren land 불모지)"}, {"num": "②", "text": "(사람·동물) 불임의 / (결과가) 무익한 (barren of ideas 아이디어가 없는)"}], "sentence": "Attempts to cultivate the {barren} hillsides through conventional agricultural methods had repeatedly failed, leading researchers to explore whether specially adapted plant varieties could survive in the thin, nutrient-poor soils.", "translation": "기존 농업 방법으로 불모의 언덕을 경작하려는 시도들이 반복적으로 실패하여, 연구자들은 특별히 적응된 식물 품종이 얇고 영양분이 부족한 토양에서 생존할 수 있는지를 탐구하게 했다."}, {"word": "be in charge", "pos": "phr.", "meanings": [{"num": "①", "text": "(조직·상황을) 책임지고 있다, 담당하다 (be in charge of ~을 담당하다 / Who's in charge? 누가 책임자입니까?)"}, {"num": "②", "text": "※ be responsible for와 유사하나 권한·통제권 행사 강조 (in-charge a. 담당의)"}], "sentence": "The committee chair made clear that she was {in charge} of the process and that decisions about which evidence would be admitted would rest entirely with the committee rather than with the parties to the dispute.", "translation": "위원회 의장은 그녀가 그 과정을 담당하고 있으며 어떤 증거를 채택할지에 대한 결정이 분쟁 당사자들이 아니라 전적으로 위원회에 달려 있다는 것을 분명히 했다."}, {"word": "better off", "pos": "phr.", "meanings": [{"num": "①", "text": "(경제적으로) 형편이 더 나은 / (어떤 상황이) 더 유리한"}, {"num": "②", "text": "be better off leaving 떠나는 것이 더 낫다 ↔ worse off"}], "sentence": "Communities that have invested heavily in education and social infrastructure over several decades tend to be significantly {better off} economically than those that prioritized short-term tax reductions at the expense of long-term public investment.", "translation": "수십 년에 걸쳐 교육과 사회 인프라에 많이 투자한 공동체들은 장기적인 공공 투자를 희생하면서 단기적인 세금 감소를 우선시했던 공동체들보다 경제적으로 훨씬 형편이 나은 경향이 있다."}, {"word": "blatant", "pos": "a.", "meanings": [{"num": "①", "text": "(잘못·무례함이) 노골적인, 뻔뻔한, 명백한 (blatant lie 노골적인 거짓말)"}, {"num": "②", "text": "blatant disregard 뻔뻔한 무시 (blatantly ad. 노골적으로)"}], "sentence": "The {blatant} disregard for the established evidence base that characterized much of the public debate reflected a broader pattern in which political convenience had come to take precedence over factual accuracy in the formation of public opinion.", "translation": "공개 논쟁의 많은 부분을 특징지은 확립된 증거 기반에 대한 노골적인 무시는 정치적 편의가 여론 형성에서 사실적 정확성보다 우선하게 된 더 광범위한 패턴을 반영했다."}, {"word": "chart", "pos": "n. / v.", "meanings": [{"num": "①", "text": "(n.) 도표, 그래프 / (항해용) 해도 / (음악) 순위 차트"}, {"num": "②", "text": "(v.) (도표로) 정리하다 / (항로·계획을) 계획하다 (chart a course 항로를 계획하다) ※ ④⑤의 동사 의미 빈출"}], "sentence": "The newly appointed director used her first board meeting to {chart} a course for the organization's development over the following five years, presenting a strategic framework that departed significantly from her predecessor's approach.", "translation": "새로 임명된 이사는 첫 번째 이사회 회의를 사용하여 향후 5년에 걸친 조직 발전의 항로를 계획하며, 전임자의 접근 방식과 크게 다른 전략적 체계를 제시했다."}, {"word": "chemistry", "pos": "n.", "meanings": [{"num": "①", "text": "(학문) 화학 / (사람 사이의) 교감, 궁합 (the chemistry between them 그들 사이의 교감)"}, {"num": "②", "text": "(물질의) 화학적 특성 ※ ②의 비유적 의미가 편입에서 자주 출제"}], "sentence": "The {chemistry} between the lead performers was immediately apparent to audiences, generating a quality of emotional authenticity that critics attributed to an unusual degree of mutual understanding between two actors who had not previously worked together.", "translation": "주연 배우들 사이의 교감은 청중들에게 즉시 분명했으며, 이전에 함께 작업하지 않은 두 배우 사이의 이례적인 상호 이해 정도에 비평가들이 귀인한 감정적 진정성의 질을 만들어냈다."}, {"word": "circulation", "pos": "n.", "meanings": [{"num": "①", "text": "(혈액·공기의) 순환 / (돈·정보의) 유통, 보급 / (신문·잡지의) 발행 부수"}, {"num": "②", "text": "circulation of blood 혈액 순환 / in circulation 유통 중인 ※ ①②③ 의미 구별 필수; 편입 다의어 빈출"}], "sentence": "The {circulation} of misinformation through social networks can be significantly faster than the spread of accurate corrections, a pattern that creates persistent false beliefs even among populations with access to reliable information sources.", "translation": "소셜 네트워크를 통한 잘못된 정보의 유통은 정확한 수정의 확산보다 훨씬 빠를 수 있는데, 이 패턴은 신뢰할 수 있는 정보 출처에 접근할 수 있는 집단들 사이에서도 지속적인 허위 믿음을 만들어낸다."}, {"word": "clarity", "pos": "n.", "meanings": [{"num": "①", "text": "(표현·사고의) 명확성, 명료함 (with clarity 명확하게 / lack of clarity 명확성 부족)"}, {"num": "②", "text": "(시야·소리의) 맑음"}], "sentence": "The {clarity} with which she explained complex legal concepts to non-specialist audiences — without oversimplifying or distorting them — made her an unusually effective communicator in a field where technical language often functions as a barrier.", "translation": "복잡한 법적 개념을 비전문가 청중에게 지나치게 단순화하거나 왜곡하지 않고 설명한 그녀의 명확성은 기술적 언어가 종종 대중 이해에 대한 장벽으로 기능하는 분야에서 그녀를 이례적으로 효과적인 소통자로 만들었다."}, {"word": "condone", "pos": "v.", "meanings": [{"num": "①", "text": "(잘못된 행동을) 용납하다, 묵인하다 (condone violence 폭력을 묵인하다)"}, {"num": "②", "text": "condonable a. 용납 가능한"}], "sentence": "An organization that {condones} minor ethical violations tends to create a culture in which progressively more serious breaches are normalized, as each tolerated exception shifts the perceived boundary of acceptable behavior.", "translation": "사소한 윤리적 위반을 묵인하는 조직은 각각의 용납된 예외가 수용 가능한 행동의 인식된 경계를 이동시키면서 점점 더 심각한 위반이 정상화되는 문화를 만드는 경향이 있다."}, {"word": "confusing", "pos": "a.", "meanings": [{"num": "①", "text": "(사람을) 혼란스럽게 하는, 헷갈리게 하는 (confusing instructions 헷갈리는 지침)"}, {"num": "②", "text": "※ confused(혼란스러운; 사람이 주어)와 구별 필수"}], "sentence": "The {confusing} array of overlapping regulations from different levels of government made it extremely difficult for small businesses to determine precisely which requirements applied to their situation.", "translation": "다른 수준의 정부로부터의 중복되는 규정들의 혼란스러운 배열은 소기업들이 어떤 요건이 자신들의 특정 상황에 적용되는지를 정확히 결정하는 것을 극도로 어렵게 만들었다."}, {"word": "decease", "pos": "n. / v.", "meanings": [{"num": "①", "text": "(격식) 사망, 서거 / (v.) 사망하다 (upon decease 사망 시)"}, {"num": "②", "text": "the deceased n. 고인"}], "sentence": "The estate was divided equally among the four children of the {deceased}, in accordance with the terms of a will that had been drawn up a decade before his death.", "translation": "그 유산은 고인의 네 자녀 사이에 균등하게 나누어졌는데, 그의 사망 10년 전에 작성된 유언장의 조건에 따라서였다."}, {"word": "detached", "pos": "a.", "meanings": [{"num": "①", "text": "(물리적으로) 분리된, 독립된 / (감정적으로) 객관적인, 초연한 (detached observer 객관적 관찰자)"}, {"num": "②", "text": "(태도가) 무심한 (detachment n. 초연함)"}], "sentence": "The ability to maintain a {detached} perspective when analyzing one's own organization is one of the most difficult skills for leaders to develop, as the emotional investment that effective leadership requires tends to make objective self-assessment costly.", "translation": "자신의 조직을 분석할 때 객관적인 관점을 유지하는 능력은 리더들이 개발하기 가장 어려운 기술 중 하나인데, 효과적인 리더십이 필요로 하는 감정적 투자가 진정으로 객관적인 자기 평가를 심리적으로 부담스럽게 만드는 경향이 있기 때문이다."}, {"word": "devastate", "pos": "v.", "meanings": [{"num": "①", "text": "(물리적으로) 완전히 파괴하다 / (감정적으로) 엄청난 충격을 주다 (devastate a city 도시를 완전히 파괴하다)"}, {"num": "②", "text": "devastating a. 파괴적인 / devastation n. 황폐"}], "sentence": "The wildfire {devastated} an area of forest larger than many European countries within a matter of weeks, destroying ecosystems that had taken centuries to develop.", "translation": "그 산불은 몇 주 만에 많은 유럽 국가들보다 큰 산림 지역을 완전히 파괴하여, 발달하는 데 수세기가 걸린 생태계를 파괴했다."}, {"word": "diffuse", "pos": "v. / a.", "meanings": [{"num": "①", "text": "(v.) (빛·열·정보를) 퍼뜨리다, 확산시키다 / (긴장을) 완화하다"}, {"num": "②", "text": "(a.) (영향이) 널리 퍼진 / (표현이) 산만한, 장황한"}], "sentence": "The mediator's ability to {diffuse} the tension that had been building throughout the negotiation proved decisive in preventing a breakdown that had seemed inevitable just hours earlier.", "translation": "협상 전반에 걸쳐 쌓여온 긴장을 완화하는 조정자의 능력은 불과 몇 시간 전에 불가피해 보였던 결렬을 막는 데 결정적인 것으로 판명되었다."}, {"word": "discreet", "pos": "a.", "meanings": [{"num": "①", "text": "(말·행동이) 신중한, 조심스러운 / (존재가) 눈에 띄지 않는 (discreet inquiry 신중한 문의)"}, {"num": "②", "text": "※ discrete(분리된; 별개의)와 철자·의미 혼동 주의"}], "sentence": "The investigator made {discreet} inquiries among the organization's former employees, careful not to alert those who were still in post to the fact that their conduct was under scrutiny.", "translation": "그 수사관은 조직의 전직 직원들 사이에서 신중한 문의를 했으며, 여전히 재직 중인 사람들에게 자신들의 행동이 면밀한 검토를 받고 있다는 사실을 알리지 않도록 주의했다."}, {"word": "disperse", "pos": "v.", "meanings": [{"num": "①", "text": "(군중을) 흩어지게 하다, 해산시키다 / (물질을) 분산시키다, 퍼뜨리다 / (군중이) 흩어지다"}, {"num": "②", "text": "disperse a crowd 군중을 해산시키다"}], "sentence": "The seeds of many plant species are designed to {disperse} as widely as possible from the parent plant, using mechanisms ranging from wind and water to the digestive systems of birds and mammals to maximize the geographic range of the species.", "translation": "많은 식물 종의 씨앗은 종의 지리적 범위를 극대화하기 위해 바람과 물에서 조류와 포유류의 소화 시스템에 이르는 메커니즘을 사용하여 모식물에서 가능한 한 넓게 분산되도록 설계되어 있다."}];
+
+let current = 0;
+
+function renderSentence(t) {
+  return t.replace(/\{([^}]+)\}/g, '<span class="hw">$1</span>');
+}
+
+function renderCard(idx) {
+  const d = DATA[idx];
+  document.getElementById('fPos').textContent = d.pos;
+  document.getElementById('fSentence').innerHTML = renderSentence(d.sentence);
+  document.getElementById('bWord').textContent = d.word;
+  document.getElementById('bPos').textContent = d.pos;
+
+  const exEng = d.sentence.replace(/\{([^}]+)\}/g, '<strong>$1</strong>');
+  let bodyHtml = '';
+  d.meanings.forEach(m => {
+    const slashParts = m.text.split('/').map(t => t.trim());
+    
+    bodyHtml += `<div class="meaning-block">`;
+    bodyHtml += `  <span class="meaning-num">${m.num}</span>`;
+    
+    slashParts.forEach(part => {
+      if (part.includes('(')) {
+        const openIdx = part.indexOf('(');
+        const mainMeaning = part.substring(0, openIdx).trim();
+        const subExample = part.substring(openIdx).trim();
+        
+        if (mainMeaning) {
+          bodyHtml += `  <span class="meaning-text">${mainMeaning}</span>`;
+        }
+        if (subExample) {
+          bodyHtml += `  <span class="meaning-sub">${subExample}</span>`;
+        }
+      } else {
+        bodyHtml += `  <span class="meaning-text">${part}</span>`;
+      }
+    });
+    
+    bodyHtml += `</div>`;
+  });
+  
+  bodyHtml += '<div class="rule"></div>';
+  bodyHtml += `<div class="ex-block"><p class="ex-eng">${exEng}</p><p class="ex-kor">${d.translation}</p></div>`;
+  
+  const bBody = document.getElementById('bBody');
+  bBody.innerHTML = bodyHtml;
+  bBody.scrollTop = 0; // 단어 변경 시 카드 스크롤 위치 초기화 방어 코드
+
+  // 진행 상태바 반영
+  document.getElementById('progressFill').style.width = ((idx + 1) / DATA.length * 100).toFixed(1) + '%';
+  document.getElementById('progressText').textContent = `${idx + 1} / ${DATA.length}`;
+  document.getElementById('btnPrev').disabled = idx === 0;
+  document.getElementById('btnNext').disabled = idx === DATA.length - 1;
+  
+  // 단어 칩 동기화 및 스크롤 추적
+  document.querySelectorAll('.word-chip').forEach((el, i) => {
+    const isActive = i === idx;
+    el.classList.toggle('active', isActive);
+    
+    // UX 핵심: 현재 인덱스에 매칭되는 단어 칩으로 컨테이너 스크롤 포커싱 자동 이동
+    if (isActive) {
+      el.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'nearest' });
+    }
+  });
+  
+  document.getElementById('card').classList.remove('flipped');
+}
+
+function flip() { document.getElementById('card').classList.toggle('flipped'); }
+function go(dir) {
+  const next = current + dir;
+  if (next < 0 || next >= DATA.length) return;
+  current = next; renderCard(current);
+}
+
+// 단어 목록 그리드 초기 생성
+const grid = document.getElementById('wordGrid');
+DATA.forEach((d, i) => {
+  const btn = document.createElement('button');
+  btn.className = 'word-chip' + (i === 0 ? ' active' : '');
+  btn.textContent = d.word;
+  btn.onclick = () => { current = i; renderCard(i); };
+  grid.appendChild(btn);
+});
+
+document.getElementById('stage').addEventListener('click', flip);
+document.addEventListener('keydown', e => {
+  if (e.key === 'ArrowRight') go(1);
+  if (e.key === 'ArrowLeft') go(-1);
+  if (e.key === ' ' || e.key === 'Enter') { e.preventDefault(); flip(); }
+});
+
+// 초기화 가동
+renderCard(0);
+</script>
+</body>
+</html>
